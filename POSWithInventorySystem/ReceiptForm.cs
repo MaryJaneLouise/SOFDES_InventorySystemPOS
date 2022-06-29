@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace POSWithInventorySystem {
     public partial class ReceiptForm : Form {
         TransactionInformation transaction;
+        
         public ReceiptForm() {
             InitializeComponent();
         }
