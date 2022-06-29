@@ -555,6 +555,7 @@
     <None Include="Resources\computerbox.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Logo_1.jpg" />
     <Content Include="Resources\placeholder.png" />
     <None Include="Resources\placeholder1.png" />
   </ItemGroup>

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInForm));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelUp = new System.Windows.Forms.Panel();
             this.lblMinimizeForm = new System.Windows.Forms.Label();
@@ -39,10 +38,9 @@
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.timerFormLoad = new System.Windows.Forms.Timer(this.components);
             this.lblValidaton = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblSignIn = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -109,7 +107,7 @@
             this.txtUsername.LineIdleColor = System.Drawing.Color.Gray;
             this.txtUsername.LineMouseHoverColor = System.Drawing.Color.Orange;
             this.txtUsername.LineThickness = 5;
-            this.txtUsername.Location = new System.Drawing.Point(112, 323);
+            this.txtUsername.Location = new System.Drawing.Point(107, 323);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(326, 59);
@@ -133,7 +131,7 @@
             this.txtPassword.LineIdleColor = System.Drawing.Color.Gray;
             this.txtPassword.LineMouseHoverColor = System.Drawing.Color.Orange;
             this.txtPassword.LineThickness = 5;
-            this.txtPassword.Location = new System.Drawing.Point(112, 396);
+            this.txtPassword.Location = new System.Drawing.Point(107, 396);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(326, 59);
@@ -155,20 +153,10 @@
             this.lblValidaton.AutoSize = true;
             this.lblValidaton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidaton.ForeColor = System.Drawing.Color.Red;
-            this.lblValidaton.Location = new System.Drawing.Point(158, 450);
+            this.lblValidaton.Location = new System.Drawing.Point(153, 450);
             this.lblValidaton.Name = "lblValidaton";
             this.lblValidaton.Size = new System.Drawing.Size(0, 19);
             this.lblValidaton.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(162, 82);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(205, 149);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
             // 
             // btnLogin
             // 
@@ -192,7 +180,7 @@
             this.btnLogin.IconVisible = true;
             this.btnLogin.IconZoom = 90D;
             this.btnLogin.IsTab = false;
-            this.btnLogin.Location = new System.Drawing.Point(93, 475);
+            this.btnLogin.Location = new System.Drawing.Point(88, 475);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Normalcolor = System.Drawing.Color.Orange;
@@ -215,15 +203,15 @@
             this.bunifuDragControl1.TargetControl = this.panelUp;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // lblSignIn
+            // pictureBox1
             // 
-            this.lblSignIn.AutoSize = true;
-            this.lblSignIn.Font = new System.Drawing.Font("DM Sans", 26.25F);
-            this.lblSignIn.Location = new System.Drawing.Point(104, 263);
-            this.lblSignIn.Name = "lblSignIn";
-            this.lblSignIn.Size = new System.Drawing.Size(355, 46);
-            this.lblSignIn.TabIndex = 2;
-            this.lblSignIn.Text = "Happy Three Friends";
+            this.pictureBox1.Image = global::POSWithInventorySystem.Properties.Resources.Logo_1;
+            this.pictureBox1.Location = new System.Drawing.Point(162, 82);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 210);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // LogInForm
             // 
@@ -234,7 +222,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblValidaton);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.lblSignIn);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.panelUp);
@@ -266,7 +253,6 @@
         private System.Windows.Forms.Label lblValidaton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
-        private Bunifu.Framework.UI.BunifuCustomLabel lblSignIn;
     }
 }
 
