@@ -10,17 +10,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class UpdateCartQuanitity : Form
-    {
-        public UpdateCartQuanitity()
-        {
+namespace POSWithInventorySystem {
+    public partial class UpdateCartQuanitity : Form {
+        string connectionString = DatabaseConnection.Connection;
+
+        public string Barcode { get; set; }
+        public string ProductNameVoid { get; set; }
+        public string Price { get; set; }
+        public int Quantity { get; set; }
+        
+        MemoryStream memoryStreamForViewImage;
+        
+        public UpdateCartQuanitity() {
             InitializeComponent();
         }
 
-        public UpdateCartQuanitity(string barcode, string productName, string price, int quantity)
-        {
+        public UpdateCartQuanitity(string barcode, string productName, string price, int quantity) {
             InitializeComponent();
             this.Barcode = barcode;
             this.ProductNameVoid = productName;
@@ -28,17 +33,7 @@ namespace POSWithInventorySystem
             this.Quantity = quantity;
         }
 
-        // Database Connection
-        string connectionString = DatabaseConnection.Connection;
-
-        public string Barcode { get; set; }
-        public string ProductNameVoid { get; set; }
-        public string Price { get; set; }
-        public int Quantity { get; set; }
-        MemoryStream memoryStreamForViewImage;
-
-        private void UpdateCartQuanitity_Load(object sender, EventArgs e)
-        {
+        private void UpdateCartQuanitity_Load(object sender, EventArgs e) {
             lblBarcodeValue.Text = Barcode;
             lblProductNameValue.Text = ProductNameVoid;
             lblPriceValue.Text = Price;
@@ -47,70 +42,57 @@ namespace POSWithInventorySystem
             ValidateNFillProductImage();
         }
 
-        private void UpdateCartQuanitity_FormClosed(object sender, FormClosedEventArgs e)
-        {
+        private void UpdateCartQuanitity_FormClosed(object sender, FormClosedEventArgs e) {
             memoryStreamForViewImage.Dispose();
         }
 
-        private void UpdateCartQuanitity_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
+        private void UpdateCartQuanitity_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
                 btnOkTrigger();
             }
-            if (e.KeyCode == Keys.Escape)
-            {
+            
+            if (e.KeyCode == Keys.Escape) {
                 this.Close();
             }
         }
 
-        private void btnDecreaseAll_Click(object sender, EventArgs e)
-        {
+        private void btnDecreaseAll_Click(object sender, EventArgs e) {
             txtNewQuantityValue.Text = Quantity.ToString();
         }
 
-        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength)
-        {
-            foreach (Control ctl in metroTextbox.Controls)
-            {
-                if (ctl.GetType() == typeof(TextBox))
-                {
+        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength) {
+            foreach (Control ctl in metroTextbox.Controls) {
+                if (ctl.GetType() == typeof(TextBox)) {
                     var txt = (TextBox)ctl;
                     txt.MaxLength = maxlength;
                 }
             }
         }
 
-        private void txtQuantityValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtQuantityValue_KeyPress(object sender, KeyPressEventArgs e) {
             SetMaximumLength(txtNewQuantityValue, 11);
             e.Handled = e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar);
         }
 
-        private void txtQuantityValue_OnValueChanged(object sender, EventArgs e)
-        {
+        private void txtQuantityValue_OnValueChanged(object sender, EventArgs e) {
             lblQuantityError.Hide();
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
-        {
+        private void btnOk_Click(object sender, EventArgs e) {
             btnOkTrigger();
         }
 
-        private void btnOkTrigger()
-        {
-            if (string.IsNullOrEmpty(txtNewQuantityValue.Text.Trim()))
-            {
-                lblQuantityError.Show(); //Show Error
+        private void btnOkTrigger() {
+            if (string.IsNullOrEmpty(txtNewQuantityValue.Text.Trim())) {
+                lblQuantityError.Show();
             }
-            else
-            {
-                if (Convert.ToInt32(txtNewQuantityValue.Text.Trim()) > Quantity)
-                {
-                    MessageBox.Show("Your Input is Greater than Quantity in Cart", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+            else {
+                if (Convert.ToInt32(txtNewQuantityValue.Text.Trim()) > Quantity) {
+                    MessageBox.Show("Your quantity input is greater than the current quantity stocks. Please try again.", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                {
+                
+                else {
                     POSTransactionForm pOSTransactionForm = (POSTransactionForm)this.Owner;
                     pOSTransactionForm.QuantityFromUpdateCart = Convert.ToInt32(txtNewQuantityValue.Text.Trim());
                     this.Close();
@@ -118,15 +100,12 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
+        private void btnCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private DataTable getProductImageFromDB()
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private DataTable getProductImageFromDB() {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlCommand mySqlCommand = new MySqlCommand("SelectProductImageByCodeNPrice", mysqlCon);
                 mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -141,30 +120,26 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void ValidateNFillProductImage()
-        {
+        private void ValidateNFillProductImage() {
             DataTable result = getProductImageFromDB();
 
-            //If User Data Fetch is true;
-            if (result.Rows.Count == 1)
-            {
+            //If the selected product has an image
+            if (result.Rows.Count == 1) {
                 byte[] Image = (byte[])result.Rows[0]["Image"];
                 ViewProductImage(Image); //For Product Image
             }
-            else
-            {
-                MessageBox.Show("No Data Retrieved! or Two Products Exist!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+            else {
+                MessageBox.Show("There was an error in fetching image of the selected product. Please try again.", "Invalid image", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ViewProductImage(byte[] bytes)
-        {
-            if (bytes == null)
-            {
-                pictureBoxProductPicVoid.Image = POSWithInventorySystem.Properties.Resources.aw;
+        private void ViewProductImage(byte[] bytes) {
+            if (bytes == null) {
+                pictureBoxProductPicVoid.Image = POSWithInventorySystem.Properties.Resources.placeholder;
             }
-            else
-            {
+            
+            else {
                 memoryStreamForViewImage = new MemoryStream(bytes);
                 pictureBoxProductPicVoid.Image = Image.FromStream(memoryStreamForViewImage);
             }
