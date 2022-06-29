@@ -9,26 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace POSWithInventorySystem {
-    public partial class LogInForm : Form {
+namespace POSWithInventorySystem
+{
+    public partial class LogInForm : Form
+    {
+        public LogInForm()
+        {
+            InitializeComponent();
+        }
+
         //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none";
         string connectionString = DatabaseConnection.Connection;
 
         private MySqlConnection mysqlCon;
-
-        public LogInForm() {
-            InitializeComponent();
-        }
-
-        private bool db_connection() {
+     
+        private bool db_connection()
+        {
             bool result = true;
 
-            try {
+            try
+            {
                 mysqlCon = new MySqlConnection(connectionString);
                 mysqlCon.Open();
             }
-
-            catch {
+            catch (Exception ex)
+            {
                 result = false;
                 MessageBox.Show("The system cannot be started because it is not connected to MySQL server. Please contact your administrator and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -36,8 +41,10 @@ namespace POSWithInventorySystem {
             return result;
         }
 
-        private DataTable Validate_User(string username, string password) {
-            using (mysqlCon) {
+        private DataTable Validate_User(string username, string password)
+        {
+            using (mysqlCon)
+            {
                 db_connection();
                 MySqlCommand mySqlCommand = new MySqlCommand("SearchUsers", mysqlCon);
                 mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -52,79 +59,97 @@ namespace POSWithInventorySystem {
             }
         }
 
-        private void lblFormClose_Click(object sender, EventArgs e) {
-            Application.Exit();
+        private void lblFormClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
 
-        private void lblMinimizeForm_Click(object sender, EventArgs e) {
+        private void lblMinimizeForm_Click(object sender, EventArgs e)
+        {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
+        private void Form1_Load(object sender, EventArgs e)
+        {
             timerFormLoad.Start();
         }
 
-        private void timer1_Tick(object sender, EventArgs e) {
+        private void timer1_Tick(object sender, EventArgs e)
+        {
             this.Opacity += .10;
-            if (this.Opacity == 100) {
+            if (this.Opacity == 100)
+            {
                 timerFormLoad.Stop();
             }
         }
 
-        private void txtUsername_Enter(object sender, EventArgs e) {
-            if (txtUsername.Text == "Username") {
+        private void txtUsername_Enter(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == "Username")
+            {
                 txtUsername.Text = "";
             }
             lblValidaton.Text = "";
         }
 
-        private void txtUsername_Leave(object sender, EventArgs e) {
+        private void txtUsername_Leave(object sender, EventArgs e)
+        {
             if (string.IsNullOrEmpty(txtUsername.Text))
             {
                 txtUsername.Text = "Username";
             }
         }
 
-        private void txtPassword_Enter(object sender, EventArgs e) {
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
             if (txtPassword.Text == "Password")
             {
                 txtPassword.Text = "";
             }
-
             txtPassword.isPassword = true;
             lblValidaton.Text = "";
         }
 
-        private void txtPassword_Leave(object sender, EventArgs e) {
-            if (string.IsNullOrEmpty(txtPassword.Text)) {
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
                 txtPassword.isPassword = false;
                 txtPassword.Text = "Password";
             }
         }
 
-        private void btnLogin_Click(object sender, EventArgs e) {
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
             login();
+            
         }
 
-        private void txtUsername_OnValueChanged(object sender, EventArgs e) {
+        private void txtUsername_OnValueChanged(object sender, EventArgs e)
+        {
             lblValidaton.Text = "";
         }
 
-        private void txtPassword_OnValueChanged(object sender, EventArgs e) {
+        private void txtPassword_OnValueChanged(object sender, EventArgs e)
+        {
             lblValidaton.Text = "";
         }
 
-        public void login() {
+        public void login()
+        {
             //Checking the connection if it still open
-            if (db_connection()) {
-                if ((txtUsername.Text == "Username" && txtPassword.Text == "") || (txtPassword.Text == "Password" && txtUsername.Text == "")) {
+            if (db_connection())
+            {
+                if ((txtUsername.Text == "Username" && txtPassword.Text == "") || (txtPassword.Text == "Password" && txtUsername.Text == ""))
+                {
                     MessageBox.Show("One of the text fields is empty. Please check them and try again.", "Invalid fields!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
-
-                else {
+                else
+                {
                     DataTable result = Validate_User(txtUsername.Text, txtPassword.Text);
-                    
-                    if (result.Rows.Count == 1 && result.Rows[0]["Status"].ToString() == "Active") {
+                    if (result.Rows.Count == 1 && result.Rows[0]["Status"].ToString() == "Active")
+                    {
                         string role = result.Rows[0]["UsersType"].ToString();
                         string username = result.Rows[0]["Username"].ToString();
                         string UserID = result.Rows[0]["UsersID"].ToString();
@@ -137,30 +162,34 @@ namespace POSWithInventorySystem {
                         UsersData.UserType = role;
                         UsersData.Image = (byte[])resultInUsersInformation.Rows[0]["Image"];
 
-                        switch (role) {
+                        switch (role)
+                        {
                             case "Admin":
                                 this.Hide();
                                 MainForm adminForm = new MainForm(UsersData);
                                 adminForm.Show();
+
                                 break;
 
                             case "Employee":
                                 this.Hide();
                                 MainForm employeeForm = new MainForm(UsersData);
                                 employeeForm.Show();
+
                                 break;
 
                             default:
                                 break;
                         }
                     }
-
-                    else {
-                        if (result.Rows.Count == 1 && result.Rows[0]["Status"].ToString() == "Not Active") {
+                    else
+                    {
+                        if (result.Rows.Count == 1 && result.Rows[0]["Status"].ToString() == "Not Active")
+                        {
                             MessageBox.Show("This account has been deactivated. Please contact your manager and try again.", "Deactivated Account", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                         }
-
-                        else {
+                        else
+                        {
                             MessageBox.Show("Your username or password is invalid. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                         }
                     }
@@ -168,8 +197,10 @@ namespace POSWithInventorySystem {
             }
         }
 
-        private DataTable GetUsersInformation(string userID) {
-            using (mysqlCon) {
+        private DataTable GetUsersInformation(string userID)
+        {
+            using (mysqlCon)
+            {
                 db_connection();
                 MySqlCommand mySqlCommand = new MySqlCommand("SearchUsersInfoByUsersID", mysqlCon);
                 mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -183,25 +214,30 @@ namespace POSWithInventorySystem {
             }
         }
 
-        private void txtUsername_KeyDown(object sender, KeyEventArgs e) {
-            if(e.KeyCode ==Keys.Enter) {
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode ==Keys.Enter)
+            {
                 login();
                 e.Handled = e.SuppressKeyPress = true;
             }
         }
 
-        private void txtPassword_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
                 login();
                 e.Handled = e.SuppressKeyPress = true;
             }
         }
 
-        public string Hash(string password) {
+        public string Hash(string password)
+        {
             var bytes = new UTF8Encoding().GetBytes(password);
             byte[] hashBytes;
-            
-            using (var algorithm = new System.Security.Cryptography.SHA512Managed()) {
+            using (var algorithm = new System.Security.Cryptography.SHA512Managed())
+            {
                 hashBytes = algorithm.ComputeHash(bytes);
             }
 
@@ -209,7 +245,8 @@ namespace POSWithInventorySystem {
         }
     }
 
-    public class LoginFormData {
+    public class LoginFormData
+    {
         public string UsersID { get; set; }
         public string UsersName { get; set; }
         public string UserType { get; set; }

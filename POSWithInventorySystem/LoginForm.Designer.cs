@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInForm));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelUp = new System.Windows.Forms.Panel();
             this.lblMinimizeForm = new System.Windows.Forms.Label();
@@ -38,9 +39,10 @@
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.timerFormLoad = new System.Windows.Forms.Timer(this.components);
             this.lblValidaton = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblSignIn = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panelUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -158,6 +160,16 @@
             this.lblValidaton.Size = new System.Drawing.Size(0, 19);
             this.lblValidaton.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(162, 82);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(205, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnLogin
             // 
             this.btnLogin.Activecolor = System.Drawing.Color.Orange;
@@ -203,15 +215,15 @@
             this.bunifuDragControl1.TargetControl = this.panelUp;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // pictureBox1
+            // lblSignIn
             // 
-            this.pictureBox1.Image = global::POSWithInventorySystem.Properties.Resources.Logo_1;
-            this.pictureBox1.Location = new System.Drawing.Point(162, 84);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(210, 210);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.lblSignIn.AutoSize = true;
+            this.lblSignIn.Font = new System.Drawing.Font("DM Sans", 26.25F);
+            this.lblSignIn.Location = new System.Drawing.Point(104, 263);
+            this.lblSignIn.Name = "lblSignIn";
+            this.lblSignIn.Size = new System.Drawing.Size(355, 46);
+            this.lblSignIn.TabIndex = 2;
+            this.lblSignIn.Text = "Happy Three Friends";
             // 
             // LogInForm
             // 
@@ -222,6 +234,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblValidaton);
             this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.lblSignIn);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.panelUp);
@@ -253,6 +266,7 @@
         private System.Windows.Forms.Label lblValidaton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private Bunifu.Framework.UI.BunifuCustomLabel lblSignIn;
     }
 }
 

@@ -9,85 +9,88 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem {
-    public partial class HistoryForm : Form {
-        //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none ";
-        string connectionString = DatabaseConnection.Connection;
-        LoginFormData usersData;
-        public bool resultFromPasswordValidation = false;
-
-        public HistoryForm() {
+namespace POSWithInventorySystem
+{
+    public partial class HistoryForm : Form
+    {
+        public HistoryForm()
+        {
             InitializeComponent();
         }
 
-        public HistoryForm(LoginFormData data) {
+        public HistoryForm(LoginFormData data)
+        {
             InitializeComponent();
             this.usersData = data;
         }
 
-        private void HistoryForm_Load(object sender, EventArgs e) {
-            //Insert code here for sharing all contents
-            /* Insert code here */
+        //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none ";
+        string connectionString = DatabaseConnection.Connection;
 
-            //Product History page
+        private void HistoryForm_Load(object sender, EventArgs e)
+        {
+            /*----------Shared By All-----------*/
+                //codes.....
+
+            /*----------Products Log Section-----------*/
             GridFillProductsLogs();
             DataGridViewProductsLogWidthNDesign();
 
-            //Stock History page
+            /*-----------Stocks Log Section------------*/
             comboboxIndividualOrTotalTab2.SelectedIndex = 0;
 
-            //Stock History page > Individual Stocks
+                /*--------------Individual Stocks-------------*/
             dataGridViewStocksLog.Show();
             gridFillIndividualStocksLog();
             DataGridViewStocksIndividualWidthNDesign();
-            GridIndividualStocksLogsRowNumbers();
+            GridIndividualStocksLogsRowNumbers(); //Set Number Of rows Currently in GridView
 
-            //Stock History page > Total Stocks
+                /*--------------Total Stocks-------------*/
             gridFillTotalStocksLog();
             DataGridViewStocksTotalWidthNDesign();
 
-            //User Time In / Out
+            /*-----------Users Log Section---------*/
             GridFillUserLog();
             DataGridViewUsersLogWidthNDesign();
             SetNumberOfUserLog();
 
-            //User Account Update Information History
+            /*-----------Transaction Log Section------*/
+            GridFillTransactionsLog();
+            DataGridViewTransactionsLogWidthNDesign();
+
+            /*--------UsersInformation Log Section--*/
             GridFillUsersInformationLog();
             DataGridViewUsersInfoLogWidthNDesign();
 
-            //Transaction History
-            GridFillTransactionsLog();
-            DataGridViewTransactionsLogWidthNDesign();
+
         }
 
-        private void ValidateAdminPassword() {
-            ValidateAdminPasswordDialog validateAdminPassword = new ValidateAdminPasswordDialog(Convert.ToInt32(usersData.UsersID), "HistoryForm");
-            validateAdminPassword.Owner = this;
-            validateAdminPassword.ShowDialog();
-        }
+        /*-------------------------------------Product Logs-----------------------------------*/
 
-
-        //Product History
-        private void btnClearProductsLogs_Click(object sender, EventArgs e) {
+        private void btnClearProductsLogs_Click(object sender, EventArgs e)
+        {
             ClearProductsLogs();
         }
 
-        private void btnClearAllProductsLogs_Click(object sender, EventArgs e) {
+        private void btnClearAllProductsLogs_Click(object sender, EventArgs e)
+        {
             ClearAllProductsLogs();
         }
 
-        private void txtSearchValue_OnValueChanged(object sender, EventArgs e) {
+        private void txtSearchValue_OnValueChanged(object sender, EventArgs e)
+        {
             SearchProductsLogsByColumnOfDvg();
         }
 
-        private void DataGridViewProductsLogWidthNDesign() {
+        private void DataGridViewProductsLogWidthNDesign()
+        {
             //Design
             dataGridViewProductsLog.EnableHeadersVisualStyles = false;
             dataGridViewProductsLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
             dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dataGridViewProductsLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
-            dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dataGridViewProductsLog.DefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
 
             //Width
             dataGridViewProductsLog.Columns[2].Width = 230;
@@ -100,11 +103,15 @@ namespace POSWithInventorySystem {
                 - 170;
             dataGridViewProductsLog.Columns[5].Width = 220;
             dataGridViewProductsLog.Columns[6].Width = 160;
+
         }
 
-        private void GridFillProductsLogs() {
-            try {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+        private void GridFillProductsLogs()
+        {
+            try
+            {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsLogsForView", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -117,18 +124,21 @@ namespace POSWithInventorySystem {
                     dataGridViewProductsLog.Columns[1].Visible = false;
                 }
             }
-            
-            catch(Exception ex) {
-                MessageBox.Show("There was an error in database: " + ex + " Please contact your manager.", "Error in database");
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error in Database: " + " " + ex, "Error");
             }
         }
 
-        private void DataGridProductslogRows() {
+        private void DataGridProductslogRows()
+        {
             lblTotalLogsValueTab2.Text = dataGridViewProductsLog.Rows.Count.ToString();
         }
 
-        private void SearchProductsLogsByColumnOfDvg() {
-            try {
+        private void SearchProductsLogsByColumnOfDvg()
+        {
+            try
+            {
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dataGridViewProductsLog.DataSource;
                 bs.Filter = "[UsersName] LIKE '%" + txtSearchValue.Text + "%'"
@@ -139,134 +149,170 @@ namespace POSWithInventorySystem {
 
                 dataGridViewProductsLog.DataSource = bs;
             }
-            
-            catch(EvaluateException ex) {
-                //Insert code here if you want to show error when inputting invalid inputs
+            catch(EvaluateException ex)
+            {
+                //Do Nothing... For Invalid input characters
             }
 
             DataGridProductslogRows();
         }
 
-        private void ClearProductsLogs() {
-            try {
-                ValidateAdminPassword(); 
+        private void ClearProductsLogs()
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewProductsLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewProductsLog.CurrentRow.Index != -1)
+                    {
+
                         int StocksID = Convert.ToInt32(dataGridViewProductsLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete the stocks of the selected product
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Stocks Corresponding of this Product
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteProductsLogByID", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
                             mySqlCommand.Parameters.AddWithValue("_ProductsLogID", StocksID);
                             mySqlCommand.ExecuteNonQuery();
 
-                            GridFillProductsLogs();
+                            GridFillProductsLogs(); //Set New Value in Gridview And Set Number Row
                         }
                     }
                 }
-                resultFromPasswordValidation = false; 
+                resultFromPasswordValidation = false; //Set To Default
             }
-            catch {
-                resultFromPasswordValidation = false;
-                MessageBox.Show("The product history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Products Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void ClearAllProductsLogs() {
-            try {
-                ValidateAdminPassword();
+        private void ClearAllProductsLogs()
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewProductsLog.CurrentRow.Index != -1) {
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete the stocks of the all product
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewProductsLog.CurrentRow.Index != -1)
+                    {
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Stocks Corresponding of this Product
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteAllProductsLog", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
                             mySqlCommand.ExecuteNonQuery();
 
-                            GridFillProductsLogs(); 
+                            GridFillProductsLogs(); //Set New Value in Gridview And Set Number Row
                         }
                     }
                 }
                 resultFromPasswordValidation = false; //Set To Default
             }
-            
-            catch {
+            catch
+            {
                 resultFromPasswordValidation = false; //Set To Default
-                MessageBox.Show("The product history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Products Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+        /*------------------Shared By All--------------------*/
 
-        //Stock History
-        private void comboboxIndividualOrTotalTab2_SelectedIndexChanged(object sender, EventArgs e) {
+        LoginFormData usersData;
+        public bool resultFromPasswordValidation = false;
+
+        private void ValidateAdminPassword()
+        {
+            ValidateAdminPasswordDialog validateAdminPassword = new ValidateAdminPasswordDialog(Convert.ToInt32(usersData.UsersID), "HistoryForm");
+            validateAdminPassword.Owner = this;
+            validateAdminPassword.ShowDialog();
+        }
+
+        /*--------------------------Stocks Logs--------------------------------*/
+
+        private void comboboxIndividualOrTotalTab2_SelectedIndexChanged(object sender, EventArgs e)
+        {
             SetIndividualOrTotalStocksLog();
         }
 
-        private void SetIndividualOrTotalStocksLog() {
-            //Stock History --> Individual Stocks
-            if (comboboxIndividualOrTotalTab2.SelectedIndex == 0) {
+        private void SetIndividualOrTotalStocksLog()
+        {
+            //For Individual Stocks
+            if (comboboxIndividualOrTotalTab2.SelectedIndex == 0)
+            {
                 dataGridViewStocksTotalLog.Hide();
                 dataGridViewStocksLog.Show();
-                GridIndividualStocksLogsRowNumbers();
+                GridIndividualStocksLogsRowNumbers(); //Set Number Of rows Currently in GridView
             }
-
-            //Stock History --> Total Stocks
-            else {
+            //For Total Stocks
+            else
+            {
                 dataGridViewStocksLog.Hide();
                 dataGridViewStocksTotalLog.Show();
                 GridTotalStocksLogsRowNumbers();
             }
         }
 
-        private void btnClearStocksLogTab2_Click(object sender, EventArgs e) {
+        private void btnClearStocksLogTab2_Click(object sender, EventArgs e)
+        {
             btnClearStocksLogTab2Trigger();
         }
 
-        private void btnClearStocksLogTab2Trigger() {
-            //Stock History --> Individual Stocks
-            if (comboboxIndividualOrTotalTab2.SelectedIndex == 0) {
-                ClearIndividualStocksLog(); 
-                gridFillIndividualStocksLog(); 
-                GridIndividualStocksLogsRowNumbers(); 
+        private void btnClearStocksLogTab2Trigger()
+        {
+            //For Individual Stocks Log
+            if (comboboxIndividualOrTotalTab2.SelectedIndex == 0)
+            {
+                ClearIndividualStocksLog(); //Clear Individual Stocks Log...
+                gridFillIndividualStocksLog(); //Fill Grid Individual Stocks
+                GridIndividualStocksLogsRowNumbers(); //Set New value for Total Count
             }
-
-            //Stock History --> Total Stocks
-            else {
-                ClearTotalStocksLog(); 
-                gridFillTotalStocksLog(); 
-                GridTotalStocksLogsRowNumbers(); 
+            //For Total Stocks Log
+            else
+            {
+                ClearTotalStocksLog(); //Clear Total Stocks Log
+                gridFillTotalStocksLog(); //Set New Value in Gridview And Set Number Row
+                GridTotalStocksLogsRowNumbers(); //Set New value for Total Count
             }
         }
 
-        private void btnClearAllLogTab2_Click(object sender, EventArgs e) {
+        private void btnClearAllLogTab2_Click(object sender, EventArgs e)
+        {
             btnClearAllsStocksLogsTrigger();
         }
 
-        private void btnClearAllsStocksLogsTrigger() {
-            //Stock History --> Individual Stocks
-            if (comboboxIndividualOrTotalTab2.SelectedIndex == 0) {
-                ClearAllStocksLog(); 
-                gridFillIndividualStocksLog(); 
-                GridIndividualStocksLogsRowNumbers(); 
+        private void btnClearAllsStocksLogsTrigger()
+        {
+            //For Individual Stocks Log
+            if (comboboxIndividualOrTotalTab2.SelectedIndex == 0)
+            {
+                ClearAllStocksLog(); //Clear All Individual Stocks
+                gridFillIndividualStocksLog(); //Set New Value in Gridview And Set Number Row
+                GridIndividualStocksLogsRowNumbers(); //Fill New Values For Stocks Count
             }
-
-            //Stock History --> Total Stocks
-            else {
-                ClearAllTotalStocksLog(); 
-                gridFillTotalStocksLog(); 
-                GridTotalStocksLogsRowNumbers();
+            //For Total Stocks Log
+            else
+            {
+                ClearAllTotalStocksLog(); //Clear All Total Stocks
+                gridFillTotalStocksLog(); //Set New Value in Gridview And Set Number Row
+                GridTotalStocksLogsRowNumbers(); // Fill New Values For Stocks Total Count
             }
         }
 
-        private void txtSearchTab2Stocks_OnValueChanged(object sender, EventArgs e) {
-            try {
-                //Stock History --> Individual Stocks
-                if (comboboxIndividualOrTotalTab2.SelectedIndex == 0) {
+        private void txtSearchTab2Stocks_OnValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //For Individual
+                if (comboboxIndividualOrTotalTab2.SelectedIndex == 0)
+                {
                     BindingSource bs = new BindingSource();
                     bs.DataSource = dataGridViewStocksLog.DataSource;
                     bs.Filter = "[UsersName] LIKE '%" + txtSearchTab2Stocks.Text + "%'"
@@ -280,9 +326,9 @@ namespace POSWithInventorySystem {
                     GridIndividualStocksLogsRowNumbers();
 
                 }
-
-                //Stock History --> Total Stocks
-                else {
+                //For Total
+                else
+                {
                     BindingSource bs = new BindingSource();
                     bs.DataSource = dataGridViewStocksTotalLog.DataSource;
                     bs.Filter = "[UsersName] LIKE '%" + txtSearchTab2Stocks.Text + "%'"
@@ -295,40 +341,45 @@ namespace POSWithInventorySystem {
                     GridTotalStocksLogsRowNumbers();
                 }
             }
-
             catch(EvaluateException ex)
             {
-                //Insert code here if you want to show error when inputting invalid inputs
+                //Do nothing.. for invalid input characters
             }
         }
 
-        //Stock History --> Individual Stocks
-        private void gridFillIndividualStocksLog() {
-            try {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+            /*---------------Individual Stocks LogsSection------------------*/
+
+        private void gridFillIndividualStocksLog()
+        {
+            try
+            {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectStocksIndividualLogs", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
                     DataTable dataTable = new DataTable();
                     sqlDa.Fill(dataTable);
                     dataGridViewStocksLog.DataSource = dataTable;
-                    dataGridViewStocksLog.Columns[0].Visible = false;
-                    dataGridViewStocksLog.Columns[1].Visible = false;                }
+                    dataGridViewStocksLog.Columns[0].Visible = false; //For StocksLogID
+                    dataGridViewStocksLog.Columns[1].Visible = false; //For UsersID
+                }
             }
-
-            catch(Exception ex) {
-                MessageBox.Show("There was an error in database: " + ex + " Please contact your manager.", "Error in database");
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error in Database: " + " " + ex, "Error");
             }
         }
 
-        private void DataGridViewStocksIndividualWidthNDesign() {
+        private void DataGridViewStocksIndividualWidthNDesign()
+        {
             //Design
             dataGridViewStocksLog.EnableHeadersVisualStyles = false;
             dataGridViewStocksLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
             dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dataGridViewStocksLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
-            dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dataGridViewStocksLog.DefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
 
             //Width
             dataGridViewStocksLog.Columns[2].Width = 220;
@@ -343,18 +394,25 @@ namespace POSWithInventorySystem {
                 - 80;
             dataGridViewStocksLog.Columns[6].Width = 180;
             dataGridViewStocksLog.Columns[7].Width = 130;
+
         }
 
-        private void ClearIndividualStocksLog() {
-            try {
-                ValidateAdminPassword();
+        private void ClearIndividualStocksLog()
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewStocksLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewStocksLog.CurrentRow.Index != -1)
+                    {
+
                         int StocksLogID = Convert.ToInt32(dataGridViewStocksLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete the stocks of selected item
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Stocks Corresponding of this Product
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteIndividualStocksLogBydID", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -363,25 +421,31 @@ namespace POSWithInventorySystem {
                         }
                     }
                 }
-                resultFromPasswordValidation = false; 
+                resultFromPasswordValidation = false; //Set To Default
             }
-
-            catch(Exception ex) {
-                resultFromPasswordValidation = false; 
-                MessageBox.Show("The stock history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch(Exception ex)
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Stocks Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void ClearAllStocksLog() {
-            try {
-                ValidateAdminPassword();
+        private void ClearAllStocksLog()
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewStocksLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewStocksLog.CurrentRow.Index != -1)
+                    {
+
                         int StocksLogID = Convert.ToInt32(dataGridViewStocksLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete the whole history
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Total Stocks Log
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteTotalStocksLog", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -389,46 +453,53 @@ namespace POSWithInventorySystem {
                         }
                     }
                 }
-                resultFromPasswordValidation = false;
+                resultFromPasswordValidation = false; //Set To Default
             }
-            catch {
-                resultFromPasswordValidation = false;
-                MessageBox.Show("The stock history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Stocks Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void GridIndividualStocksLogsRowNumbers() {
+        private void GridIndividualStocksLogsRowNumbers()
+        {
             lblTotalLogStocksValueTab2.Text = dataGridViewStocksLog.Rows.Count.ToString();
         }
 
-        //Stock History --> Total Stocks
-        private void gridFillTotalStocksLog() {
-            try {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                /*---------------Total Stocks Logs Section ---------------------*/
+
+        private void gridFillTotalStocksLog()
+        {
+            try
+            {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectStocksTotalLogs", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
                     DataTable dataTable = new DataTable();
                     sqlDa.Fill(dataTable);
                     dataGridViewStocksTotalLog.DataSource = dataTable;
-                    dataGridViewStocksTotalLog.Columns[0].Visible = false; 
-                    dataGridViewStocksTotalLog.Columns[1].Visible = false;                
+                    dataGridViewStocksTotalLog.Columns[0].Visible = false; //For StocksTotalLogID
+                    dataGridViewStocksTotalLog.Columns[1].Visible = false; //For UsersID
                 }
             }
-
-            catch (Exception ex) {
-                MessageBox.Show("There was an error in database: " + ex + " Please contact your manager.", "Error in database");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in Database: " + " " + ex, "Error");
             }
         }
 
-        private void DataGridViewStocksTotalWidthNDesign() {
+        private void DataGridViewStocksTotalWidthNDesign()
+        {
             //Design
             dataGridViewStocksTotalLog.EnableHeadersVisualStyles = false;
             dataGridViewStocksTotalLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
             dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dataGridViewStocksTotalLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
-            dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dataGridViewStocksTotalLog.DefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
 
             //Width
             dataGridViewStocksTotalLog.Columns[2].Width = 225;
@@ -443,16 +514,21 @@ namespace POSWithInventorySystem {
             dataGridViewStocksTotalLog.Columns[6].Width = 160;
         }
 
-        private void ClearTotalStocksLog() {
-            try {
-                ValidateAdminPassword();
+        private void ClearTotalStocksLog()
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewStocksTotalLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewStocksTotalLog.CurrentRow.Index != -1)
+                    {
                         int StocksTotalLogID = Convert.ToInt32(dataGridViewStocksTotalLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete the stocks of the selected item
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Stocks Corresponding of this Product
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteTotalStocksLogBydID", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -461,25 +537,30 @@ namespace POSWithInventorySystem {
                         }
                     }
                 }
-                resultFromPasswordValidation = false;
+                resultFromPasswordValidation = false; //Set To Default
             }
-            
-            catch(Exception ex) {
-                resultFromPasswordValidation = false; 
-                MessageBox.Show("The stock history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch(Exception ex)
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Stocks Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void ClearAllTotalStocksLog() {
-            try {
-                ValidateAdminPassword(); 
+        private void ClearAllTotalStocksLog()
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewStocksTotalLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewStocksTotalLog.CurrentRow.Index != -1)
+                    {
                         int StocksTotalLogID = Convert.ToInt32(dataGridViewStocksTotalLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete the stocks of the selected item
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Stocks Corresponding of this Product
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteAllTotalStocks", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -487,57 +568,65 @@ namespace POSWithInventorySystem {
                         }
                     }
                 }
-                resultFromPasswordValidation = false;
+                resultFromPasswordValidation = false; //Set To Default
             }
-            
-            catch (Exception ex) {
-                resultFromPasswordValidation = false;
-                MessageBox.Show("The stock history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Stocks Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void GridTotalStocksLogsRowNumbers() {
+        private void GridTotalStocksLogsRowNumbers()
+        {
             lblTotalLogStocksValueTab2.Text = dataGridViewStocksTotalLog.Rows.Count.ToString();
         }
 
+        /*---------------------------Users Log Section--------------------------------*/
 
-        //User Time In / Out
-        private void GridFillUserLog() {
-            try {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+        private void GridFillUserLog()
+        {
+            try
+            {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectUsersLogForView", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
                     DataTable dataTable = new DataTable();
                     sqlDa.Fill(dataTable);
                     dataGridViewIUserLog.DataSource = dataTable;
-                    dataGridViewIUserLog.Columns[0].Visible = false; 
-                    dataGridViewIUserLog.Columns[1].Visible = false; 
+                    dataGridViewIUserLog.Columns[0].Visible = false; //For StocksTotalLogID
+                    dataGridViewIUserLog.Columns[1].Visible = false; //For UsersID
                 }
             }
-
-            catch (Exception ex) {
-                MessageBox.Show("There was an error in database: " + ex + " Please contact your manager.", "Error in database");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in Database: " + " " + ex, "Error");
             }
         }
 
-        private void DataGridViewUsersLogWidthNDesign() {
+        private void DataGridViewUsersLogWidthNDesign()
+        {
             //Design
             dataGridViewIUserLog.EnableHeadersVisualStyles = false;
             dataGridViewIUserLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
             dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dataGridViewIUserLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
-            dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dataGridViewIUserLog.DefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
 
             //Width
             dataGridViewIUserLog.Columns[2].Width = 330;
             dataGridViewIUserLog.Columns[3].Width = 295;
             dataGridViewIUserLog.Columns[4].Width = 295;
+           
         }
 
-        private void txtSearchTabUserLog_OnValueChanged(object sender, EventArgs e) {
-            try {
+        private void txtSearchTabUserLog_OnValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dataGridViewIUserLog.DataSource;
                 bs.Filter = "[UsersName] LIKE '%" + txtSearchTabUserLog.Text + "%'"
@@ -546,28 +635,34 @@ namespace POSWithInventorySystem {
 
                 dataGridViewIUserLog.DataSource = bs;
             }
-
-            catch(EvaluateException ex) {
-                //Insert code here if you want to show error when inputting invalid inputs
+            catch(EvaluateException ex)
+            {
+                //Do nothin... for invalid input characters 
             }
 
             SetNumberOfUserLog();
         }
 
-        private void SetNumberOfUserLog() {
+        private void SetNumberOfUserLog()
+        {
             lblTotalLogValue.Text = dataGridViewIUserLog.Rows.Count.ToString();
         }
 
-        private void btnClearLogTa3_Click(object sender, EventArgs e) {
-            try {
-                ValidateAdminPassword();
+        private void btnClearLogTa3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewIUserLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewIUserLog.CurrentRow.Index != -1)
+                    {
                         int StocksTotalLogID = Convert.ToInt32(dataGridViewIUserLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)){
-                            //Delete selected UserID History
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Stocks Corresponding of this Product
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteUsersLogByID", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -579,25 +674,30 @@ namespace POSWithInventorySystem {
                         SetNumberOfUserLog();
                     }
                 }
-                resultFromPasswordValidation = false; 
+                resultFromPasswordValidation = false; //Set To Default
             }
-
-            catch (Exception ex) {
-                resultFromPasswordValidation = false; 
-                MessageBox.Show("The user time in / out has no items to show.", "Empty Attendance", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Stocks Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void btnClearAllLogTab3_Click(object sender, EventArgs e) {
-            try {
-                ValidateAdminPassword();
+        private void btnClearAllLogTab3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dataGridViewIUserLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dataGridViewIUserLog.CurrentRow.Index != -1)
+                    {
                         int StocksTotalLogID = Convert.ToInt32(dataGridViewIUserLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete all UserID History
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Stocks Corresponding of this Product
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteAllUsersLog", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -608,19 +708,23 @@ namespace POSWithInventorySystem {
                         SetNumberOfUserLog();
                     }
                 }
-                resultFromPasswordValidation = false;
-            }
-
-            catch (Exception ex) {
                 resultFromPasswordValidation = false; //Set To Default
-                MessageBox.Show("The user time in / out has no items to show.", "Empty Attendance", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Stocks Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        //Transaction History
-        private void GridFillTransactionsLog() {
-            try {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+        /*-----------------------Transactions Log-----------------------------------*/
+
+        private void GridFillTransactionsLog()
+        {
+            try
+            {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectTransactionsLogForView", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -631,20 +735,21 @@ namespace POSWithInventorySystem {
                     SetNumberOfTransactionsLog();
                 }
             }
-
-            catch (Exception ex) {
-                MessageBox.Show("There was an error in database: " + ex + " Please contact your manager.", "Error in database");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in Database: " + " " + ex, "Error");
             }
         }
 
-        private void DataGridViewTransactionsLogWidthNDesign() {
+        private void DataGridViewTransactionsLogWidthNDesign()
+        {
             //Design
             dvgTransactions.EnableHeadersVisualStyles = false;
             dvgTransactions.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dvgTransactions.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
             dvgTransactions.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dvgTransactions.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
-            dvgTransactions.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dvgTransactions.DefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dvgTransactions.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
 
             //Width
             dvgTransactions.Columns[0].Width = 130;
@@ -666,12 +771,15 @@ namespace POSWithInventorySystem {
             dvgTransactions.Columns[8].Width = 150;
         }
 
-        private void SetNumberOfTransactionsLog() {
+        private void SetNumberOfTransactionsLog()
+        {
             lblTotalLogTransactionValue.Text = dvgTransactions.Rows.Count.ToString();
         }
 
-        private void txtSearchTransaction_OnValueChanged(object sender, EventArgs e) {
-            try {
+        private void txtSearchTransaction_OnValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dvgTransactions.DataSource;
                 bs.Filter = "Convert([TransactionID], 'System.String') LIKE '%" + txtSearchTransaction.Text + "%'"
@@ -680,46 +788,49 @@ namespace POSWithInventorySystem {
 
                 dvgTransactions.DataSource = bs;
             }
-
-            catch(EvaluateException ex) {
-                //Insert code here if you want to show error when inputting invalid inputs
+            catch(EvaluateException ex)
+            {
+                //Do nothing... for invalid input characters
             }
 
             SetNumberOfTransactionsLog();
         }
 
-        //User Information Update History
-        private void GridFillUsersInformationLog() {
-            try {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+        /*-----------------------Users Information Log------------------------------*/
+
+        private void GridFillUsersInformationLog()
+        {
+            try
+            {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectUsersInfoLogForView", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
                     DataTable dataTable = new DataTable();
                     sqlDa.Fill(dataTable);
                     dvgUsersInformationLog.DataSource = dataTable;
-
-                    dvgUsersInformationLog.Columns[0].Visible = false; 
-                    dvgUsersInformationLog.Columns[1].Visible = false; 
-                    dvgUsersInformationLog.Columns[3].Visible = false; 
-
+                    dvgUsersInformationLog.Columns[0].Visible = false; //For UsersInfoLogID
+                    dvgUsersInformationLog.Columns[1].Visible = false; //For UsersID
+                    dvgUsersInformationLog.Columns[3].Visible = false; //For Users Subject ID
                     SetNumberOfUsersInformationLog();
                 }
             }
-
-            catch (Exception ex) {
-                MessageBox.Show("There was an error in database: " + ex + " Please contact your manager.", "Error in database");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in Database: " + " " + ex, "Error");
             }
         }
 
-        private void DataGridViewUsersInfoLogWidthNDesign() {
+        private void DataGridViewUsersInfoLogWidthNDesign()
+        {
             //Design
             dvgUsersInformationLog.EnableHeadersVisualStyles = false;
             dvgUsersInformationLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
             dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dvgUsersInformationLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
-            dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dvgUsersInformationLog.DefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
 
             //Width
             dvgUsersInformationLog.Columns[2].Width = 275;
@@ -732,20 +843,26 @@ namespace POSWithInventorySystem {
             dvgUsersInformationLog.Columns[6].Width = 145;
         }
 
-        private void SetNumberOfUsersInformationLog() {
+        private void SetNumberOfUsersInformationLog()
+        {
             lblTotalUsersInfoLogValue.Text = dvgUsersInformationLog.Rows.Count.ToString();
         }
 
-        private void btnClearUsersInfLog_Click(object sender, EventArgs e) {
-            try {
-                ValidateAdminPassword();
+        private void btnClearUsersInfLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dvgUsersInformationLog.CurrentRow.Index != -1) {
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dvgUsersInformationLog.CurrentRow.Index != -1)
+                    {
                         int UsersInformationLogID = Convert.ToInt32(dvgUsersInformationLog.CurrentRow.Cells[0].Value);
 
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete selected UserIDInfo history
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete UsersInformation Log Corresponding of this UsersInfoID
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteUsersInformationLogByID", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -756,23 +873,28 @@ namespace POSWithInventorySystem {
                         GridFillUsersInformationLog();
                     }
                 }
-                resultFromPasswordValidation = false;
+                resultFromPasswordValidation = false; //Set To Default
             }
-
-            catch (Exception ex) {
-                resultFromPasswordValidation = false;
-                MessageBox.Show("The user information update history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Users Information Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void btnClearAllUsersInfoLog_Click(object sender, EventArgs e) {
-            try {
-                ValidateAdminPassword();
+        private void btnClearAllUsersInfoLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ValidateAdminPassword(); //Show Form To Validate Password
 
-                if (resultFromPasswordValidation == true) {
-                    if (dvgUsersInformationLog.CurrentRow.Index != -1) {
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
-                            //Delete all UserIDInfo History
+                if (resultFromPasswordValidation == true)
+                {
+                    if (dvgUsersInformationLog.CurrentRow.Index != -1)
+                    {
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            //Delete Users Information Corresponding of this UsersInfo
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand = new MySqlCommand("DeleteAllUsersInformationLog", mysqlCon);
                             mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -782,17 +904,19 @@ namespace POSWithInventorySystem {
                         GridFillUsersInformationLog();
                     }
                 }
-                resultFromPasswordValidation = false;
+                resultFromPasswordValidation = false; //Set To Default
             }
-            
-            catch (Exception ex) {
-                resultFromPasswordValidation = false;
-                MessageBox.Show("The user information update history has no items to show.", "Empty History", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            catch (Exception ex)
+            {
+                resultFromPasswordValidation = false; //Set To Default
+                MessageBox.Show("Users Information Log is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void txtSearchUserInfoLog_OnValueChanged(object sender, EventArgs e) {
-            try {
+        private void txtSearchUserInfoLog_OnValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dvgUsersInformationLog.DataSource;
                 bs.Filter = "[UsersName] LIKE '%" + txtSearchUserInfoLog.Text + "%'"
@@ -803,9 +927,9 @@ namespace POSWithInventorySystem {
 
                 dvgUsersInformationLog.DataSource = bs;
             }
-
-            catch(EvaluateException ex) {
-                //Insert code here if you want to show error when inputting invalid inputs
+            catch(EvaluateException ex)
+            {
+                //Do nothing... for invalid input characters
             }
 
             SetNumberOfUsersInformationLog();

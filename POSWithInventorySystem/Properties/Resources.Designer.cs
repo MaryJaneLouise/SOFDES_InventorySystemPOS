@@ -293,16 +293,6 @@ namespace POSWithInventorySystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo_1 {
-            get {
-                object obj = ResourceManager.GetObject("Logo_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap logoSystem {
             get {
                 object obj = ResourceManager.GetObject("logoSystem", resourceCulture);
