@@ -33,6 +33,9 @@ namespace POSWithInventorySystem {
             //All Sales
             comboBoxTransactionOrProducts.SelectedIndex = 0;
             btnPrint.Hide();
+
+            bunifuSwitchToDatepicker.Value = true;
+            bunifuSwitchToDatepicker.Hide();
         }
 
         private void bunifuSwitchToDatepicker_Click(object sender, EventArgs e) {
@@ -375,10 +378,10 @@ namespace POSWithInventorySystem {
             //Design
             dvgTransactions.EnableHeadersVisualStyles = false;
             dvgTransactions.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dvgTransactions.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dvgTransactions.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dvgTransactions.DefaultCellStyle.Font = new Font("Times New Roman", 14);
-            dvgTransactions.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dvgTransactions.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dvgTransactions.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dvgTransactions.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dvgTransactions.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
             //Width
 
@@ -434,10 +437,10 @@ namespace POSWithInventorySystem {
             //Design
             dvgProductsTransaction.EnableHeadersVisualStyles = false;
             dvgProductsTransaction.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dvgProductsTransaction.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dvgProductsTransaction.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dvgProductsTransaction.DefaultCellStyle.Font = new Font("Times New Roman", 14);
-            dvgProductsTransaction.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dvgProductsTransaction.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dvgProductsTransaction.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dvgProductsTransaction.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dvgProductsTransaction.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
             //Width
 

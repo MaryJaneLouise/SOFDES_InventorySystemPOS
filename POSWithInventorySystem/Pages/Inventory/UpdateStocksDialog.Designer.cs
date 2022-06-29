@@ -190,6 +190,7 @@
             this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtQuantity.isPassword = false;
             this.txtQuantity.Location = new System.Drawing.Point(22, 268);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(740, 37);
             this.txtQuantity.TabIndex = 56;
@@ -209,14 +210,15 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Activecolor = System.Drawing.Color.Orange;
-            this.btnAdd.BackColor = System.Drawing.Color.Orange;
+            this.btnAdd.Activecolor = System.Drawing.Color.Teal;
+            this.btnAdd.BackColor = System.Drawing.Color.Teal;
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdd.BorderRadius = 0;
-            this.btnAdd.ButtonText = "Update";
+            this.btnAdd.ButtonText = "Update Stocks";
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.DisabledColor = System.Drawing.Color.Gray;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Iconcolor = System.Drawing.Color.Transparent;
             this.btnAdd.Iconimage = null;
             this.btnAdd.Iconimage_right = null;
@@ -229,18 +231,18 @@
             this.btnAdd.IconVisible = true;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(411, 329);
+            this.btnAdd.Location = new System.Drawing.Point(22, 329);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Normalcolor = System.Drawing.Color.Orange;
-            this.btnAdd.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnAdd.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnAdd.Normalcolor = System.Drawing.Color.Teal;
+            this.btnAdd.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnAdd.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAdd.selected = false;
             this.btnAdd.Size = new System.Drawing.Size(351, 50);
             this.btnAdd.TabIndex = 57;
-            this.btnAdd.Text = "Update";
+            this.btnAdd.Text = "Update Stocks";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAdd.Textcolor = System.Drawing.Color.Black;
+            this.btnAdd.Textcolor = System.Drawing.Color.White;
             this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -277,10 +279,10 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(22, 329);
+            this.btnCancel.Location = new System.Drawing.Point(411, 329);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -296,11 +298,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(783, 402);
             this.Controls.Add(this.lblExpirationDateValue);
             this.Controls.Add(this.lblStatusValue);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblDateAddedValue);
             this.Controls.Add(this.lblQuantityStocksError);
             this.Controls.Add(this.lblDateAdded);
@@ -315,6 +317,7 @@
             this.Controls.Add(this.lblStocksID);
             this.Controls.Add(this.lblExpirationDate);
             this.Controls.Add(this.lblProductName);
+            this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

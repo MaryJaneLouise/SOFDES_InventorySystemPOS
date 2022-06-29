@@ -258,6 +258,7 @@ namespace POSWithInventorySystem {
 
                     MessageBox.Show("The product has been successfully updated.", "Updated product's information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ((StocksForm)this.Owner).GridFillWithStocksActive();
+                    this.Close();
                 }
             }
         }
@@ -289,7 +290,7 @@ namespace POSWithInventorySystem {
 
         private void FillProductPic(byte[] image) {
             if (image == null) {
-                pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.computerbox;
+                pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.placeholder;
             }
 
             else {

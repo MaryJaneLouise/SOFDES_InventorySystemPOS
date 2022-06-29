@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlProducts = new System.Windows.Forms.TabControl();
             this.tabPage1Products = new System.Windows.Forms.TabPage();
             this.btnPrint = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -52,7 +54,6 @@
             this.btnPrintStocks = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuSwitchDeleteTotalStocks = new Bunifu.Framework.UI.BunifuSwitch();
             this.lblNumberOfProductsValue = new System.Windows.Forms.Label();
-            this.btnDeleteTotalStocks = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblNumberOfProducts = new System.Windows.Forms.Label();
             this.comboBoxStocks = new System.Windows.Forms.ComboBox();
             this.lblStocks = new System.Windows.Forms.Label();
@@ -62,13 +63,6 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.comboBoxStocksStatus = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panelIndividualStocks = new System.Windows.Forms.Panel();
-            this.lblIndividualExpiredValue = new System.Windows.Forms.Label();
-            this.lblIndividualNearlyExpiredValue = new System.Windows.Forms.Label();
-            this.lblIndividualExpired = new System.Windows.Forms.Label();
-            this.lblIndividualNearlyExpired = new System.Windows.Forms.Label();
-            this.lblIndividualNearlyExpiredColor = new System.Windows.Forms.Label();
-            this.lblIndividualExpiredColor = new System.Windows.Forms.Label();
             this.panelTotalStocks = new System.Windows.Forms.Panel();
             this.lblTotalOutOfStocksValue = new System.Windows.Forms.Label();
             this.lblTotalLowinStocksValue = new System.Windows.Forms.Label();
@@ -76,19 +70,27 @@
             this.lblTotalColorOutofStocks = new System.Windows.Forms.Label();
             this.lblTotalOutOfStocks = new System.Windows.Forms.Label();
             this.lblTotalColorLowinStocks = new System.Windows.Forms.Label();
+            this.panelIndividualStocks = new System.Windows.Forms.Panel();
+            this.lblIndividualExpiredValue = new System.Windows.Forms.Label();
+            this.lblIndividualNearlyExpiredValue = new System.Windows.Forms.Label();
+            this.lblIndividualExpired = new System.Windows.Forms.Label();
+            this.lblIndividualNearlyExpired = new System.Windows.Forms.Label();
+            this.lblIndividualNearlyExpiredColor = new System.Windows.Forms.Label();
+            this.lblIndividualExpiredColor = new System.Windows.Forms.Label();
             this.lblSearchTab2 = new System.Windows.Forms.Label();
             this.txtSearchTab2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.btnAddStocks = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnDeleteStocks = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dataGridViewStocksTab2 = new System.Windows.Forms.DataGridView();
             this.btnUpdateStocks = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnDeleteTotalStocks = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tabControlProducts.SuspendLayout();
             this.tabPage1Products.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.tabPage2Stocks.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panelIndividualStocks.SuspendLayout();
             this.panelTotalStocks.SuspendLayout();
+            this.panelIndividualStocks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStocksTab2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -272,13 +274,13 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Activecolor = System.Drawing.Color.Gray;
-            this.btnDelete.BackColor = System.Drawing.Color.Gray;
+            this.btnDelete.Activecolor = System.Drawing.Color.Silver;
+            this.btnDelete.BackColor = System.Drawing.Color.Silver;
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDelete.BorderRadius = 0;
             this.btnDelete.ButtonText = "Deactivate";
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.DisabledColor = System.Drawing.Color.Gray;
+            this.btnDelete.DisabledColor = System.Drawing.Color.Silver;
             this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Iconcolor = System.Drawing.Color.Transparent;
@@ -296,7 +298,7 @@
             this.btnDelete.Location = new System.Drawing.Point(739, 624);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Normalcolor = System.Drawing.Color.Gray;
+            this.btnDelete.Normalcolor = System.Drawing.Color.Silver;
             this.btnDelete.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnDelete.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnDelete.selected = false;
@@ -313,30 +315,38 @@
             this.dataGridViewProducts.AllowUserToAddRows = false;
             this.dataGridViewProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridViewProducts.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProducts.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProducts.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewProducts.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewProducts.Location = new System.Drawing.Point(34, 106);
             this.dataGridViewProducts.MultiSelect = false;
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewProducts.RowHeadersVisible = false;
             this.dataGridViewProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProducts.Size = new System.Drawing.Size(1003, 445);
@@ -346,11 +356,11 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Activecolor = System.Drawing.Color.Orange;
-            this.btnUpdate.BackColor = System.Drawing.Color.Orange;
+            this.btnUpdate.Activecolor = System.Drawing.Color.Teal;
+            this.btnUpdate.BackColor = System.Drawing.Color.Teal;
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdate.BorderRadius = 0;
-            this.btnUpdate.ButtonText = "Update";
+            this.btnUpdate.ButtonText = "Update Product";
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.DisabledColor = System.Drawing.Color.Gray;
             this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -369,25 +379,25 @@
             this.btnUpdate.Location = new System.Drawing.Point(387, 624);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Normalcolor = System.Drawing.Color.Orange;
-            this.btnUpdate.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnUpdate.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnUpdate.Normalcolor = System.Drawing.Color.Teal;
+            this.btnUpdate.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnUpdate.OnHoverTextColor = System.Drawing.Color.White;
             this.btnUpdate.selected = false;
             this.btnUpdate.Size = new System.Drawing.Size(298, 48);
             this.btnUpdate.TabIndex = 41;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Text = "Update Product";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnUpdate.Textcolor = System.Drawing.Color.Black;
+            this.btnUpdate.Textcolor = System.Drawing.Color.White;
             this.btnUpdate.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Activecolor = System.Drawing.Color.Orange;
-            this.btnAdd.BackColor = System.Drawing.Color.Orange;
+            this.btnAdd.Activecolor = System.Drawing.Color.Teal;
+            this.btnAdd.BackColor = System.Drawing.Color.Teal;
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdd.BorderRadius = 0;
-            this.btnAdd.ButtonText = "Add";
+            this.btnAdd.ButtonText = "Add Product";
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.DisabledColor = System.Drawing.Color.Gray;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -406,27 +416,27 @@
             this.btnAdd.Location = new System.Drawing.Point(34, 624);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Normalcolor = System.Drawing.Color.Orange;
-            this.btnAdd.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnAdd.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnAdd.Normalcolor = System.Drawing.Color.Teal;
+            this.btnAdd.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnAdd.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAdd.selected = false;
             this.btnAdd.Size = new System.Drawing.Size(298, 48);
             this.btnAdd.TabIndex = 40;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Add Product";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAdd.Textcolor = System.Drawing.Color.Black;
+            this.btnAdd.Textcolor = System.Drawing.Color.White;
             this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDeleteProductInDB
             // 
-            this.btnDeleteProductInDB.Activecolor = System.Drawing.Color.Gray;
-            this.btnDeleteProductInDB.BackColor = System.Drawing.Color.Gray;
+            this.btnDeleteProductInDB.Activecolor = System.Drawing.Color.Silver;
+            this.btnDeleteProductInDB.BackColor = System.Drawing.Color.Silver;
             this.btnDeleteProductInDB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeleteProductInDB.BorderRadius = 0;
             this.btnDeleteProductInDB.ButtonText = "Delete";
             this.btnDeleteProductInDB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeleteProductInDB.DisabledColor = System.Drawing.Color.Gray;
+            this.btnDeleteProductInDB.DisabledColor = System.Drawing.Color.Silver;
             this.btnDeleteProductInDB.Enabled = false;
             this.btnDeleteProductInDB.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProductInDB.Iconcolor = System.Drawing.Color.Transparent;
@@ -444,7 +454,7 @@
             this.btnDeleteProductInDB.Location = new System.Drawing.Point(571, 624);
             this.btnDeleteProductInDB.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnDeleteProductInDB.Name = "btnDeleteProductInDB";
-            this.btnDeleteProductInDB.Normalcolor = System.Drawing.Color.Gray;
+            this.btnDeleteProductInDB.Normalcolor = System.Drawing.Color.Silver;
             this.btnDeleteProductInDB.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnDeleteProductInDB.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnDeleteProductInDB.selected = false;
@@ -548,44 +558,6 @@
             this.lblNumberOfProductsValue.Size = new System.Drawing.Size(23, 25);
             this.lblNumberOfProductsValue.TabIndex = 59;
             this.lblNumberOfProductsValue.Text = "0\r\n";
-            // 
-            // btnDeleteTotalStocks
-            // 
-            this.btnDeleteTotalStocks.Activecolor = System.Drawing.Color.Gray;
-            this.btnDeleteTotalStocks.BackColor = System.Drawing.Color.Gray;
-            this.btnDeleteTotalStocks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDeleteTotalStocks.BorderRadius = 0;
-            this.btnDeleteTotalStocks.ButtonText = "Delete";
-            this.btnDeleteTotalStocks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeleteTotalStocks.DisabledColor = System.Drawing.Color.Gray;
-            this.btnDeleteTotalStocks.Enabled = false;
-            this.btnDeleteTotalStocks.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteTotalStocks.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnDeleteTotalStocks.Iconimage = null;
-            this.btnDeleteTotalStocks.Iconimage_right = null;
-            this.btnDeleteTotalStocks.Iconimage_right_Selected = null;
-            this.btnDeleteTotalStocks.Iconimage_Selected = null;
-            this.btnDeleteTotalStocks.IconMarginLeft = 0;
-            this.btnDeleteTotalStocks.IconMarginRight = 0;
-            this.btnDeleteTotalStocks.IconRightVisible = false;
-            this.btnDeleteTotalStocks.IconRightZoom = 0D;
-            this.btnDeleteTotalStocks.IconVisible = false;
-            this.btnDeleteTotalStocks.IconZoom = 90D;
-            this.btnDeleteTotalStocks.IsTab = false;
-            this.btnDeleteTotalStocks.Location = new System.Drawing.Point(754, 166);
-            this.btnDeleteTotalStocks.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnDeleteTotalStocks.Name = "btnDeleteTotalStocks";
-            this.btnDeleteTotalStocks.Normalcolor = System.Drawing.Color.Gray;
-            this.btnDeleteTotalStocks.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnDeleteTotalStocks.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnDeleteTotalStocks.selected = false;
-            this.btnDeleteTotalStocks.Size = new System.Drawing.Size(298, 89);
-            this.btnDeleteTotalStocks.TabIndex = 47;
-            this.btnDeleteTotalStocks.Text = "Delete";
-            this.btnDeleteTotalStocks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDeleteTotalStocks.Textcolor = System.Drawing.Color.Black;
-            this.btnDeleteTotalStocks.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteTotalStocks.Click += new System.EventHandler(this.btnDeleteTotalStocks_Click);
             // 
             // lblNumberOfProducts
             // 
@@ -697,76 +669,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Status";
             // 
-            // panelIndividualStocks
-            // 
-            this.panelIndividualStocks.Controls.Add(this.lblIndividualExpiredValue);
-            this.panelIndividualStocks.Controls.Add(this.lblIndividualNearlyExpiredValue);
-            this.panelIndividualStocks.Controls.Add(this.lblIndividualExpired);
-            this.panelIndividualStocks.Controls.Add(this.lblIndividualNearlyExpired);
-            this.panelIndividualStocks.Controls.Add(this.lblIndividualNearlyExpiredColor);
-            this.panelIndividualStocks.Controls.Add(this.lblIndividualExpiredColor);
-            this.panelIndividualStocks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelIndividualStocks.Location = new System.Drawing.Point(3, 26);
-            this.panelIndividualStocks.Name = "panelIndividualStocks";
-            this.panelIndividualStocks.Size = new System.Drawing.Size(331, 171);
-            this.panelIndividualStocks.TabIndex = 58;
-            // 
-            // lblIndividualExpiredValue
-            // 
-            this.lblIndividualExpiredValue.AutoSize = true;
-            this.lblIndividualExpiredValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblIndividualExpiredValue.Location = new System.Drawing.Point(57, 124);
-            this.lblIndividualExpiredValue.Name = "lblIndividualExpiredValue";
-            this.lblIndividualExpiredValue.Size = new System.Drawing.Size(23, 25);
-            this.lblIndividualExpiredValue.TabIndex = 62;
-            this.lblIndividualExpiredValue.Text = "0";
-            // 
-            // lblIndividualNearlyExpiredValue
-            // 
-            this.lblIndividualNearlyExpiredValue.AutoSize = true;
-            this.lblIndividualNearlyExpiredValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblIndividualNearlyExpiredValue.Location = new System.Drawing.Point(57, 42);
-            this.lblIndividualNearlyExpiredValue.Name = "lblIndividualNearlyExpiredValue";
-            this.lblIndividualNearlyExpiredValue.Size = new System.Drawing.Size(23, 25);
-            this.lblIndividualNearlyExpiredValue.TabIndex = 61;
-            this.lblIndividualNearlyExpiredValue.Text = "0";
-            // 
-            // lblIndividualExpired
-            // 
-            this.lblIndividualExpired.AutoSize = true;
-            this.lblIndividualExpired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblIndividualExpired.Location = new System.Drawing.Point(57, 96);
-            this.lblIndividualExpired.Name = "lblIndividualExpired";
-            this.lblIndividualExpired.Size = new System.Drawing.Size(156, 25);
-            this.lblIndividualExpired.TabIndex = 60;
-            this.lblIndividualExpired.Text = "Expired Product:";
-            // 
-            // lblIndividualNearlyExpired
-            // 
-            this.lblIndividualNearlyExpired.AutoSize = true;
-            this.lblIndividualNearlyExpired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblIndividualNearlyExpired.Location = new System.Drawing.Point(57, 15);
-            this.lblIndividualNearlyExpired.Name = "lblIndividualNearlyExpired";
-            this.lblIndividualNearlyExpired.Size = new System.Drawing.Size(217, 25);
-            this.lblIndividualNearlyExpired.TabIndex = 59;
-            this.lblIndividualNearlyExpired.Text = "Nearly Expired Product:";
-            // 
-            // lblIndividualNearlyExpiredColor
-            // 
-            this.lblIndividualNearlyExpiredColor.BackColor = System.Drawing.Color.Gold;
-            this.lblIndividualNearlyExpiredColor.Location = new System.Drawing.Point(23, 13);
-            this.lblIndividualNearlyExpiredColor.Name = "lblIndividualNearlyExpiredColor";
-            this.lblIndividualNearlyExpiredColor.Size = new System.Drawing.Size(25, 22);
-            this.lblIndividualNearlyExpiredColor.TabIndex = 1;
-            // 
-            // lblIndividualExpiredColor
-            // 
-            this.lblIndividualExpiredColor.BackColor = System.Drawing.Color.Red;
-            this.lblIndividualExpiredColor.Location = new System.Drawing.Point(23, 96);
-            this.lblIndividualExpiredColor.Name = "lblIndividualExpiredColor";
-            this.lblIndividualExpiredColor.Size = new System.Drawing.Size(25, 22);
-            this.lblIndividualExpiredColor.TabIndex = 0;
-            // 
             // panelTotalStocks
             // 
             this.panelTotalStocks.Controls.Add(this.lblTotalOutOfStocksValue);
@@ -837,6 +739,76 @@
             this.lblTotalColorLowinStocks.Size = new System.Drawing.Size(25, 22);
             this.lblTotalColorLowinStocks.TabIndex = 64;
             // 
+            // panelIndividualStocks
+            // 
+            this.panelIndividualStocks.Controls.Add(this.lblIndividualExpiredValue);
+            this.panelIndividualStocks.Controls.Add(this.lblIndividualNearlyExpiredValue);
+            this.panelIndividualStocks.Controls.Add(this.lblIndividualExpired);
+            this.panelIndividualStocks.Controls.Add(this.lblIndividualNearlyExpired);
+            this.panelIndividualStocks.Controls.Add(this.lblIndividualNearlyExpiredColor);
+            this.panelIndividualStocks.Controls.Add(this.lblIndividualExpiredColor);
+            this.panelIndividualStocks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelIndividualStocks.Location = new System.Drawing.Point(3, 26);
+            this.panelIndividualStocks.Name = "panelIndividualStocks";
+            this.panelIndividualStocks.Size = new System.Drawing.Size(331, 171);
+            this.panelIndividualStocks.TabIndex = 58;
+            // 
+            // lblIndividualExpiredValue
+            // 
+            this.lblIndividualExpiredValue.AutoSize = true;
+            this.lblIndividualExpiredValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblIndividualExpiredValue.Location = new System.Drawing.Point(57, 124);
+            this.lblIndividualExpiredValue.Name = "lblIndividualExpiredValue";
+            this.lblIndividualExpiredValue.Size = new System.Drawing.Size(23, 25);
+            this.lblIndividualExpiredValue.TabIndex = 62;
+            this.lblIndividualExpiredValue.Text = "0";
+            // 
+            // lblIndividualNearlyExpiredValue
+            // 
+            this.lblIndividualNearlyExpiredValue.AutoSize = true;
+            this.lblIndividualNearlyExpiredValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblIndividualNearlyExpiredValue.Location = new System.Drawing.Point(57, 42);
+            this.lblIndividualNearlyExpiredValue.Name = "lblIndividualNearlyExpiredValue";
+            this.lblIndividualNearlyExpiredValue.Size = new System.Drawing.Size(23, 25);
+            this.lblIndividualNearlyExpiredValue.TabIndex = 61;
+            this.lblIndividualNearlyExpiredValue.Text = "0";
+            // 
+            // lblIndividualExpired
+            // 
+            this.lblIndividualExpired.AutoSize = true;
+            this.lblIndividualExpired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblIndividualExpired.Location = new System.Drawing.Point(57, 96);
+            this.lblIndividualExpired.Name = "lblIndividualExpired";
+            this.lblIndividualExpired.Size = new System.Drawing.Size(156, 25);
+            this.lblIndividualExpired.TabIndex = 60;
+            this.lblIndividualExpired.Text = "Expired Product:";
+            // 
+            // lblIndividualNearlyExpired
+            // 
+            this.lblIndividualNearlyExpired.AutoSize = true;
+            this.lblIndividualNearlyExpired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblIndividualNearlyExpired.Location = new System.Drawing.Point(57, 15);
+            this.lblIndividualNearlyExpired.Name = "lblIndividualNearlyExpired";
+            this.lblIndividualNearlyExpired.Size = new System.Drawing.Size(217, 25);
+            this.lblIndividualNearlyExpired.TabIndex = 59;
+            this.lblIndividualNearlyExpired.Text = "Nearly Expired Product:";
+            // 
+            // lblIndividualNearlyExpiredColor
+            // 
+            this.lblIndividualNearlyExpiredColor.BackColor = System.Drawing.Color.Gold;
+            this.lblIndividualNearlyExpiredColor.Location = new System.Drawing.Point(23, 13);
+            this.lblIndividualNearlyExpiredColor.Name = "lblIndividualNearlyExpiredColor";
+            this.lblIndividualNearlyExpiredColor.Size = new System.Drawing.Size(25, 22);
+            this.lblIndividualNearlyExpiredColor.TabIndex = 1;
+            // 
+            // lblIndividualExpiredColor
+            // 
+            this.lblIndividualExpiredColor.BackColor = System.Drawing.Color.Red;
+            this.lblIndividualExpiredColor.Location = new System.Drawing.Point(23, 96);
+            this.lblIndividualExpiredColor.Name = "lblIndividualExpiredColor";
+            this.lblIndividualExpiredColor.Size = new System.Drawing.Size(25, 22);
+            this.lblIndividualExpiredColor.TabIndex = 0;
+            // 
             // lblSearchTab2
             // 
             this.lblSearchTab2.AutoSize = true;
@@ -867,8 +839,8 @@
             // 
             // btnAddStocks
             // 
-            this.btnAddStocks.Activecolor = System.Drawing.Color.Orange;
-            this.btnAddStocks.BackColor = System.Drawing.Color.Orange;
+            this.btnAddStocks.Activecolor = System.Drawing.Color.Teal;
+            this.btnAddStocks.BackColor = System.Drawing.Color.Teal;
             this.btnAddStocks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddStocks.BorderRadius = 0;
             this.btnAddStocks.ButtonText = "Add Stocks";
@@ -890,27 +862,27 @@
             this.btnAddStocks.Location = new System.Drawing.Point(754, 185);
             this.btnAddStocks.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAddStocks.Name = "btnAddStocks";
-            this.btnAddStocks.Normalcolor = System.Drawing.Color.Orange;
-            this.btnAddStocks.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnAddStocks.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnAddStocks.Normalcolor = System.Drawing.Color.Teal;
+            this.btnAddStocks.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnAddStocks.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAddStocks.selected = false;
             this.btnAddStocks.Size = new System.Drawing.Size(298, 48);
             this.btnAddStocks.TabIndex = 49;
             this.btnAddStocks.Text = "Add Stocks";
             this.btnAddStocks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAddStocks.Textcolor = System.Drawing.Color.Black;
+            this.btnAddStocks.Textcolor = System.Drawing.Color.White;
             this.btnAddStocks.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddStocks.Click += new System.EventHandler(this.btnAddStocks_Click);
             // 
             // btnDeleteStocks
             // 
-            this.btnDeleteStocks.Activecolor = System.Drawing.Color.Gray;
-            this.btnDeleteStocks.BackColor = System.Drawing.Color.Gray;
+            this.btnDeleteStocks.Activecolor = System.Drawing.Color.Silver;
+            this.btnDeleteStocks.BackColor = System.Drawing.Color.Silver;
             this.btnDeleteStocks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeleteStocks.BorderRadius = 0;
             this.btnDeleteStocks.ButtonText = "Delete";
             this.btnDeleteStocks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeleteStocks.DisabledColor = System.Drawing.Color.Gray;
+            this.btnDeleteStocks.DisabledColor = System.Drawing.Color.Silver;
             this.btnDeleteStocks.Enabled = false;
             this.btnDeleteStocks.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteStocks.Iconcolor = System.Drawing.Color.Transparent;
@@ -928,7 +900,7 @@
             this.btnDeleteStocks.Location = new System.Drawing.Point(754, 301);
             this.btnDeleteStocks.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnDeleteStocks.Name = "btnDeleteStocks";
-            this.btnDeleteStocks.Normalcolor = System.Drawing.Color.Gray;
+            this.btnDeleteStocks.Normalcolor = System.Drawing.Color.Silver;
             this.btnDeleteStocks.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnDeleteStocks.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnDeleteStocks.selected = false;
@@ -945,30 +917,38 @@
             this.dataGridViewStocksTab2.AllowUserToAddRows = false;
             this.dataGridViewStocksTab2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridViewStocksTab2.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewStocksTab2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStocksTab2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStocksTab2.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewStocksTab2.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewStocksTab2.Location = new System.Drawing.Point(21, 97);
             this.dataGridViewStocksTab2.MultiSelect = false;
             this.dataGridViewStocksTab2.Name = "dataGridViewStocksTab2";
             this.dataGridViewStocksTab2.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStocksTab2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStocksTab2.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewStocksTab2.RowHeadersVisible = false;
             this.dataGridViewStocksTab2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewStocksTab2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -978,8 +958,8 @@
             // 
             // btnUpdateStocks
             // 
-            this.btnUpdateStocks.Activecolor = System.Drawing.Color.Orange;
-            this.btnUpdateStocks.BackColor = System.Drawing.Color.Orange;
+            this.btnUpdateStocks.Activecolor = System.Drawing.Color.Teal;
+            this.btnUpdateStocks.BackColor = System.Drawing.Color.Teal;
             this.btnUpdateStocks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdateStocks.BorderRadius = 0;
             this.btnUpdateStocks.ButtonText = "Update Stocks";
@@ -1001,17 +981,55 @@
             this.btnUpdateStocks.Location = new System.Drawing.Point(754, 243);
             this.btnUpdateStocks.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnUpdateStocks.Name = "btnUpdateStocks";
-            this.btnUpdateStocks.Normalcolor = System.Drawing.Color.Orange;
-            this.btnUpdateStocks.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnUpdateStocks.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnUpdateStocks.Normalcolor = System.Drawing.Color.Teal;
+            this.btnUpdateStocks.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnUpdateStocks.OnHoverTextColor = System.Drawing.Color.White;
             this.btnUpdateStocks.selected = false;
             this.btnUpdateStocks.Size = new System.Drawing.Size(298, 48);
             this.btnUpdateStocks.TabIndex = 47;
             this.btnUpdateStocks.Text = "Update Stocks";
             this.btnUpdateStocks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnUpdateStocks.Textcolor = System.Drawing.Color.Black;
+            this.btnUpdateStocks.Textcolor = System.Drawing.Color.White;
             this.btnUpdateStocks.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateStocks.Click += new System.EventHandler(this.btnUpdateStocks_Click);
+            // 
+            // btnDeleteTotalStocks
+            // 
+            this.btnDeleteTotalStocks.Activecolor = System.Drawing.Color.Silver;
+            this.btnDeleteTotalStocks.BackColor = System.Drawing.Color.Silver;
+            this.btnDeleteTotalStocks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeleteTotalStocks.BorderRadius = 0;
+            this.btnDeleteTotalStocks.ButtonText = "Delete";
+            this.btnDeleteTotalStocks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteTotalStocks.DisabledColor = System.Drawing.Color.Silver;
+            this.btnDeleteTotalStocks.Enabled = false;
+            this.btnDeleteTotalStocks.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTotalStocks.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnDeleteTotalStocks.Iconimage = null;
+            this.btnDeleteTotalStocks.Iconimage_right = null;
+            this.btnDeleteTotalStocks.Iconimage_right_Selected = null;
+            this.btnDeleteTotalStocks.Iconimage_Selected = null;
+            this.btnDeleteTotalStocks.IconMarginLeft = 0;
+            this.btnDeleteTotalStocks.IconMarginRight = 0;
+            this.btnDeleteTotalStocks.IconRightVisible = false;
+            this.btnDeleteTotalStocks.IconRightZoom = 0D;
+            this.btnDeleteTotalStocks.IconVisible = false;
+            this.btnDeleteTotalStocks.IconZoom = 90D;
+            this.btnDeleteTotalStocks.IsTab = false;
+            this.btnDeleteTotalStocks.Location = new System.Drawing.Point(754, 166);
+            this.btnDeleteTotalStocks.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnDeleteTotalStocks.Name = "btnDeleteTotalStocks";
+            this.btnDeleteTotalStocks.Normalcolor = System.Drawing.Color.Silver;
+            this.btnDeleteTotalStocks.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnDeleteTotalStocks.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnDeleteTotalStocks.selected = false;
+            this.btnDeleteTotalStocks.Size = new System.Drawing.Size(298, 89);
+            this.btnDeleteTotalStocks.TabIndex = 47;
+            this.btnDeleteTotalStocks.Text = "Delete";
+            this.btnDeleteTotalStocks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDeleteTotalStocks.Textcolor = System.Drawing.Color.Black;
+            this.btnDeleteTotalStocks.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTotalStocks.Click += new System.EventHandler(this.btnDeleteTotalStocks_Click);
             // 
             // StocksForm
             // 
@@ -1031,10 +1049,10 @@
             this.tabPage2Stocks.ResumeLayout(false);
             this.tabPage2Stocks.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.panelIndividualStocks.ResumeLayout(false);
-            this.panelIndividualStocks.PerformLayout();
             this.panelTotalStocks.ResumeLayout(false);
             this.panelTotalStocks.PerformLayout();
+            this.panelIndividualStocks.ResumeLayout(false);
+            this.panelIndividualStocks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStocksTab2)).EndInit();
             this.ResumeLayout(false);
 

@@ -555,6 +555,19 @@
     <None Include="Resources\computerbox.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\round_backup_white_48.png" />
+    <Content Include="Resources\round_calculate_white_48.png" />
+    <Content Include="Resources\round_close_white_48.png" />
+    <Content Include="Resources\round_inventory_white_48.png" />
+    <Content Include="Resources\round_logout_white_48.png" />
+    <Content Include="Resources\round_manage_accounts_white_48.png" />
+    <Content Include="Resources\round_manage_search_white_48.png" />
+    <Content Include="Resources\round_menu_white_48.png" />
+    <Content Include="Resources\round_minimize_white_48.png" />
+    <Content Include="Resources\round_person_black_48.png" />
+    <Content Include="Resources\round_person_white_48.png" />
+    <Content Include="Resources\round_point_of_sale_white_48.png" />
+    <Content Include="round_person_white_48.png" />
     <None Include="Resources\Logo_1.jpg" />
     <Content Include="Resources\placeholder.png" />
     <None Include="Resources\placeholder1.png" />

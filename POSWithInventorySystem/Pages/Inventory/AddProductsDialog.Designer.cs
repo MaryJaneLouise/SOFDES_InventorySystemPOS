@@ -68,7 +68,7 @@
             this.txtSellingPrice.BorderColorMouseHover = System.Drawing.Color.Black;
             this.txtSellingPrice.BorderThickness = 2;
             this.txtSellingPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSellingPrice.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSellingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSellingPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSellingPrice.isPassword = false;
             this.txtSellingPrice.Location = new System.Drawing.Point(616, 225);
@@ -110,7 +110,7 @@
             this.txtDescription.BorderColorMouseHover = System.Drawing.Color.Black;
             this.txtDescription.BorderThickness = 2;
             this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDescription.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDescription.isPassword = false;
             this.txtDescription.Location = new System.Drawing.Point(16, 311);
@@ -186,10 +186,10 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(16, 449);
+            this.btnCancel.Location = new System.Drawing.Point(478, 449);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -203,8 +203,8 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Activecolor = System.Drawing.Color.Orange;
-            this.btnAdd.BackColor = System.Drawing.Color.Orange;
+            this.btnAdd.Activecolor = System.Drawing.Color.Teal;
+            this.btnAdd.BackColor = System.Drawing.Color.Teal;
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdd.BorderRadius = 0;
             this.btnAdd.ButtonText = "Add Product";
@@ -223,18 +223,18 @@
             this.btnAdd.IconVisible = true;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(478, 449);
+            this.btnAdd.Location = new System.Drawing.Point(16, 449);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Normalcolor = System.Drawing.Color.Orange;
-            this.btnAdd.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnAdd.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnAdd.Normalcolor = System.Drawing.Color.Teal;
+            this.btnAdd.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnAdd.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAdd.selected = false;
             this.btnAdd.Size = new System.Drawing.Size(447, 58);
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add Product";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAdd.Textcolor = System.Drawing.Color.Black;
+            this.btnAdd.Textcolor = System.Drawing.Color.White;
             this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -245,7 +245,7 @@
             this.txtPurchasePrice.BorderColorMouseHover = System.Drawing.Color.Black;
             this.txtPurchasePrice.BorderThickness = 2;
             this.txtPurchasePrice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPurchasePrice.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPurchasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtPurchasePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPurchasePrice.isPassword = false;
             this.txtPurchasePrice.Location = new System.Drawing.Point(233, 225);
@@ -271,8 +271,8 @@
             // 
             // btnBrowseImage
             // 
-            this.btnBrowseImage.Activecolor = System.Drawing.Color.Orange;
-            this.btnBrowseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBrowseImage.Activecolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.BackColor = System.Drawing.Color.Teal;
             this.btnBrowseImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBrowseImage.BorderRadius = 0;
             this.btnBrowseImage.ButtonText = "Browse Image";
@@ -292,15 +292,15 @@
             this.btnBrowseImage.IsTab = false;
             this.btnBrowseImage.Location = new System.Drawing.Point(12, 218);
             this.btnBrowseImage.Name = "btnBrowseImage";
-            this.btnBrowseImage.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnBrowseImage.Normalcolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.White;
             this.btnBrowseImage.selected = false;
             this.btnBrowseImage.Size = new System.Drawing.Size(200, 46);
             this.btnBrowseImage.TabIndex = 5;
             this.btnBrowseImage.Text = "Browse Image";
             this.btnBrowseImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnBrowseImage.Textcolor = System.Drawing.Color.Black;
+            this.btnBrowseImage.Textcolor = System.Drawing.Color.White;
             this.btnBrowseImage.TextFont = new System.Drawing.Font("Segoe UI", 12F);
             this.btnBrowseImage.Click += new System.EventHandler(this.btnBrowseImage_Click);
             // 

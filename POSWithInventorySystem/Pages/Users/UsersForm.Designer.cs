@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlRegister = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridViewNotActiveUsers = new System.Windows.Forms.DataGridView();
@@ -51,14 +53,30 @@
             this.btnDeleteUsers = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxUserType = new System.Windows.Forms.ComboBox();
+            this.lblPasswordNotMatch = new System.Windows.Forms.Label();
+            this.lblPasswordConfirmError = new System.Windows.Forms.Label();
+            this.lblPasswordError = new System.Windows.Forms.Label();
+            this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.lblErrorUsername = new System.Windows.Forms.Label();
+            this.btnCreate = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnBrowseImage = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.pictureBoxUserPic = new System.Windows.Forms.PictureBox();
+            this.txtConfirmPassword = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.lblConfirmPassword = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtUsername = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.groupBoxPersonalInfo = new System.Windows.Forms.GroupBox();
+            this.groupBoxGender = new System.Windows.Forms.GroupBox();
+            this.radioButtonMale = new System.Windows.Forms.RadioButton();
+            this.radioButtonFemale = new System.Windows.Forms.RadioButton();
             this.lblBirthdayError = new System.Windows.Forms.Label();
             this.lblContactError = new System.Windows.Forms.Label();
             this.lblAddressError = new System.Windows.Forms.Label();
             this.lblLastNameError = new System.Windows.Forms.Label();
             this.lblFirstNameError = new System.Windows.Forms.Label();
-            this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnCreate = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtContact = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblContact = new System.Windows.Forms.Label();
             this.txtlAddress = new Bunifu.Framework.UI.BunifuMetroTextbox();
@@ -67,37 +85,21 @@
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAge = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblAge = new System.Windows.Forms.Label();
-            this.radioButtonFemale = new System.Windows.Forms.RadioButton();
-            this.radioButtonMale = new System.Windows.Forms.RadioButton();
+            this.txtFirstName = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblBirthDay = new System.Windows.Forms.Label();
             this.lblMiddlleName = new System.Windows.Forms.Label();
             this.txtLastName = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.txtFirstName = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblFirstName = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxUserType = new System.Windows.Forms.ComboBox();
-            this.lblPasswordNotMatch = new System.Windows.Forms.Label();
-            this.lblPasswordConfirmError = new System.Windows.Forms.Label();
-            this.lblPasswordError = new System.Windows.Forms.Label();
-            this.lblErrorUsername = new System.Windows.Forms.Label();
-            this.btnBrowseImage = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.pictureBoxUserPic = new System.Windows.Forms.PictureBox();
-            this.txtConfirmPassword = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.txtPassword = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtUsername = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.groupBoxGender = new System.Windows.Forms.GroupBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControlRegister.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotActiveUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBoxPersonalInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserPic)).BeginInit();
+            this.groupBoxPersonalInfo.SuspendLayout();
             this.groupBoxGender.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,30 +146,38 @@
             this.dataGridViewNotActiveUsers.AllowUserToAddRows = false;
             this.dataGridViewNotActiveUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridViewNotActiveUsers.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNotActiveUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewNotActiveUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewNotActiveUsers.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewNotActiveUsers.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewNotActiveUsers.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dataGridViewNotActiveUsers.Location = new System.Drawing.Point(26, 100);
             this.dataGridViewNotActiveUsers.MultiSelect = false;
             this.dataGridViewNotActiveUsers.Name = "dataGridViewNotActiveUsers";
             this.dataGridViewNotActiveUsers.ReadOnly = true;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewNotActiveUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNotActiveUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewNotActiveUsers.RowHeadersVisible = false;
             this.dataGridViewNotActiveUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewNotActiveUsers.Size = new System.Drawing.Size(1003, 430);
@@ -210,8 +220,8 @@
             // 
             // btnActivateUsers
             // 
-            this.btnActivateUsers.Activecolor = System.Drawing.Color.Gray;
-            this.btnActivateUsers.BackColor = System.Drawing.Color.Gray;
+            this.btnActivateUsers.Activecolor = System.Drawing.Color.Silver;
+            this.btnActivateUsers.BackColor = System.Drawing.Color.Silver;
             this.btnActivateUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnActivateUsers.BorderRadius = 0;
             this.btnActivateUsers.ButtonText = "Activate";
@@ -234,7 +244,7 @@
             this.btnActivateUsers.Location = new System.Drawing.Point(26, 565);
             this.btnActivateUsers.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnActivateUsers.Name = "btnActivateUsers";
-            this.btnActivateUsers.Normalcolor = System.Drawing.Color.Gray;
+            this.btnActivateUsers.Normalcolor = System.Drawing.Color.Silver;
             this.btnActivateUsers.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnActivateUsers.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnActivateUsers.selected = false;
@@ -258,8 +268,8 @@
             // 
             // btnDeactivateUsers
             // 
-            this.btnDeactivateUsers.Activecolor = System.Drawing.Color.Gray;
-            this.btnDeactivateUsers.BackColor = System.Drawing.Color.Gray;
+            this.btnDeactivateUsers.Activecolor = System.Drawing.Color.Silver;
+            this.btnDeactivateUsers.BackColor = System.Drawing.Color.Silver;
             this.btnDeactivateUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeactivateUsers.BorderRadius = 0;
             this.btnDeactivateUsers.ButtonText = "Deactivate";
@@ -282,7 +292,7 @@
             this.btnDeactivateUsers.Location = new System.Drawing.Point(542, 565);
             this.btnDeactivateUsers.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnDeactivateUsers.Name = "btnDeactivateUsers";
-            this.btnDeactivateUsers.Normalcolor = System.Drawing.Color.Gray;
+            this.btnDeactivateUsers.Normalcolor = System.Drawing.Color.Silver;
             this.btnDeactivateUsers.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnDeactivateUsers.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnDeactivateUsers.selected = false;
@@ -316,8 +326,8 @@
             // 
             // btnUpdateUsers
             // 
-            this.btnUpdateUsers.Activecolor = System.Drawing.Color.Orange;
-            this.btnUpdateUsers.BackColor = System.Drawing.Color.Orange;
+            this.btnUpdateUsers.Activecolor = System.Drawing.Color.Teal;
+            this.btnUpdateUsers.BackColor = System.Drawing.Color.Teal;
             this.btnUpdateUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdateUsers.BorderRadius = 0;
             this.btnUpdateUsers.ButtonText = "Update";
@@ -339,15 +349,15 @@
             this.btnUpdateUsers.Location = new System.Drawing.Point(26, 565);
             this.btnUpdateUsers.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnUpdateUsers.Name = "btnUpdateUsers";
-            this.btnUpdateUsers.Normalcolor = System.Drawing.Color.Orange;
-            this.btnUpdateUsers.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnUpdateUsers.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnUpdateUsers.Normalcolor = System.Drawing.Color.Teal;
+            this.btnUpdateUsers.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnUpdateUsers.OnHoverTextColor = System.Drawing.Color.White;
             this.btnUpdateUsers.selected = false;
             this.btnUpdateUsers.Size = new System.Drawing.Size(487, 48);
             this.btnUpdateUsers.TabIndex = 42;
             this.btnUpdateUsers.Text = "Update";
             this.btnUpdateUsers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnUpdateUsers.Textcolor = System.Drawing.Color.Black;
+            this.btnUpdateUsers.Textcolor = System.Drawing.Color.White;
             this.btnUpdateUsers.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnUpdateUsers.Click += new System.EventHandler(this.btnUpdateUsers_Click);
             // 
@@ -413,8 +423,8 @@
             // 
             // btnDeleteUsers
             // 
-            this.btnDeleteUsers.Activecolor = System.Drawing.Color.Gray;
-            this.btnDeleteUsers.BackColor = System.Drawing.Color.Gray;
+            this.btnDeleteUsers.Activecolor = System.Drawing.Color.Silver;
+            this.btnDeleteUsers.BackColor = System.Drawing.Color.Silver;
             this.btnDeleteUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeleteUsers.BorderRadius = 0;
             this.btnDeleteUsers.ButtonText = "Delete";
@@ -435,7 +445,7 @@
             this.btnDeleteUsers.Location = new System.Drawing.Point(542, 565);
             this.btnDeleteUsers.Margin = new System.Windows.Forms.Padding(8);
             this.btnDeleteUsers.Name = "btnDeleteUsers";
-            this.btnDeleteUsers.Normalcolor = System.Drawing.Color.Gray;
+            this.btnDeleteUsers.Normalcolor = System.Drawing.Color.Silver;
             this.btnDeleteUsers.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnDeleteUsers.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnDeleteUsers.selected = false;
@@ -452,30 +462,38 @@
             this.dataGridViewUsers.AllowUserToAddRows = false;
             this.dataGridViewUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridViewUsers.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewUsers.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewUsers.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewUsers.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dataGridViewUsers.Location = new System.Drawing.Point(26, 100);
             this.dataGridViewUsers.MultiSelect = false;
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewUsers.RowHeadersVisible = false;
             this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUsers.Size = new System.Drawing.Size(1003, 430);
@@ -510,6 +528,258 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Register New User";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.label1.Location = new System.Drawing.Point(183, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(121, 22);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Account Type";
+            // 
+            // comboBoxUserType
+            // 
+            this.comboBoxUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUserType.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.comboBoxUserType.FormattingEnabled = true;
+            this.comboBoxUserType.Items.AddRange(new object[] {
+            "Employee",
+            "Admin"});
+            this.comboBoxUserType.Location = new System.Drawing.Point(187, 178);
+            this.comboBoxUserType.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBoxUserType.Name = "comboBoxUserType";
+            this.comboBoxUserType.Size = new System.Drawing.Size(848, 28);
+            this.comboBoxUserType.TabIndex = 27;
+            // 
+            // lblPasswordNotMatch
+            // 
+            this.lblPasswordNotMatch.AutoSize = true;
+            this.lblPasswordNotMatch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordNotMatch.ForeColor = System.Drawing.Color.Red;
+            this.lblPasswordNotMatch.Location = new System.Drawing.Point(976, 111);
+            this.lblPasswordNotMatch.Name = "lblPasswordNotMatch";
+            this.lblPasswordNotMatch.Size = new System.Drawing.Size(25, 19);
+            this.lblPasswordNotMatch.TabIndex = 26;
+            this.lblPasswordNotMatch.Text = "❌";
+            // 
+            // lblPasswordConfirmError
+            // 
+            this.lblPasswordConfirmError.AutoSize = true;
+            this.lblPasswordConfirmError.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordConfirmError.ForeColor = System.Drawing.Color.Red;
+            this.lblPasswordConfirmError.Location = new System.Drawing.Point(1005, 111);
+            this.lblPasswordConfirmError.Name = "lblPasswordConfirmError";
+            this.lblPasswordConfirmError.Size = new System.Drawing.Size(25, 19);
+            this.lblPasswordConfirmError.TabIndex = 25;
+            this.lblPasswordConfirmError.Text = "❌";
+            // 
+            // lblPasswordError
+            // 
+            this.lblPasswordError.AutoSize = true;
+            this.lblPasswordError.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordError.ForeColor = System.Drawing.Color.Red;
+            this.lblPasswordError.Location = new System.Drawing.Point(545, 111);
+            this.lblPasswordError.Name = "lblPasswordError";
+            this.lblPasswordError.Size = new System.Drawing.Size(25, 19);
+            this.lblPasswordError.TabIndex = 24;
+            this.lblPasswordError.Text = "❌";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Activecolor = System.Drawing.Color.Silver;
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
+            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancel.BorderRadius = 0;
+            this.btnCancel.ButtonText = "Cancel";
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DisabledColor = System.Drawing.Color.Gray;
+            this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnCancel.Iconimage = null;
+            this.btnCancel.Iconimage_right = null;
+            this.btnCancel.Iconimage_right_Selected = null;
+            this.btnCancel.Iconimage_Selected = null;
+            this.btnCancel.IconMarginLeft = 0;
+            this.btnCancel.IconMarginRight = 0;
+            this.btnCancel.IconRightVisible = false;
+            this.btnCancel.IconRightZoom = 0D;
+            this.btnCancel.IconVisible = false;
+            this.btnCancel.IconZoom = 90D;
+            this.btnCancel.IsTab = false;
+            this.btnCancel.Location = new System.Drawing.Point(549, 574);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
+            this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnCancel.selected = false;
+            this.btnCancel.Size = new System.Drawing.Size(486, 48);
+            this.btnCancel.TabIndex = 26;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCancel.Textcolor = System.Drawing.Color.Black;
+            this.btnCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // lblErrorUsername
+            // 
+            this.lblErrorUsername.AutoSize = true;
+            this.lblErrorUsername.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorUsername.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorUsername.Location = new System.Drawing.Point(1005, 47);
+            this.lblErrorUsername.Name = "lblErrorUsername";
+            this.lblErrorUsername.Size = new System.Drawing.Size(25, 19);
+            this.lblErrorUsername.TabIndex = 23;
+            this.lblErrorUsername.Text = "❌";
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Activecolor = System.Drawing.Color.Teal;
+            this.btnCreate.BackColor = System.Drawing.Color.Teal;
+            this.btnCreate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCreate.BorderRadius = 0;
+            this.btnCreate.ButtonText = "Create User Account";
+            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreate.DisabledColor = System.Drawing.Color.Gray;
+            this.btnCreate.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnCreate.Iconimage = null;
+            this.btnCreate.Iconimage_right = null;
+            this.btnCreate.Iconimage_right_Selected = null;
+            this.btnCreate.Iconimage_Selected = null;
+            this.btnCreate.IconMarginLeft = 0;
+            this.btnCreate.IconMarginRight = 0;
+            this.btnCreate.IconRightVisible = false;
+            this.btnCreate.IconRightZoom = 0D;
+            this.btnCreate.IconVisible = false;
+            this.btnCreate.IconZoom = 90D;
+            this.btnCreate.IsTab = false;
+            this.btnCreate.Location = new System.Drawing.Point(19, 574);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Normalcolor = System.Drawing.Color.Teal;
+            this.btnCreate.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnCreate.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnCreate.selected = false;
+            this.btnCreate.Size = new System.Drawing.Size(486, 48);
+            this.btnCreate.TabIndex = 25;
+            this.btnCreate.Text = "Create User Account";
+            this.btnCreate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCreate.Textcolor = System.Drawing.Color.White;
+            this.btnCreate.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // btnBrowseImage
+            // 
+            this.btnBrowseImage.Activecolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.BackColor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBrowseImage.BorderRadius = 7;
+            this.btnBrowseImage.ButtonText = "Browse Image";
+            this.btnBrowseImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrowseImage.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBrowseImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btnBrowseImage.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnBrowseImage.Iconimage = null;
+            this.btnBrowseImage.Iconimage_right = null;
+            this.btnBrowseImage.Iconimage_right_Selected = null;
+            this.btnBrowseImage.Iconimage_Selected = null;
+            this.btnBrowseImage.IconMarginLeft = 0;
+            this.btnBrowseImage.IconMarginRight = 0;
+            this.btnBrowseImage.IconRightVisible = false;
+            this.btnBrowseImage.IconRightZoom = 0D;
+            this.btnBrowseImage.IconVisible = false;
+            this.btnBrowseImage.IconZoom = 90D;
+            this.btnBrowseImage.IsTab = false;
+            this.btnBrowseImage.Location = new System.Drawing.Point(19, 148);
+            this.btnBrowseImage.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnBrowseImage.Name = "btnBrowseImage";
+            this.btnBrowseImage.Normalcolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnBrowseImage.selected = false;
+            this.btnBrowseImage.Size = new System.Drawing.Size(140, 38);
+            this.btnBrowseImage.TabIndex = 22;
+            this.btnBrowseImage.Text = "Browse Image";
+            this.btnBrowseImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnBrowseImage.Textcolor = System.Drawing.Color.White;
+            this.btnBrowseImage.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            // 
+            // pictureBoxUserPic
+            // 
+            this.pictureBoxUserPic.Image = global::POSWithInventorySystem.Properties.Resources.round_person_black_48;
+            this.pictureBoxUserPic.Location = new System.Drawing.Point(26, 15);
+            this.pictureBoxUserPic.Name = "pictureBoxUserPic";
+            this.pictureBoxUserPic.Size = new System.Drawing.Size(125, 125);
+            this.pictureBoxUserPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxUserPic.TabIndex = 21;
+            this.pictureBoxUserPic.TabStop = false;
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.BorderColorFocused = System.Drawing.Color.Black;
+            this.txtConfirmPassword.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtConfirmPassword.BorderColorMouseHover = System.Drawing.Color.Black;
+            this.txtConfirmPassword.BorderThickness = 2;
+            this.txtConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txtConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtConfirmPassword.isPassword = true;
+            this.txtConfirmPassword.Location = new System.Drawing.Point(648, 105);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(387, 31);
+            this.txtConfirmPassword.TabIndex = 18;
+            this.txtConfirmPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // lblConfirmPassword
+            // 
+            this.lblConfirmPassword.AutoSize = true;
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(643, 79);
+            this.lblConfirmPassword.Name = "lblConfirmPassword";
+            this.lblConfirmPassword.Size = new System.Drawing.Size(156, 22);
+            this.lblConfirmPassword.TabIndex = 20;
+            this.lblConfirmPassword.Text = "Confirm Password";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lblPassword.Location = new System.Drawing.Point(183, 82);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(89, 22);
+            this.lblPassword.TabIndex = 19;
+            this.lblPassword.Text = "Password";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.BorderColorFocused = System.Drawing.Color.Black;
+            this.txtUsername.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUsername.BorderColorMouseHover = System.Drawing.Color.Black;
+            this.txtUsername.BorderThickness = 2;
+            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUsername.isPassword = false;
+            this.txtUsername.Location = new System.Drawing.Point(187, 41);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(848, 31);
+            this.txtUsername.TabIndex = 15;
+            this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lblUsername.Location = new System.Drawing.Point(183, 15);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(92, 22);
+            this.lblUsername.TabIndex = 16;
+            this.lblUsername.Text = "Username";
+            // 
             // groupBoxPersonalInfo
             // 
             this.groupBoxPersonalInfo.BackColor = System.Drawing.Color.White;
@@ -542,9 +812,45 @@
             this.groupBoxPersonalInfo.TabStop = false;
             this.groupBoxPersonalInfo.Text = "Personal Information";
             // 
+            // groupBoxGender
+            // 
+            this.groupBoxGender.Controls.Add(this.radioButtonMale);
+            this.groupBoxGender.Controls.Add(this.radioButtonFemale);
+            this.groupBoxGender.Location = new System.Drawing.Point(628, 124);
+            this.groupBoxGender.Name = "groupBoxGender";
+            this.groupBoxGender.Size = new System.Drawing.Size(238, 78);
+            this.groupBoxGender.TabIndex = 34;
+            this.groupBoxGender.TabStop = false;
+            this.groupBoxGender.Text = "Gender";
+            // 
+            // radioButtonMale
+            // 
+            this.radioButtonMale.AutoSize = true;
+            this.radioButtonMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.radioButtonMale.Location = new System.Drawing.Point(29, 29);
+            this.radioButtonMale.Name = "radioButtonMale";
+            this.radioButtonMale.Size = new System.Drawing.Size(66, 26);
+            this.radioButtonMale.TabIndex = 14;
+            this.radioButtonMale.Text = "Male";
+            this.radioButtonMale.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFemale
+            // 
+            this.radioButtonFemale.AutoSize = true;
+            this.radioButtonFemale.Checked = true;
+            this.radioButtonFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.radioButtonFemale.Location = new System.Drawing.Point(113, 29);
+            this.radioButtonFemale.Name = "radioButtonFemale";
+            this.radioButtonFemale.Size = new System.Drawing.Size(87, 26);
+            this.radioButtonFemale.TabIndex = 15;
+            this.radioButtonFemale.TabStop = true;
+            this.radioButtonFemale.Text = "Female";
+            this.radioButtonFemale.UseVisualStyleBackColor = true;
+            // 
             // lblBirthdayError
             // 
             this.lblBirthdayError.AutoSize = true;
+            this.lblBirthdayError.BackColor = System.Drawing.Color.Transparent;
             this.lblBirthdayError.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBirthdayError.ForeColor = System.Drawing.Color.Red;
             this.lblBirthdayError.Location = new System.Drawing.Point(708, 271);
@@ -596,80 +902,6 @@
             this.lblFirstNameError.Size = new System.Drawing.Size(25, 19);
             this.lblFirstNameError.TabIndex = 28;
             this.lblFirstNameError.Text = "❌";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancel.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.BorderRadius = 0;
-            this.btnCancel.ButtonText = "Cancel";
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.DisabledColor = System.Drawing.Color.Gray;
-            this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnCancel.Iconimage = null;
-            this.btnCancel.Iconimage_right = null;
-            this.btnCancel.Iconimage_right_Selected = null;
-            this.btnCancel.Iconimage_Selected = null;
-            this.btnCancel.IconMarginLeft = 0;
-            this.btnCancel.IconMarginRight = 0;
-            this.btnCancel.IconRightVisible = false;
-            this.btnCancel.IconRightZoom = 0D;
-            this.btnCancel.IconVisible = false;
-            this.btnCancel.IconZoom = 90D;
-            this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(19, 574);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
-            this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnCancel.selected = false;
-            this.btnCancel.Size = new System.Drawing.Size(486, 48);
-            this.btnCancel.TabIndex = 26;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnCancel.Textcolor = System.Drawing.Color.Black;
-            this.btnCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Activecolor = System.Drawing.Color.Orange;
-            this.btnCreate.BackColor = System.Drawing.Color.Orange;
-            this.btnCreate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCreate.BorderRadius = 0;
-            this.btnCreate.ButtonText = "Create User Account";
-            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreate.DisabledColor = System.Drawing.Color.Gray;
-            this.btnCreate.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnCreate.Iconimage = null;
-            this.btnCreate.Iconimage_right = null;
-            this.btnCreate.Iconimage_right_Selected = null;
-            this.btnCreate.Iconimage_Selected = null;
-            this.btnCreate.IconMarginLeft = 0;
-            this.btnCreate.IconMarginRight = 0;
-            this.btnCreate.IconRightVisible = false;
-            this.btnCreate.IconRightZoom = 0D;
-            this.btnCreate.IconVisible = false;
-            this.btnCreate.IconZoom = 90D;
-            this.btnCreate.IsTab = false;
-            this.btnCreate.Location = new System.Drawing.Point(549, 574);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Normalcolor = System.Drawing.Color.Orange;
-            this.btnCreate.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnCreate.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnCreate.selected = false;
-            this.btnCreate.Size = new System.Drawing.Size(486, 48);
-            this.btnCreate.TabIndex = 25;
-            this.btnCreate.Text = "Create User Account";
-            this.btnCreate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnCreate.Textcolor = System.Drawing.Color.Black;
-            this.btnCreate.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // txtContact
             // 
@@ -790,29 +1022,24 @@
             this.lblAge.TabIndex = 16;
             this.lblAge.Text = "Age:";
             // 
-            // radioButtonFemale
+            // txtFirstName
             // 
-            this.radioButtonFemale.AutoSize = true;
-            this.radioButtonFemale.Checked = true;
-            this.radioButtonFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.radioButtonFemale.Location = new System.Drawing.Point(113, 29);
-            this.radioButtonFemale.Name = "radioButtonFemale";
-            this.radioButtonFemale.Size = new System.Drawing.Size(87, 26);
-            this.radioButtonFemale.TabIndex = 15;
-            this.radioButtonFemale.TabStop = true;
-            this.radioButtonFemale.Text = "Female";
-            this.radioButtonFemale.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonMale
-            // 
-            this.radioButtonMale.AutoSize = true;
-            this.radioButtonMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.radioButtonMale.Location = new System.Drawing.Point(29, 29);
-            this.radioButtonMale.Name = "radioButtonMale";
-            this.radioButtonMale.Size = new System.Drawing.Size(66, 26);
-            this.radioButtonMale.TabIndex = 14;
-            this.radioButtonMale.Text = "Male";
-            this.radioButtonMale.UseVisualStyleBackColor = true;
+            this.txtFirstName.BorderColorFocused = System.Drawing.Color.Black;
+            this.txtFirstName.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtFirstName.BorderColorMouseHover = System.Drawing.Color.Black;
+            this.txtFirstName.BorderThickness = 2;
+            this.txtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txtFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtFirstName.isPassword = false;
+            this.txtFirstName.Location = new System.Drawing.Point(20, 63);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(306, 31);
+            this.txtFirstName.TabIndex = 3;
+            this.txtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // lblBirthDay
             // 
@@ -863,25 +1090,6 @@
             this.lblLastName.TabIndex = 8;
             this.lblLastName.Text = "Last Name";
             // 
-            // txtFirstName
-            // 
-            this.txtFirstName.BorderColorFocused = System.Drawing.Color.Black;
-            this.txtFirstName.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtFirstName.BorderColorMouseHover = System.Drawing.Color.Black;
-            this.txtFirstName.BorderThickness = 2;
-            this.txtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtFirstName.isPassword = false;
-            this.txtFirstName.Location = new System.Drawing.Point(20, 63);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(306, 31);
-            this.txtFirstName.TabIndex = 3;
-            this.txtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
-            // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
@@ -891,151 +1099,6 @@
             this.lblFirstName.Size = new System.Drawing.Size(97, 22);
             this.lblFirstName.TabIndex = 6;
             this.lblFirstName.Text = "First Name";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label1.Location = new System.Drawing.Point(183, 151);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 22);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Type:";
-            // 
-            // comboBoxUserType
-            // 
-            this.comboBoxUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxUserType.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.comboBoxUserType.FormattingEnabled = true;
-            this.comboBoxUserType.Items.AddRange(new object[] {
-            "Employee",
-            "Admin"});
-            this.comboBoxUserType.Location = new System.Drawing.Point(187, 178);
-            this.comboBoxUserType.Margin = new System.Windows.Forms.Padding(5);
-            this.comboBoxUserType.Name = "comboBoxUserType";
-            this.comboBoxUserType.Size = new System.Drawing.Size(848, 28);
-            this.comboBoxUserType.TabIndex = 27;
-            // 
-            // lblPasswordNotMatch
-            // 
-            this.lblPasswordNotMatch.AutoSize = true;
-            this.lblPasswordNotMatch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordNotMatch.ForeColor = System.Drawing.Color.Red;
-            this.lblPasswordNotMatch.Location = new System.Drawing.Point(976, 111);
-            this.lblPasswordNotMatch.Name = "lblPasswordNotMatch";
-            this.lblPasswordNotMatch.Size = new System.Drawing.Size(25, 19);
-            this.lblPasswordNotMatch.TabIndex = 26;
-            this.lblPasswordNotMatch.Text = "❌";
-            // 
-            // lblPasswordConfirmError
-            // 
-            this.lblPasswordConfirmError.AutoSize = true;
-            this.lblPasswordConfirmError.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordConfirmError.ForeColor = System.Drawing.Color.Red;
-            this.lblPasswordConfirmError.Location = new System.Drawing.Point(1005, 111);
-            this.lblPasswordConfirmError.Name = "lblPasswordConfirmError";
-            this.lblPasswordConfirmError.Size = new System.Drawing.Size(25, 19);
-            this.lblPasswordConfirmError.TabIndex = 25;
-            this.lblPasswordConfirmError.Text = "❌";
-            // 
-            // lblPasswordError
-            // 
-            this.lblPasswordError.AutoSize = true;
-            this.lblPasswordError.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblPasswordError.Location = new System.Drawing.Point(545, 111);
-            this.lblPasswordError.Name = "lblPasswordError";
-            this.lblPasswordError.Size = new System.Drawing.Size(25, 19);
-            this.lblPasswordError.TabIndex = 24;
-            this.lblPasswordError.Text = "❌";
-            // 
-            // lblErrorUsername
-            // 
-            this.lblErrorUsername.AutoSize = true;
-            this.lblErrorUsername.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorUsername.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorUsername.Location = new System.Drawing.Point(1005, 47);
-            this.lblErrorUsername.Name = "lblErrorUsername";
-            this.lblErrorUsername.Size = new System.Drawing.Size(25, 19);
-            this.lblErrorUsername.TabIndex = 23;
-            this.lblErrorUsername.Text = "❌";
-            // 
-            // btnBrowseImage
-            // 
-            this.btnBrowseImage.Activecolor = System.Drawing.Color.Orange;
-            this.btnBrowseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnBrowseImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBrowseImage.BorderRadius = 0;
-            this.btnBrowseImage.ButtonText = "Browse Image";
-            this.btnBrowseImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBrowseImage.DisabledColor = System.Drawing.Color.Gray;
-            this.btnBrowseImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btnBrowseImage.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnBrowseImage.Iconimage = null;
-            this.btnBrowseImage.Iconimage_right = null;
-            this.btnBrowseImage.Iconimage_right_Selected = null;
-            this.btnBrowseImage.Iconimage_Selected = null;
-            this.btnBrowseImage.IconMarginLeft = 0;
-            this.btnBrowseImage.IconMarginRight = 0;
-            this.btnBrowseImage.IconRightVisible = false;
-            this.btnBrowseImage.IconRightZoom = 0D;
-            this.btnBrowseImage.IconVisible = false;
-            this.btnBrowseImage.IconZoom = 90D;
-            this.btnBrowseImage.IsTab = false;
-            this.btnBrowseImage.Location = new System.Drawing.Point(19, 148);
-            this.btnBrowseImage.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnBrowseImage.Name = "btnBrowseImage";
-            this.btnBrowseImage.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnBrowseImage.selected = false;
-            this.btnBrowseImage.Size = new System.Drawing.Size(140, 38);
-            this.btnBrowseImage.TabIndex = 22;
-            this.btnBrowseImage.Text = "Browse Image";
-            this.btnBrowseImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnBrowseImage.Textcolor = System.Drawing.Color.Black;
-            this.btnBrowseImage.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            // 
-            // pictureBoxUserPic
-            // 
-            this.pictureBoxUserPic.Image = global::POSWithInventorySystem.Properties.Resources._666201__1_;
-            this.pictureBoxUserPic.Location = new System.Drawing.Point(26, 15);
-            this.pictureBoxUserPic.Name = "pictureBoxUserPic";
-            this.pictureBoxUserPic.Size = new System.Drawing.Size(125, 125);
-            this.pictureBoxUserPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxUserPic.TabIndex = 21;
-            this.pictureBoxUserPic.TabStop = false;
-            // 
-            // txtConfirmPassword
-            // 
-            this.txtConfirmPassword.BorderColorFocused = System.Drawing.Color.Black;
-            this.txtConfirmPassword.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtConfirmPassword.BorderColorMouseHover = System.Drawing.Color.Black;
-            this.txtConfirmPassword.BorderThickness = 2;
-            this.txtConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtConfirmPassword.isPassword = true;
-            this.txtConfirmPassword.Location = new System.Drawing.Point(648, 105);
-            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(387, 31);
-            this.txtConfirmPassword.TabIndex = 18;
-            this.txtConfirmPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // lblConfirmPassword
-            // 
-            this.lblConfirmPassword.AutoSize = true;
-            this.lblConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lblConfirmPassword.Location = new System.Drawing.Point(643, 79);
-            this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(156, 22);
-            this.lblConfirmPassword.TabIndex = 20;
-            this.lblConfirmPassword.Text = "Confirm Password";
             // 
             // txtPassword
             // 
@@ -1054,53 +1117,9 @@
             this.txtPassword.TabIndex = 17;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // lblPassword
+            // timer1
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lblPassword.Location = new System.Drawing.Point(183, 82);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(89, 22);
-            this.lblPassword.TabIndex = 19;
-            this.lblPassword.Text = "Password";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.BorderColorFocused = System.Drawing.Color.Black;
-            this.txtUsername.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUsername.BorderColorMouseHover = System.Drawing.Color.Black;
-            this.txtUsername.BorderThickness = 2;
-            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUsername.isPassword = false;
-            this.txtUsername.Location = new System.Drawing.Point(187, 41);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(848, 31);
-            this.txtUsername.TabIndex = 15;
-            this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lblUsername.Location = new System.Drawing.Point(183, 15);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(92, 22);
-            this.lblUsername.TabIndex = 16;
-            this.lblUsername.Text = "Username";
-            // 
-            // groupBoxGender
-            // 
-            this.groupBoxGender.Controls.Add(this.radioButtonMale);
-            this.groupBoxGender.Controls.Add(this.radioButtonFemale);
-            this.groupBoxGender.Location = new System.Drawing.Point(628, 124);
-            this.groupBoxGender.Name = "groupBoxGender";
-            this.groupBoxGender.Size = new System.Drawing.Size(238, 78);
-            this.groupBoxGender.TabIndex = 34;
-            this.groupBoxGender.TabStop = false;
-            this.groupBoxGender.Text = "Gender";
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // POSForm
             // 
@@ -1121,9 +1140,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserPic)).EndInit();
             this.groupBoxPersonalInfo.ResumeLayout(false);
             this.groupBoxPersonalInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserPic)).EndInit();
             this.groupBoxGender.ResumeLayout(false);
             this.groupBoxGender.PerformLayout();
             this.ResumeLayout(false);

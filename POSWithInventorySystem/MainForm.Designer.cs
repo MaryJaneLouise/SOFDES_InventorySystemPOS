@@ -83,7 +83,7 @@
             // 
             // panelSideMenu
             // 
-            this.panelSideMenu.BackColor = System.Drawing.Color.Orange;
+            this.panelSideMenu.BackColor = System.Drawing.Color.Teal;
             this.panelSideMenu.Controls.Add(this.btnBackup);
             this.panelSideMenu.Controls.Add(this.bunifuSeparator8);
             this.panelSideMenu.Controls.Add(this.bunifuSeparator7);
@@ -116,8 +116,8 @@
             // 
             // btnBackup
             // 
-            this.btnBackup.Activecolor = System.Drawing.Color.Orange;
-            this.btnBackup.BackColor = System.Drawing.Color.Orange;
+            this.btnBackup.Activecolor = System.Drawing.Color.Teal;
+            this.btnBackup.BackColor = System.Drawing.Color.Teal;
             this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBackup.BorderRadius = 0;
             this.btnBackup.ButtonText = "     Backup";
@@ -125,10 +125,10 @@
             this.transitionPanel2.SetDecoration(this.btnBackup, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnBackup, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.btnBackup, BunifuAnimatorNS.DecorationType.None);
-            this.btnBackup.DisabledColor = System.Drawing.Color.Gray;
-            this.btnBackup.ForeColor = System.Drawing.Color.Black;
+            this.btnBackup.DisabledColor = System.Drawing.Color.DimGray;
+            this.btnBackup.ForeColor = System.Drawing.Color.White;
             this.btnBackup.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnBackup.Iconimage = global::POSWithInventorySystem.Properties.Resources.database_backup1;
+            this.btnBackup.Iconimage = global::POSWithInventorySystem.Properties.Resources.round_backup_white_48;
             this.btnBackup.Iconimage_right = null;
             this.btnBackup.Iconimage_right_Selected = null;
             this.btnBackup.Iconimage_Selected = null;
@@ -141,15 +141,15 @@
             this.btnBackup.IsTab = true;
             this.btnBackup.Location = new System.Drawing.Point(2, 609);
             this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Normalcolor = System.Drawing.Color.Orange;
-            this.btnBackup.OnHovercolor = System.Drawing.Color.Gold;
+            this.btnBackup.Normalcolor = System.Drawing.Color.Teal;
+            this.btnBackup.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.btnBackup.OnHoverTextColor = System.Drawing.Color.White;
             this.btnBackup.selected = false;
             this.btnBackup.Size = new System.Drawing.Size(259, 66);
             this.btnBackup.TabIndex = 23;
             this.btnBackup.Text = "     Backup";
             this.btnBackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBackup.Textcolor = System.Drawing.Color.Black;
+            this.btnBackup.Textcolor = System.Drawing.Color.White;
             this.btnBackup.TextFont = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
@@ -185,8 +185,8 @@
             // 
             // btnMyAccount
             // 
-            this.btnMyAccount.Activecolor = System.Drawing.Color.Gray;
-            this.btnMyAccount.BackColor = System.Drawing.Color.Gray;
+            this.btnMyAccount.Activecolor = System.Drawing.Color.Black;
+            this.btnMyAccount.BackColor = System.Drawing.Color.Black;
             this.btnMyAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMyAccount.BorderRadius = 0;
             this.btnMyAccount.ButtonText = "Edit Account";
@@ -194,7 +194,7 @@
             this.transitionPanel2.SetDecoration(this.btnMyAccount, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnMyAccount, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.btnMyAccount, BunifuAnimatorNS.DecorationType.None);
-            this.btnMyAccount.DisabledColor = System.Drawing.Color.Gray;
+            this.btnMyAccount.DisabledColor = System.Drawing.Color.Black;
             this.btnMyAccount.Iconcolor = System.Drawing.Color.Transparent;
             this.btnMyAccount.Iconimage = null;
             this.btnMyAccount.Iconimage_right = null;
@@ -207,13 +207,13 @@
             this.btnMyAccount.IconVisible = true;
             this.btnMyAccount.IconZoom = 90D;
             this.btnMyAccount.IsTab = false;
-            this.btnMyAccount.Location = new System.Drawing.Point(119, 215);
+            this.btnMyAccount.Location = new System.Drawing.Point(134, 209);
             this.btnMyAccount.Name = "btnMyAccount";
-            this.btnMyAccount.Normalcolor = System.Drawing.Color.Gray;
-            this.btnMyAccount.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnMyAccount.Normalcolor = System.Drawing.Color.Black;
+            this.btnMyAccount.OnHovercolor = System.Drawing.Color.Black;
             this.btnMyAccount.OnHoverTextColor = System.Drawing.Color.White;
             this.btnMyAccount.selected = false;
-            this.btnMyAccount.Size = new System.Drawing.Size(127, 36);
+            this.btnMyAccount.Size = new System.Drawing.Size(118, 42);
             this.btnMyAccount.TabIndex = 18;
             this.btnMyAccount.Text = "Edit Account";
             this.btnMyAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -223,8 +223,8 @@
             // 
             // BtnSales
             // 
-            this.BtnSales.Activecolor = System.Drawing.Color.Orange;
-            this.BtnSales.BackColor = System.Drawing.Color.Orange;
+            this.BtnSales.Activecolor = System.Drawing.Color.Teal;
+            this.BtnSales.BackColor = System.Drawing.Color.Teal;
             this.BtnSales.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnSales.BorderRadius = 0;
             this.BtnSales.ButtonText = "     Sales";
@@ -232,10 +232,10 @@
             this.transitionPanel2.SetDecoration(this.BtnSales, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.BtnSales, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.BtnSales, BunifuAnimatorNS.DecorationType.None);
-            this.BtnSales.DisabledColor = System.Drawing.Color.Gray;
-            this.BtnSales.ForeColor = System.Drawing.Color.Black;
+            this.BtnSales.DisabledColor = System.Drawing.Color.DimGray;
+            this.BtnSales.ForeColor = System.Drawing.Color.White;
             this.BtnSales.Iconcolor = System.Drawing.Color.Transparent;
-            this.BtnSales.Iconimage = global::POSWithInventorySystem.Properties.Resources.money;
+            this.BtnSales.Iconimage = global::POSWithInventorySystem.Properties.Resources.round_calculate_white_48;
             this.BtnSales.Iconimage_right = null;
             this.BtnSales.Iconimage_right_Selected = null;
             this.BtnSales.Iconimage_Selected = null;
@@ -248,15 +248,15 @@
             this.BtnSales.IsTab = true;
             this.BtnSales.Location = new System.Drawing.Point(3, 399);
             this.BtnSales.Name = "BtnSales";
-            this.BtnSales.Normalcolor = System.Drawing.Color.Orange;
-            this.BtnSales.OnHovercolor = System.Drawing.Color.Gold;
+            this.BtnSales.Normalcolor = System.Drawing.Color.Teal;
+            this.BtnSales.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.BtnSales.OnHoverTextColor = System.Drawing.Color.White;
             this.BtnSales.selected = false;
             this.BtnSales.Size = new System.Drawing.Size(259, 66);
             this.BtnSales.TabIndex = 20;
             this.BtnSales.Text = "     Sales";
             this.BtnSales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnSales.Textcolor = System.Drawing.Color.Black;
+            this.BtnSales.Textcolor = System.Drawing.Color.White;
             this.BtnSales.TextFont = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.BtnSales.Click += new System.EventHandler(this.BtnSales_Click);
             // 
@@ -266,11 +266,11 @@
             this.transitionPanel.SetDecoration(this.btnSignOut, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnSignOut, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel2.SetDecoration(this.btnSignOut, BunifuAnimatorNS.DecorationType.None);
-            this.btnSignOut.Image = global::POSWithInventorySystem.Properties.Resources.exit;
+            this.btnSignOut.Image = global::POSWithInventorySystem.Properties.Resources.round_logout_white_48;
             this.btnSignOut.ImageActive = null;
             this.btnSignOut.Location = new System.Drawing.Point(202, 70);
             this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(42, 30);
+            this.btnSignOut.Size = new System.Drawing.Size(40, 40);
             this.btnSignOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSignOut.TabIndex = 17;
             this.btnSignOut.TabStop = false;
@@ -283,10 +283,11 @@
             this.transitionPanel2.SetDecoration(this.lblUserTypeValue, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.lblUserTypeValue, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.lblUserTypeValue, BunifuAnimatorNS.DecorationType.None);
-            this.lblUserTypeValue.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.lblUserTypeValue.Location = new System.Drawing.Point(15, 184);
+            this.lblUserTypeValue.Font = new System.Drawing.Font("Segoe UI", 13F);
+            this.lblUserTypeValue.ForeColor = System.Drawing.Color.White;
+            this.lblUserTypeValue.Location = new System.Drawing.Point(15, 180);
             this.lblUserTypeValue.Name = "lblUserTypeValue";
-            this.lblUserTypeValue.Size = new System.Drawing.Size(142, 28);
+            this.lblUserTypeValue.Size = new System.Drawing.Size(128, 25);
             this.lblUserTypeValue.TabIndex = 15;
             this.lblUserTypeValue.Text = "labelTypeValue";
             // 
@@ -296,10 +297,11 @@
             this.transitionPanel2.SetDecoration(this.lblNameValue, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.lblNameValue, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.lblNameValue, BunifuAnimatorNS.DecorationType.None);
-            this.lblNameValue.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.lblNameValue.Font = new System.Drawing.Font("Segoe UI", 13F);
+            this.lblNameValue.ForeColor = System.Drawing.Color.White;
             this.lblNameValue.Location = new System.Drawing.Point(14, 151);
             this.lblNameValue.Name = "lblNameValue";
-            this.lblNameValue.Size = new System.Drawing.Size(153, 28);
+            this.lblNameValue.Size = new System.Drawing.Size(138, 25);
             this.lblNameValue.TabIndex = 13;
             this.lblNameValue.Text = "labelNameValue";
             // 
@@ -310,6 +312,7 @@
             this.transitionLogo.SetDecoration(this.lblTodayAndTime, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.lblTodayAndTime, BunifuAnimatorNS.DecorationType.None);
             this.lblTodayAndTime.Font = new System.Drawing.Font("Segoe UI", 13F);
+            this.lblTodayAndTime.ForeColor = System.Drawing.Color.White;
             this.lblTodayAndTime.Location = new System.Drawing.Point(12, 712);
             this.lblTodayAndTime.Name = "lblTodayAndTime";
             this.lblTodayAndTime.Size = new System.Drawing.Size(121, 25);
@@ -323,6 +326,7 @@
             this.transitionLogo.SetDecoration(this.lblDateAndTime, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.lblDateAndTime, BunifuAnimatorNS.DecorationType.None);
             this.lblDateAndTime.Font = new System.Drawing.Font("Segoe UI", 13F);
+            this.lblDateAndTime.ForeColor = System.Drawing.Color.White;
             this.lblDateAndTime.Location = new System.Drawing.Point(12, 683);
             this.lblDateAndTime.Name = "lblDateAndTime";
             this.lblDateAndTime.Size = new System.Drawing.Size(91, 25);
@@ -346,8 +350,8 @@
             // 
             // btnUsers
             // 
-            this.btnUsers.Activecolor = System.Drawing.Color.Orange;
-            this.btnUsers.BackColor = System.Drawing.Color.Orange;
+            this.btnUsers.Activecolor = System.Drawing.Color.Teal;
+            this.btnUsers.BackColor = System.Drawing.Color.Teal;
             this.btnUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUsers.BorderRadius = 0;
             this.btnUsers.ButtonText = "     Users";
@@ -355,10 +359,10 @@
             this.transitionPanel2.SetDecoration(this.btnUsers, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnUsers, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.btnUsers, BunifuAnimatorNS.DecorationType.None);
-            this.btnUsers.DisabledColor = System.Drawing.Color.Gray;
+            this.btnUsers.DisabledColor = System.Drawing.Color.DimGray;
             this.btnUsers.ForeColor = System.Drawing.Color.Black;
             this.btnUsers.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnUsers.Iconimage = global::POSWithInventorySystem.Properties.Resources._666201__1_;
+            this.btnUsers.Iconimage = global::POSWithInventorySystem.Properties.Resources.round_manage_accounts_white_48;
             this.btnUsers.Iconimage_right = null;
             this.btnUsers.Iconimage_right_Selected = null;
             this.btnUsers.Iconimage_Selected = null;
@@ -371,15 +375,15 @@
             this.btnUsers.IsTab = true;
             this.btnUsers.Location = new System.Drawing.Point(3, 537);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Normalcolor = System.Drawing.Color.Orange;
-            this.btnUsers.OnHovercolor = System.Drawing.Color.Gold;
+            this.btnUsers.Normalcolor = System.Drawing.Color.Teal;
+            this.btnUsers.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.btnUsers.OnHoverTextColor = System.Drawing.Color.White;
             this.btnUsers.selected = false;
             this.btnUsers.Size = new System.Drawing.Size(259, 66);
             this.btnUsers.TabIndex = 9;
             this.btnUsers.Text = "     Users";
             this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsers.Textcolor = System.Drawing.Color.Black;
+            this.btnUsers.Textcolor = System.Drawing.Color.White;
             this.btnUsers.TextFont = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
@@ -400,8 +404,8 @@
             // 
             // btnHistoryLog
             // 
-            this.btnHistoryLog.Activecolor = System.Drawing.Color.Orange;
-            this.btnHistoryLog.BackColor = System.Drawing.Color.Orange;
+            this.btnHistoryLog.Activecolor = System.Drawing.Color.Teal;
+            this.btnHistoryLog.BackColor = System.Drawing.Color.Teal;
             this.btnHistoryLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHistoryLog.BorderRadius = 0;
             this.btnHistoryLog.ButtonText = "     History ";
@@ -409,10 +413,10 @@
             this.transitionPanel2.SetDecoration(this.btnHistoryLog, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnHistoryLog, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.btnHistoryLog, BunifuAnimatorNS.DecorationType.None);
-            this.btnHistoryLog.DisabledColor = System.Drawing.Color.Gray;
-            this.btnHistoryLog.ForeColor = System.Drawing.Color.Black;
+            this.btnHistoryLog.DisabledColor = System.Drawing.Color.DimGray;
+            this.btnHistoryLog.ForeColor = System.Drawing.Color.White;
             this.btnHistoryLog.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnHistoryLog.Iconimage = global::POSWithInventorySystem.Properties.Resources.paper;
+            this.btnHistoryLog.Iconimage = global::POSWithInventorySystem.Properties.Resources.round_manage_search_white_48;
             this.btnHistoryLog.Iconimage_right = null;
             this.btnHistoryLog.Iconimage_right_Selected = null;
             this.btnHistoryLog.Iconimage_Selected = null;
@@ -425,15 +429,15 @@
             this.btnHistoryLog.IsTab = true;
             this.btnHistoryLog.Location = new System.Drawing.Point(3, 468);
             this.btnHistoryLog.Name = "btnHistoryLog";
-            this.btnHistoryLog.Normalcolor = System.Drawing.Color.Orange;
-            this.btnHistoryLog.OnHovercolor = System.Drawing.Color.Gold;
+            this.btnHistoryLog.Normalcolor = System.Drawing.Color.Teal;
+            this.btnHistoryLog.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.btnHistoryLog.OnHoverTextColor = System.Drawing.Color.White;
             this.btnHistoryLog.selected = false;
             this.btnHistoryLog.Size = new System.Drawing.Size(259, 66);
             this.btnHistoryLog.TabIndex = 7;
             this.btnHistoryLog.Text = "     History ";
             this.btnHistoryLog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistoryLog.Textcolor = System.Drawing.Color.Black;
+            this.btnHistoryLog.Textcolor = System.Drawing.Color.White;
             this.btnHistoryLog.TextFont = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.btnHistoryLog.Click += new System.EventHandler(this.btnHistoryLog_Click);
             // 
@@ -454,8 +458,8 @@
             // 
             // btnStocks
             // 
-            this.btnStocks.Activecolor = System.Drawing.Color.Orange;
-            this.btnStocks.BackColor = System.Drawing.Color.Orange;
+            this.btnStocks.Activecolor = System.Drawing.Color.Teal;
+            this.btnStocks.BackColor = System.Drawing.Color.Teal;
             this.btnStocks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnStocks.BorderRadius = 0;
             this.btnStocks.ButtonText = "     Inventory";
@@ -463,10 +467,10 @@
             this.transitionPanel2.SetDecoration(this.btnStocks, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnStocks, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.btnStocks, BunifuAnimatorNS.DecorationType.None);
-            this.btnStocks.DisabledColor = System.Drawing.Color.Gray;
-            this.btnStocks.ForeColor = System.Drawing.Color.Black;
+            this.btnStocks.DisabledColor = System.Drawing.Color.DimGray;
+            this.btnStocks.ForeColor = System.Drawing.Color.White;
             this.btnStocks.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnStocks.Iconimage = global::POSWithInventorySystem.Properties.Resources.server;
+            this.btnStocks.Iconimage = global::POSWithInventorySystem.Properties.Resources.round_inventory_white_48;
             this.btnStocks.Iconimage_right = null;
             this.btnStocks.Iconimage_right_Selected = null;
             this.btnStocks.Iconimage_Selected = null;
@@ -479,15 +483,15 @@
             this.btnStocks.IsTab = true;
             this.btnStocks.Location = new System.Drawing.Point(3, 331);
             this.btnStocks.Name = "btnStocks";
-            this.btnStocks.Normalcolor = System.Drawing.Color.Orange;
-            this.btnStocks.OnHovercolor = System.Drawing.Color.Gold;
+            this.btnStocks.Normalcolor = System.Drawing.Color.Teal;
+            this.btnStocks.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.btnStocks.OnHoverTextColor = System.Drawing.Color.White;
             this.btnStocks.selected = false;
             this.btnStocks.Size = new System.Drawing.Size(259, 66);
             this.btnStocks.TabIndex = 5;
             this.btnStocks.Text = "     Inventory";
             this.btnStocks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStocks.Textcolor = System.Drawing.Color.Black;
+            this.btnStocks.Textcolor = System.Drawing.Color.White;
             this.btnStocks.TextFont = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.btnStocks.Click += new System.EventHandler(this.btnStocks_Click);
             // 
@@ -512,6 +516,7 @@
             this.transitionPanel.SetDecoration(this.bunifuSeparator1, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.bunifuSeparator1, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel2.SetDecoration(this.bunifuSeparator1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuSeparator1.ForeColor = System.Drawing.Color.White;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuSeparator1.LineThickness = 1;
             this.bunifuSeparator1.Location = new System.Drawing.Point(3, 256);
@@ -523,8 +528,8 @@
             // 
             // btnTransaction
             // 
-            this.btnTransaction.Activecolor = System.Drawing.Color.Orange;
-            this.btnTransaction.BackColor = System.Drawing.Color.Orange;
+            this.btnTransaction.Activecolor = System.Drawing.Color.Teal;
+            this.btnTransaction.BackColor = System.Drawing.Color.Teal;
             this.btnTransaction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTransaction.BorderRadius = 0;
             this.btnTransaction.ButtonText = "     POS";
@@ -532,10 +537,10 @@
             this.transitionPanel2.SetDecoration(this.btnTransaction, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnTransaction, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel.SetDecoration(this.btnTransaction, BunifuAnimatorNS.DecorationType.None);
-            this.btnTransaction.DisabledColor = System.Drawing.Color.Gray;
-            this.btnTransaction.ForeColor = System.Drawing.Color.Black;
+            this.btnTransaction.DisabledColor = System.Drawing.Color.DimGray;
+            this.btnTransaction.ForeColor = System.Drawing.Color.White;
             this.btnTransaction.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnTransaction.Iconimage = global::POSWithInventorySystem.Properties.Resources._239678;
+            this.btnTransaction.Iconimage = global::POSWithInventorySystem.Properties.Resources.round_point_of_sale_white_48;
             this.btnTransaction.Iconimage_right = null;
             this.btnTransaction.Iconimage_right_Selected = null;
             this.btnTransaction.Iconimage_Selected = null;
@@ -548,30 +553,30 @@
             this.btnTransaction.IsTab = true;
             this.btnTransaction.Location = new System.Drawing.Point(3, 263);
             this.btnTransaction.Name = "btnTransaction";
-            this.btnTransaction.Normalcolor = System.Drawing.Color.Orange;
-            this.btnTransaction.OnHovercolor = System.Drawing.Color.Gold;
+            this.btnTransaction.Normalcolor = System.Drawing.Color.Teal;
+            this.btnTransaction.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.btnTransaction.OnHoverTextColor = System.Drawing.Color.White;
             this.btnTransaction.selected = false;
             this.btnTransaction.Size = new System.Drawing.Size(259, 66);
             this.btnTransaction.TabIndex = 2;
             this.btnTransaction.Text = "     POS";
             this.btnTransaction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransaction.Textcolor = System.Drawing.Color.Black;
+            this.btnTransaction.Textcolor = System.Drawing.Color.White;
             this.btnTransaction.TextFont = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
             // btnMenu
             // 
             this.btnMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMenu.BackColor = System.Drawing.Color.Orange;
+            this.btnMenu.BackColor = System.Drawing.Color.Transparent;
             this.transitionPanel.SetDecoration(this.btnMenu, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnMenu, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel2.SetDecoration(this.btnMenu, BunifuAnimatorNS.DecorationType.None);
-            this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
+            this.btnMenu.Image = global::POSWithInventorySystem.Properties.Resources.round_menu_white_48;
             this.btnMenu.ImageActive = null;
-            this.btnMenu.Location = new System.Drawing.Point(209, 15);
+            this.btnMenu.Location = new System.Drawing.Point(202, 15);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(35, 34);
+            this.btnMenu.Size = new System.Drawing.Size(40, 40);
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMenu.TabIndex = 1;
             this.btnMenu.TabStop = false;
@@ -593,7 +598,7 @@
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.Gray;
+            this.panelHeader.BackColor = System.Drawing.Color.Black;
             this.panelHeader.Controls.Add(this.btnMinimize);
             this.panelHeader.Controls.Add(this.btnClose);
             this.panelHeader.Controls.Add(this.lblPOSInventory);
@@ -608,15 +613,15 @@
             // 
             // btnMinimize
             // 
-            this.btnMinimize.BackColor = System.Drawing.Color.Gray;
+            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
             this.transitionPanel.SetDecoration(this.btnMinimize, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnMinimize, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel2.SetDecoration(this.btnMinimize, BunifuAnimatorNS.DecorationType.None);
-            this.btnMinimize.Image = global::POSWithInventorySystem.Properties.Resources.minimize_icon_23;
+            this.btnMinimize.Image = global::POSWithInventorySystem.Properties.Resources.round_minimize_white_48;
             this.btnMinimize.ImageActive = null;
-            this.btnMinimize.Location = new System.Drawing.Point(1304, 13);
+            this.btnMinimize.Location = new System.Drawing.Point(1304, 7);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(23, 20);
+            this.btnMinimize.Size = new System.Drawing.Size(30, 30);
             this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimize.TabIndex = 1;
             this.btnMinimize.TabStop = false;
@@ -625,15 +630,15 @@
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.Gray;
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.transitionPanel.SetDecoration(this.btnClose, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this.btnClose, BunifuAnimatorNS.DecorationType.None);
             this.transitionPanel2.SetDecoration(this.btnClose, BunifuAnimatorNS.DecorationType.None);
-            this.btnClose.Image = global::POSWithInventorySystem.Properties.Resources._60994;
+            this.btnClose.Image = global::POSWithInventorySystem.Properties.Resources.round_close_white_48;
             this.btnClose.ImageActive = null;
-            this.btnClose.Location = new System.Drawing.Point(1339, 12);
+            this.btnClose.Location = new System.Drawing.Point(1341, 8);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(23, 20);
+            this.btnClose.Size = new System.Drawing.Size(30, 30);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 1;
             this.btnClose.TabStop = false;
@@ -650,9 +655,9 @@
             this.lblPOSInventory.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblPOSInventory.Location = new System.Drawing.Point(9, 5);
             this.lblPOSInventory.Name = "lblPOSInventory";
-            this.lblPOSInventory.Size = new System.Drawing.Size(171, 30);
+            this.lblPOSInventory.Size = new System.Drawing.Size(359, 30);
             this.lblPOSInventory.TabIndex = 0;
-            this.lblPOSInventory.Text = "Inventory System";
+            this.lblPOSInventory.Text = "DMN Programming Inventory System";
             // 
             // bunifuDragControl1
             // 
@@ -756,6 +761,7 @@
             this.transitionPanel.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.transitionLogo.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

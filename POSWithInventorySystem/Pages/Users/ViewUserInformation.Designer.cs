@@ -256,7 +256,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Activecolor = System.Drawing.Color.Gray;
+            this.btnClose.Activecolor = System.Drawing.Color.Silver;
             this.btnClose.BackColor = System.Drawing.Color.Silver;
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClose.BorderRadius = 0;
@@ -279,7 +279,7 @@
             this.btnClose.Location = new System.Drawing.Point(12, 531);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Normalcolor = System.Drawing.Color.Gray;
+            this.btnClose.Normalcolor = System.Drawing.Color.Silver;
             this.btnClose.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnClose.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnClose.selected = false;
@@ -321,6 +321,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1040, 605);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblStatusUsersValue);

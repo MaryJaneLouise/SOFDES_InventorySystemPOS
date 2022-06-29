@@ -84,8 +84,8 @@ namespace POSWithInventorySystem {
             //Design
             dataGridViewProductsLog.EnableHeadersVisualStyles = false;
             dataGridViewProductsLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridViewProductsLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
             dataGridViewProductsLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
@@ -325,8 +325,8 @@ namespace POSWithInventorySystem {
             //Design
             dataGridViewStocksLog.EnableHeadersVisualStyles = false;
             dataGridViewStocksLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridViewStocksLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
             dataGridViewStocksLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
@@ -426,8 +426,8 @@ namespace POSWithInventorySystem {
             //Design
             dataGridViewStocksTotalLog.EnableHeadersVisualStyles = false;
             dataGridViewStocksTotalLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridViewStocksTotalLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
             dataGridViewStocksTotalLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
@@ -526,8 +526,8 @@ namespace POSWithInventorySystem {
             //Design
             dataGridViewIUserLog.EnableHeadersVisualStyles = false;
             dataGridViewIUserLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridViewIUserLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
             dataGridViewIUserLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
@@ -642,8 +642,8 @@ namespace POSWithInventorySystem {
             //Design
             dvgTransactions.EnableHeadersVisualStyles = false;
             dvgTransactions.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dvgTransactions.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dvgTransactions.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dvgTransactions.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dvgTransactions.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dvgTransactions.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
             dvgTransactions.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
@@ -717,8 +717,8 @@ namespace POSWithInventorySystem {
             //Design
             dvgUsersInformationLog.EnableHeadersVisualStyles = false;
             dvgUsersInformationLog.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dvgUsersInformationLog.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
             dvgUsersInformationLog.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 

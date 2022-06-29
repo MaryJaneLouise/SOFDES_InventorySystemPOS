@@ -127,7 +127,7 @@ namespace POSWithInventorySystem {
             //Design
             dataGridViewItems.EnableHeadersVisualStyles = false;
             dataGridViewItems.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewItems.ColumnHeadersDefaultCellStyle.BackColor = Color.Gray; //Color.FromArgb(20, 25, 72);
+            dataGridViewItems.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
             dataGridViewItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
         }

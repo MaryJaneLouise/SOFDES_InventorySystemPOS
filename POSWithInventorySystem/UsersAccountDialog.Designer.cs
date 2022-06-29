@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation9 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersAccountDialog));
-            BunifuAnimatorNS.Animation animation10 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             this.txtUsername = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblConfirmPasswordError = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new Bunifu.Framework.UI.BunifuMetroTextbox();
@@ -51,9 +51,9 @@
             this.btnUpdateAccount = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.bunifuTransition2 = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.btnPasswordSettings = new System.Windows.Forms.Button();
             this.btnUsernameSettings = new System.Windows.Forms.Button();
+            this.bunifuTransition2 = new BunifuAnimatorNS.BunifuTransition(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserPic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -288,15 +288,15 @@
             // 
             // btnUpdateAccount
             // 
-            this.btnUpdateAccount.Activecolor = System.Drawing.Color.Orange;
-            this.btnUpdateAccount.BackColor = System.Drawing.Color.Orange;
+            this.btnUpdateAccount.Activecolor = System.Drawing.Color.Teal;
+            this.btnUpdateAccount.BackColor = System.Drawing.Color.Teal;
             this.btnUpdateAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdateAccount.BorderRadius = 0;
             this.btnUpdateAccount.ButtonText = "Update Account";
             this.btnUpdateAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition1.SetDecoration(this.btnUpdateAccount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.btnUpdateAccount, BunifuAnimatorNS.DecorationType.None);
-            this.btnUpdateAccount.DisabledColor = System.Drawing.Color.Gray;
+            this.btnUpdateAccount.DisabledColor = System.Drawing.Color.DimGray;
             this.btnUpdateAccount.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateAccount.Iconcolor = System.Drawing.Color.Transparent;
             this.btnUpdateAccount.Iconimage = null;
@@ -310,25 +310,25 @@
             this.btnUpdateAccount.IconVisible = true;
             this.btnUpdateAccount.IconZoom = 90D;
             this.btnUpdateAccount.IsTab = false;
-            this.btnUpdateAccount.Location = new System.Drawing.Point(252, 346);
+            this.btnUpdateAccount.Location = new System.Drawing.Point(16, 346);
             this.btnUpdateAccount.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnUpdateAccount.Name = "btnUpdateAccount";
-            this.btnUpdateAccount.Normalcolor = System.Drawing.Color.Orange;
-            this.btnUpdateAccount.OnHovercolor = System.Drawing.Color.Gold;
+            this.btnUpdateAccount.Normalcolor = System.Drawing.Color.Teal;
+            this.btnUpdateAccount.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.btnUpdateAccount.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnUpdateAccount.selected = false;
-            this.btnUpdateAccount.Size = new System.Drawing.Size(193, 73);
+            this.btnUpdateAccount.Size = new System.Drawing.Size(193, 59);
             this.btnUpdateAccount.TabIndex = 32;
             this.btnUpdateAccount.Text = "Update Account";
             this.btnUpdateAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnUpdateAccount.Textcolor = System.Drawing.Color.Black;
+            this.btnUpdateAccount.Textcolor = System.Drawing.Color.White;
             this.btnUpdateAccount.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnUpdateAccount.Click += new System.EventHandler(this.btnUpdateAccount_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Cancel";
@@ -349,14 +349,14 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(12, 346);
+            this.btnCancel.Location = new System.Drawing.Point(252, 346);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
-            this.btnCancel.Size = new System.Drawing.Size(193, 73);
+            this.btnCancel.Size = new System.Drawing.Size(193, 59);
             this.btnCancel.TabIndex = 36;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -368,43 +368,22 @@
             // 
             this.bunifuTransition1.AnimationType = BunifuAnimatorNS.AnimationType.Rotate;
             this.bunifuTransition1.Cursor = null;
-            animation9.AnimateOnlyDifferences = true;
-            animation9.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.BlindCoeff")));
-            animation9.LeafCoeff = 0F;
-            animation9.MaxTime = 1F;
-            animation9.MinTime = 0F;
-            animation9.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicCoeff")));
-            animation9.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicShift")));
-            animation9.MosaicSize = 0;
-            animation9.Padding = new System.Windows.Forms.Padding(50);
-            animation9.RotateCoeff = 1F;
-            animation9.RotateLimit = 0F;
-            animation9.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.ScaleCoeff")));
-            animation9.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.SlideCoeff")));
-            animation9.TimeCoeff = 0F;
-            animation9.TransparencyCoeff = 1F;
-            this.bunifuTransition1.DefaultAnimation = animation9;
-            // 
-            // bunifuTransition2
-            // 
-            this.bunifuTransition2.AnimationType = BunifuAnimatorNS.AnimationType.Leaf;
-            this.bunifuTransition2.Cursor = null;
-            animation10.AnimateOnlyDifferences = true;
-            animation10.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.BlindCoeff")));
-            animation10.LeafCoeff = 1F;
-            animation10.MaxTime = 1F;
-            animation10.MinTime = 0F;
-            animation10.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicCoeff")));
-            animation10.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicShift")));
-            animation10.MosaicSize = 0;
-            animation10.Padding = new System.Windows.Forms.Padding(0);
-            animation10.RotateCoeff = 0F;
-            animation10.RotateLimit = 0F;
-            animation10.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.ScaleCoeff")));
-            animation10.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.SlideCoeff")));
-            animation10.TimeCoeff = 0F;
-            animation10.TransparencyCoeff = 0F;
-            this.bunifuTransition2.DefaultAnimation = animation10;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(50);
+            animation3.RotateCoeff = 1F;
+            animation3.RotateLimit = 0F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 1F;
+            this.bunifuTransition1.DefaultAnimation = animation3;
             // 
             // btnPasswordSettings
             // 
@@ -432,11 +411,33 @@
             this.btnUsernameSettings.UseVisualStyleBackColor = true;
             this.btnUsernameSettings.Click += new System.EventHandler(this.btnUsernameSettings_Click);
             // 
+            // bunifuTransition2
+            // 
+            this.bunifuTransition2.AnimationType = BunifuAnimatorNS.AnimationType.Leaf;
+            this.bunifuTransition2.Cursor = null;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 1F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(0);
+            animation4.RotateCoeff = 0F;
+            animation4.RotateLimit = 0F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 0F;
+            this.bunifuTransition2.DefaultAnimation = animation4;
+            // 
             // UsersAccountDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 439);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(465, 426);
             this.Controls.Add(this.btnUsernameSettings);
             this.Controls.Add(this.btnPasswordSettings);
             this.Controls.Add(this.btnCancel);

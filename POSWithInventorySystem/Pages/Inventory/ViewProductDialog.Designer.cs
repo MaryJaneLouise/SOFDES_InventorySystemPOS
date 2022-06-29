@@ -153,7 +153,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Activecolor = System.Drawing.Color.Gray;
+            this.btnClose.Activecolor = System.Drawing.Color.Silver;
             this.btnClose.BackColor = System.Drawing.Color.Silver;
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClose.BorderRadius = 0;
@@ -176,7 +176,7 @@
             this.btnClose.Location = new System.Drawing.Point(16, 329);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Normalcolor = System.Drawing.Color.Gray;
+            this.btnClose.Normalcolor = System.Drawing.Color.Silver;
             this.btnClose.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnClose.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnClose.selected = false;
@@ -222,6 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(880, 390);
             this.Controls.Add(this.lblSellingPriceValue);
             this.Controls.Add(this.lblSellingPrice);

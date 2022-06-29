@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInForm));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelUp = new System.Windows.Forms.Panel();
             this.lblMinimizeForm = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             // 
             // panelUp
             // 
-            this.panelUp.BackColor = System.Drawing.Color.Orange;
+            this.panelUp.BackColor = System.Drawing.Color.Teal;
             this.panelUp.Controls.Add(this.lblMinimizeForm);
             this.panelUp.Controls.Add(this.lblFormClose);
             this.panelUp.Controls.Add(this.lblLoginForm);
@@ -60,14 +61,14 @@
             this.panelUp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelUp.Location = new System.Drawing.Point(0, 0);
             this.panelUp.Name = "panelUp";
-            this.panelUp.Size = new System.Drawing.Size(540, 59);
+            this.panelUp.Size = new System.Drawing.Size(861, 51);
             this.panelUp.TabIndex = 0;
             // 
             // lblMinimizeForm
             // 
             this.lblMinimizeForm.AutoSize = true;
             this.lblMinimizeForm.Font = new System.Drawing.Font("DM Sans", 14.25F);
-            this.lblMinimizeForm.Location = new System.Drawing.Point(471, 19);
+            this.lblMinimizeForm.Location = new System.Drawing.Point(778, 17);
             this.lblMinimizeForm.Name = "lblMinimizeForm";
             this.lblMinimizeForm.Size = new System.Drawing.Size(22, 25);
             this.lblMinimizeForm.TabIndex = 0;
@@ -78,7 +79,7 @@
             // 
             this.lblFormClose.AutoSize = true;
             this.lblFormClose.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lblFormClose.Location = new System.Drawing.Point(503, 16);
+            this.lblFormClose.Location = new System.Drawing.Point(810, 14);
             this.lblFormClose.Name = "lblFormClose";
             this.lblFormClose.Size = new System.Drawing.Size(24, 25);
             this.lblFormClose.TabIndex = 0;
@@ -89,28 +90,28 @@
             // 
             this.lblLoginForm.AutoSize = true;
             this.lblLoginForm.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.lblLoginForm.Location = new System.Drawing.Point(12, 17);
+            this.lblLoginForm.Location = new System.Drawing.Point(12, 13);
             this.lblLoginForm.Name = "lblLoginForm";
-            this.lblLoginForm.Size = new System.Drawing.Size(70, 25);
+            this.lblLoginForm.Size = new System.Drawing.Size(177, 25);
             this.lblLoginForm.TabIndex = 0;
-            this.lblLoginForm.Text = "Sign In";
+            this.lblLoginForm.Text = "DMN Programming";
             // 
             // txtUsername
             // 
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.txtUsername.ForeColor = System.Drawing.Color.Gray;
+            this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HintForeColor = System.Drawing.Color.Empty;
             this.txtUsername.HintText = "";
             this.txtUsername.isPassword = false;
-            this.txtUsername.LineFocusedColor = System.Drawing.Color.Orange;
-            this.txtUsername.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtUsername.LineMouseHoverColor = System.Drawing.Color.Orange;
+            this.txtUsername.LineFocusedColor = System.Drawing.Color.DarkCyan;
+            this.txtUsername.LineIdleColor = System.Drawing.Color.Black;
+            this.txtUsername.LineMouseHoverColor = System.Drawing.Color.DarkCyan;
             this.txtUsername.LineThickness = 5;
-            this.txtUsername.Location = new System.Drawing.Point(107, 323);
+            this.txtUsername.Location = new System.Drawing.Point(386, 129);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(326, 59);
+            this.txtUsername.Size = new System.Drawing.Size(428, 59);
             this.txtUsername.TabIndex = 0;
             this.txtUsername.Text = "Username";
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -123,18 +124,18 @@
             // 
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.txtPassword.ForeColor = System.Drawing.Color.Gray;
+            this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HintForeColor = System.Drawing.Color.Empty;
             this.txtPassword.HintText = "";
             this.txtPassword.isPassword = false;
-            this.txtPassword.LineFocusedColor = System.Drawing.Color.Orange;
-            this.txtPassword.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtPassword.LineMouseHoverColor = System.Drawing.Color.Orange;
+            this.txtPassword.LineFocusedColor = System.Drawing.Color.DarkCyan;
+            this.txtPassword.LineIdleColor = System.Drawing.Color.Black;
+            this.txtPassword.LineMouseHoverColor = System.Drawing.Color.DarkCyan;
             this.txtPassword.LineThickness = 5;
-            this.txtPassword.Location = new System.Drawing.Point(107, 396);
+            this.txtPassword.Location = new System.Drawing.Point(386, 224);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(326, 59);
+            this.txtPassword.Size = new System.Drawing.Size(428, 59);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "Password";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -153,15 +154,15 @@
             this.lblValidaton.AutoSize = true;
             this.lblValidaton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidaton.ForeColor = System.Drawing.Color.Red;
-            this.lblValidaton.Location = new System.Drawing.Point(153, 450);
+            this.lblValidaton.Location = new System.Drawing.Point(535, 290);
             this.lblValidaton.Name = "lblValidaton";
             this.lblValidaton.Size = new System.Drawing.Size(0, 19);
             this.lblValidaton.TabIndex = 4;
             // 
             // btnLogin
             // 
-            this.btnLogin.Activecolor = System.Drawing.Color.Orange;
-            this.btnLogin.BackColor = System.Drawing.Color.Orange;
+            this.btnLogin.Activecolor = System.Drawing.Color.DarkCyan;
+            this.btnLogin.BackColor = System.Drawing.Color.Teal;
             this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogin.BorderRadius = 0;
             this.btnLogin.ButtonText = "Sign In";
@@ -180,14 +181,14 @@
             this.btnLogin.IconVisible = true;
             this.btnLogin.IconZoom = 90D;
             this.btnLogin.IsTab = false;
-            this.btnLogin.Location = new System.Drawing.Point(88, 475);
+            this.btnLogin.Location = new System.Drawing.Point(386, 337);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Normalcolor = System.Drawing.Color.Orange;
-            this.btnLogin.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnLogin.Normalcolor = System.Drawing.Color.Teal;
+            this.btnLogin.OnHovercolor = System.Drawing.Color.DarkCyan;
             this.btnLogin.OnHoverTextColor = System.Drawing.Color.White;
             this.btnLogin.selected = false;
-            this.btnLogin.Size = new System.Drawing.Size(359, 54);
+            this.btnLogin.Size = new System.Drawing.Size(428, 54);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Tag = "";
             this.btnLogin.Text = "Sign In";
@@ -206,9 +207,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::POSWithInventorySystem.Properties.Resources.Logo_1;
-            this.pictureBox1.Location = new System.Drawing.Point(162, 82);
+            this.pictureBox1.Location = new System.Drawing.Point(32, 91);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(210, 210);
+            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -218,7 +219,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(540, 577);
+            this.ClientSize = new System.Drawing.Size(861, 438);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblValidaton);
             this.Controls.Add(this.btnLogin);
@@ -226,6 +227,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.panelUp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LogInForm";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

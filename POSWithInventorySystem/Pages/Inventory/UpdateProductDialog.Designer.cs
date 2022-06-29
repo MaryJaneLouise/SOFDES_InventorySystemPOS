@@ -120,13 +120,14 @@
             // 
             // btnBrowseImage
             // 
-            this.btnBrowseImage.Activecolor = System.Drawing.Color.Orange;
-            this.btnBrowseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBrowseImage.Activecolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.BackColor = System.Drawing.Color.Teal;
             this.btnBrowseImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBrowseImage.BorderRadius = 0;
+            this.btnBrowseImage.BorderRadius = 7;
             this.btnBrowseImage.ButtonText = "Browse Image";
             this.btnBrowseImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBrowseImage.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBrowseImage.ForeColor = System.Drawing.Color.White;
             this.btnBrowseImage.Iconcolor = System.Drawing.Color.Transparent;
             this.btnBrowseImage.Iconimage = null;
             this.btnBrowseImage.Iconimage_right = null;
@@ -142,15 +143,15 @@
             this.btnBrowseImage.Location = new System.Drawing.Point(12, 218);
             this.btnBrowseImage.Margin = new System.Windows.Forms.Padding(5);
             this.btnBrowseImage.Name = "btnBrowseImage";
-            this.btnBrowseImage.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnBrowseImage.Normalcolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.White;
             this.btnBrowseImage.selected = false;
             this.btnBrowseImage.Size = new System.Drawing.Size(200, 46);
             this.btnBrowseImage.TabIndex = 5;
             this.btnBrowseImage.Text = "Browse Image";
             this.btnBrowseImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnBrowseImage.Textcolor = System.Drawing.Color.Black;
+            this.btnBrowseImage.Textcolor = System.Drawing.Color.White;
             this.btnBrowseImage.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnBrowseImage.Click += new System.EventHandler(this.btnBrowseImage_Click);
             // 
@@ -187,8 +188,8 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Activecolor = System.Drawing.Color.Orange;
-            this.btnUpdate.BackColor = System.Drawing.Color.Orange;
+            this.btnUpdate.Activecolor = System.Drawing.Color.Teal;
+            this.btnUpdate.BackColor = System.Drawing.Color.Teal;
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdate.BorderRadius = 0;
             this.btnUpdate.ButtonText = "Update Product";
@@ -207,18 +208,18 @@
             this.btnUpdate.IconVisible = true;
             this.btnUpdate.IconZoom = 90D;
             this.btnUpdate.IsTab = false;
-            this.btnUpdate.Location = new System.Drawing.Point(478, 449);
+            this.btnUpdate.Location = new System.Drawing.Point(16, 450);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Normalcolor = System.Drawing.Color.Orange;
-            this.btnUpdate.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnUpdate.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnUpdate.Normalcolor = System.Drawing.Color.Teal;
+            this.btnUpdate.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnUpdate.OnHoverTextColor = System.Drawing.Color.White;
             this.btnUpdate.selected = false;
             this.btnUpdate.Size = new System.Drawing.Size(447, 58);
             this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Update Product";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnUpdate.Textcolor = System.Drawing.Color.Black;
+            this.btnUpdate.Textcolor = System.Drawing.Color.White;
             this.btnUpdate.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -244,10 +245,10 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(16, 449);
+            this.btnCancel.Location = new System.Drawing.Point(479, 450);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -397,6 +398,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(940, 530);
             this.Controls.Add(this.lblSellingPriceError);
             this.Controls.Add(this.txtSellingPrice);

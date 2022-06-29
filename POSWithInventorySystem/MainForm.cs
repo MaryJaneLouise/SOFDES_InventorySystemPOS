@@ -182,11 +182,11 @@ namespace POSWithInventorySystem {
                 usersForm.Dock = DockStyle.Fill;
                 usersForm.Show();
 
-                btnUsers.Activecolor = Color.Gold;
+                btnUsers.Activecolor = Color.DarkCyan;
                 LeaveUsersMenu = true;
             }
 
-            btnTransaction.Normalcolor = Color.Orange;
+            btnTransaction.Normalcolor = Color.Teal;
 
             LeavePOSTransactionMenu = false;
             LeaveStocksMenu = false;
@@ -208,11 +208,11 @@ namespace POSWithInventorySystem {
                 historyForm.Dock = DockStyle.Fill; 
                 historyForm.Show();
 
-                btnHistoryLog.Activecolor = Color.Gold;
+                btnHistoryLog.Activecolor = Color.DarkCyan;
                 LeaveHistoryMenu = true;
             }
 
-            btnTransaction.Normalcolor = Color.Orange;
+            btnTransaction.Normalcolor = Color.Teal;
 
             LeavePOSTransactionMenu = false;
             LeaveStocksMenu = false;
@@ -235,11 +235,11 @@ namespace POSWithInventorySystem {
                 salesForm.Dock = DockStyle.Fill;
                 salesForm.Show();
 
-                BtnSales.Activecolor = Color.Gold;
+                BtnSales.Activecolor = Color.DarkCyan;
                 LeaveSalesMenu = true;
             }
 
-            btnTransaction.Normalcolor = Color.Orange;
+            btnTransaction.Normalcolor = Color.Teal;
            
             LeavePOSTransactionMenu = false;
             LeaveStocksMenu = false;
@@ -261,12 +261,12 @@ namespace POSWithInventorySystem {
                 stocksForm.Dock = DockStyle.Fill;
                 stocksForm.Show();
 
-                btnStocks.Activecolor = Color.Gold;
+                btnStocks.Activecolor = Color.DarkCyan;
 
                 LeaveStocksMenu = true;
             }
 
-            btnTransaction.Normalcolor = Color.Orange;
+            btnTransaction.Normalcolor = Color.Teal;
 
             LeavePOSTransactionMenu = false;
             LeaveSalesMenu = false;
@@ -295,12 +295,12 @@ namespace POSWithInventorySystem {
                 backupForm.Dock = DockStyle.Fill;
                 backupForm.Show();
 
-                btnBackup.Activecolor = Color.Gold;
+                btnBackup.Activecolor = Color.DarkCyan;
 
                 LeaveBackup = true;
             }
 
-            btnTransaction.Normalcolor = Color.Orange;
+            btnTransaction.Normalcolor = Color.Teal;
 
             LeavePOSTransactionMenu = false;
             LeaveSalesMenu = false;
@@ -325,8 +325,8 @@ namespace POSWithInventorySystem {
                 transactionForm.Dock = DockStyle.Fill;
                 transactionForm.Show();
 
-                btnTransaction.Activecolor = Color.Gold;
-                btnTransaction.Normalcolor = Color.Gold;
+                btnTransaction.Activecolor = Color.DarkCyan;
+                btnTransaction.Normalcolor = Color.Teal;
                 LeavePOSTransactionMenu = true;
             }
 

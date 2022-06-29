@@ -36,14 +36,14 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Activecolor = System.Drawing.Color.Gray;
+            this.btnCancel.Activecolor = System.Drawing.Color.Silver;
             this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Cancel";
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DisabledColor = System.Drawing.Color.Gray;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnCancel.Iconcolor = System.Drawing.Color.Transparent;
             this.btnCancel.Iconimage = null;
             this.btnCancel.Iconimage_right = null;
@@ -56,14 +56,14 @@
             this.btnCancel.IconVisible = false;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(16, 79);
+            this.btnCancel.Location = new System.Drawing.Point(225, 80);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
-            this.btnCancel.Size = new System.Drawing.Size(158, 39);
+            this.btnCancel.Size = new System.Drawing.Size(171, 53);
             this.btnCancel.TabIndex = 40;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -73,14 +73,15 @@
             // 
             // btnOk
             // 
-            this.btnOk.Activecolor = System.Drawing.Color.Orange;
-            this.btnOk.BackColor = System.Drawing.Color.Orange;
+            this.btnOk.Activecolor = System.Drawing.Color.Teal;
+            this.btnOk.BackColor = System.Drawing.Color.Teal;
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOk.BorderRadius = 0;
             this.btnOk.ButtonText = "Enter Password";
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOk.DisabledColor = System.Drawing.Color.Gray;
-            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.Iconcolor = System.Drawing.Color.Transparent;
             this.btnOk.Iconimage = null;
             this.btnOk.Iconimage_right = null;
@@ -93,18 +94,18 @@
             this.btnOk.IconVisible = false;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(192, 80);
+            this.btnOk.Location = new System.Drawing.Point(13, 80);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Normalcolor = System.Drawing.Color.Orange;
-            this.btnOk.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnOk.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnOk.Normalcolor = System.Drawing.Color.Teal;
+            this.btnOk.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
-            this.btnOk.Size = new System.Drawing.Size(158, 38);
+            this.btnOk.Size = new System.Drawing.Size(171, 53);
             this.btnOk.TabIndex = 39;
             this.btnOk.Text = "Enter Password";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnOk.Textcolor = System.Drawing.Color.Black;
+            this.btnOk.Textcolor = System.Drawing.Color.White;
             this.btnOk.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -121,7 +122,7 @@
             this.txtPassword.Location = new System.Drawing.Point(13, 36);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(337, 34);
+            this.txtPassword.Size = new System.Drawing.Size(383, 34);
             this.txtPassword.TabIndex = 38;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -139,7 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 132);
+            this.ClientSize = new System.Drawing.Size(411, 145);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtPassword);

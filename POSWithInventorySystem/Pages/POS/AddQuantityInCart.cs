@@ -106,7 +106,7 @@ namespace POSWithInventorySystem {
                 }
 
                 else {
-                    MessageBox.Show("The item is currently out of stocks. Please contact your manager.", "Invalid Quantity Amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("The item will be out of stocks if it will exceed the item's available stock. Please restock first before doing so.", "Invalid Quantity Amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }

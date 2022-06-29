@@ -160,8 +160,8 @@ namespace POSWithInventorySystem {
         private void dataGridDesign() {
             dataGridViewProducts.EnableHeadersVisualStyles = false;
             dataGridViewProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dataGridViewProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dataGridViewProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void AddProduct() {
@@ -345,7 +345,7 @@ namespace POSWithInventorySystem {
             
             //For the print button
             //The current programmer's IDE cannot produce report so the btnPrint will be disabled
-            try {
+            /*try {
                 if (dataGridViewProducts.CurrentRow.Index != -1) {
                     btnPrint.Enabled = false;
                 }
@@ -353,7 +353,7 @@ namespace POSWithInventorySystem {
             
             catch(NullReferenceException ex) {
                 btnPrint.Enabled = false;
-            }
+            }*/
         }
         
         //Since we want to click directly the buttons, this switch has been partially disabled and returns true always
@@ -455,7 +455,7 @@ namespace POSWithInventorySystem {
                 ValidateAdminPassword();
                 
                 if (resultFromValidation) {
-                    if (dataGridViewProducts.CurrentRow.Index != -1) {
+                    if (dataGridViewProducts.CurrentRow.Index.ToString() != "-1") {
                         int ProductID = Convert.ToInt32(dataGridViewProducts.CurrentRow.Cells[0].Value);
                         string ProductName = dataGridViewProducts.CurrentRow.Cells[2].Value.ToString();
 
@@ -500,6 +500,10 @@ namespace POSWithInventorySystem {
                                 return;
                             }
                         }
+                    }
+                    else if (lblNumberOfItemsValue.Text == "0")
+                    {
+                        MessageBox.Show("The products' list is empty. Please add products first.", "Empty product list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 resultFromValidation = false;
@@ -669,8 +673,8 @@ namespace POSWithInventorySystem {
             //Design
             dataGridViewStocksTab2.EnableHeadersVisualStyles = false;
             dataGridViewStocksTab2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridViewStocksTab2.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
             dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
@@ -689,10 +693,10 @@ namespace POSWithInventorySystem {
             //Design
             dataGridViewStocksTab2.EnableHeadersVisualStyles = false;
             dataGridViewStocksTab2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dataGridViewStocksTab2.DefaultCellStyle.Font = new Font("Times New Roman", 14);
-            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14);
+            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridViewStocksTab2.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dataGridViewStocksTab2.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
 
             //Width
             dataGridViewStocksTab2.Columns[0].Width = 240;

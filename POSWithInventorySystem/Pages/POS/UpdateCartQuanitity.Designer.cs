@@ -46,8 +46,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.Activecolor = System.Drawing.Color.Silver;
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Cancel";
@@ -66,10 +66,10 @@
             this.btnCancel.IconVisible = false;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(12, 281);
+            this.btnCancel.Location = new System.Drawing.Point(260, 281);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -83,8 +83,8 @@
             // 
             // btnOk
             // 
-            this.btnOk.Activecolor = System.Drawing.Color.Orange;
-            this.btnOk.BackColor = System.Drawing.Color.Orange;
+            this.btnOk.Activecolor = System.Drawing.Color.Teal;
+            this.btnOk.BackColor = System.Drawing.Color.Teal;
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOk.BorderRadius = 0;
             this.btnOk.ButtonText = "Deduct Quantity";
@@ -103,18 +103,18 @@
             this.btnOk.IconVisible = false;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(260, 281);
+            this.btnOk.Location = new System.Drawing.Point(12, 281);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Normalcolor = System.Drawing.Color.Orange;
-            this.btnOk.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnOk.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnOk.Normalcolor = System.Drawing.Color.Teal;
+            this.btnOk.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
             this.btnOk.Size = new System.Drawing.Size(217, 48);
             this.btnOk.TabIndex = 43;
             this.btnOk.Text = "Deduct Quantity";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnOk.Textcolor = System.Drawing.Color.Black;
+            this.btnOk.Textcolor = System.Drawing.Color.White;
             this.btnOk.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -192,11 +192,11 @@
             // 
             // btnDecreaseAll
             // 
-            this.btnDecreaseAll.Activecolor = System.Drawing.Color.Orange;
-            this.btnDecreaseAll.BackColor = System.Drawing.Color.Orange;
+            this.btnDecreaseAll.Activecolor = System.Drawing.Color.Teal;
+            this.btnDecreaseAll.BackColor = System.Drawing.Color.Teal;
             this.btnDecreaseAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDecreaseAll.BorderRadius = 0;
-            this.btnDecreaseAll.ButtonText = "Decrease All";
+            this.btnDecreaseAll.ButtonText = "Remove All";
             this.btnDecreaseAll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDecreaseAll.DisabledColor = System.Drawing.Color.Gray;
             this.btnDecreaseAll.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -212,18 +212,18 @@
             this.btnDecreaseAll.IconVisible = false;
             this.btnDecreaseAll.IconZoom = 90D;
             this.btnDecreaseAll.IsTab = false;
-            this.btnDecreaseAll.Location = new System.Drawing.Point(384, 206);
+            this.btnDecreaseAll.Location = new System.Drawing.Point(384, 214);
             this.btnDecreaseAll.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDecreaseAll.Name = "btnDecreaseAll";
-            this.btnDecreaseAll.Normalcolor = System.Drawing.Color.Orange;
-            this.btnDecreaseAll.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnDecreaseAll.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnDecreaseAll.Normalcolor = System.Drawing.Color.Teal;
+            this.btnDecreaseAll.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnDecreaseAll.OnHoverTextColor = System.Drawing.Color.White;
             this.btnDecreaseAll.selected = false;
-            this.btnDecreaseAll.Size = new System.Drawing.Size(93, 55);
+            this.btnDecreaseAll.Size = new System.Drawing.Size(93, 37);
             this.btnDecreaseAll.TabIndex = 53;
-            this.btnDecreaseAll.Text = "Decrease All";
+            this.btnDecreaseAll.Text = "Remove All";
             this.btnDecreaseAll.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDecreaseAll.Textcolor = System.Drawing.Color.Black;
+            this.btnDecreaseAll.Textcolor = System.Drawing.Color.White;
             this.btnDecreaseAll.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDecreaseAll.Click += new System.EventHandler(this.btnDecreaseAll_Click);
             // 
@@ -283,10 +283,10 @@
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblProductNameValue);
             this.Controls.Add(this.lblBarcodeValue);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtNewQuantityValue);
             this.Controls.Add(this.lblNewQuantity);
+            this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

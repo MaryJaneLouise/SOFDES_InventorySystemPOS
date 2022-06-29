@@ -64,7 +64,7 @@
             // 
             // groupUsersInfo
             // 
-            this.groupUsersInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.groupUsersInfo.BackColor = System.Drawing.Color.White;
             this.groupUsersInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupUsersInfo.Controls.Add(this.groupBox1);
             this.groupUsersInfo.Controls.Add(this.lblContactError);
@@ -366,8 +366,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.Activecolor = System.Drawing.Color.Silver;
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Cancel";
@@ -389,7 +389,7 @@
             this.btnCancel.Location = new System.Drawing.Point(12, 600);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -403,11 +403,11 @@
             // 
             // btnUpdateInfo
             // 
-            this.btnUpdateInfo.Activecolor = System.Drawing.Color.Orange;
-            this.btnUpdateInfo.BackColor = System.Drawing.Color.Orange;
+            this.btnUpdateInfo.Activecolor = System.Drawing.Color.Teal;
+            this.btnUpdateInfo.BackColor = System.Drawing.Color.Teal;
             this.btnUpdateInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdateInfo.BorderRadius = 0;
-            this.btnUpdateInfo.ButtonText = " Update Information";
+            this.btnUpdateInfo.ButtonText = "Update User Information";
             this.btnUpdateInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdateInfo.DisabledColor = System.Drawing.Color.Gray;
             this.btnUpdateInfo.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -426,27 +426,28 @@
             this.btnUpdateInfo.Location = new System.Drawing.Point(539, 600);
             this.btnUpdateInfo.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnUpdateInfo.Name = "btnUpdateInfo";
-            this.btnUpdateInfo.Normalcolor = System.Drawing.Color.Orange;
-            this.btnUpdateInfo.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnUpdateInfo.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnUpdateInfo.Normalcolor = System.Drawing.Color.Teal;
+            this.btnUpdateInfo.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnUpdateInfo.OnHoverTextColor = System.Drawing.Color.White;
             this.btnUpdateInfo.selected = false;
             this.btnUpdateInfo.Size = new System.Drawing.Size(489, 64);
             this.btnUpdateInfo.TabIndex = 25;
-            this.btnUpdateInfo.Text = " Update Information";
+            this.btnUpdateInfo.Text = "Update User Information";
             this.btnUpdateInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnUpdateInfo.Textcolor = System.Drawing.Color.Black;
+            this.btnUpdateInfo.Textcolor = System.Drawing.Color.White;
             this.btnUpdateInfo.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnUpdateInfo.Click += new System.EventHandler(this.btnUpdateInfo_Click);
             // 
             // btnBrowseImage
             // 
-            this.btnBrowseImage.Activecolor = System.Drawing.Color.Orange;
-            this.btnBrowseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBrowseImage.Activecolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.BackColor = System.Drawing.Color.Teal;
             this.btnBrowseImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBrowseImage.BorderRadius = 0;
+            this.btnBrowseImage.BorderRadius = 7;
             this.btnBrowseImage.ButtonText = "Browse Image";
             this.btnBrowseImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBrowseImage.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBrowseImage.ForeColor = System.Drawing.Color.White;
             this.btnBrowseImage.Iconcolor = System.Drawing.Color.Transparent;
             this.btnBrowseImage.Iconimage = null;
             this.btnBrowseImage.Iconimage_right = null;
@@ -462,15 +463,15 @@
             this.btnBrowseImage.Location = new System.Drawing.Point(12, 144);
             this.btnBrowseImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowseImage.Name = "btnBrowseImage";
-            this.btnBrowseImage.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnBrowseImage.Normalcolor = System.Drawing.Color.Teal;
+            this.btnBrowseImage.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnBrowseImage.OnHoverTextColor = System.Drawing.Color.White;
             this.btnBrowseImage.selected = false;
             this.btnBrowseImage.Size = new System.Drawing.Size(125, 42);
             this.btnBrowseImage.TabIndex = 8;
             this.btnBrowseImage.Text = "Browse Image";
             this.btnBrowseImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnBrowseImage.Textcolor = System.Drawing.Color.Black;
+            this.btnBrowseImage.Textcolor = System.Drawing.Color.White;
             this.btnBrowseImage.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrowseImage.Click += new System.EventHandler(this.btnBrowseImage_Click);
             // 
@@ -518,6 +519,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1040, 684);
             this.Controls.Add(this.lblStatusValue);
             this.Controls.Add(this.btnCancel);

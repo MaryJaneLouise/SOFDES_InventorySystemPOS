@@ -63,8 +63,8 @@
             // 
             // btnOk
             // 
-            this.btnOk.Activecolor = System.Drawing.Color.Orange;
-            this.btnOk.BackColor = System.Drawing.Color.Orange;
+            this.btnOk.Activecolor = System.Drawing.Color.Teal;
+            this.btnOk.BackColor = System.Drawing.Color.Teal;
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOk.BorderRadius = 0;
             this.btnOk.ButtonText = "Enter";
@@ -83,25 +83,25 @@
             this.btnOk.IconVisible = false;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(200, 105);
+            this.btnOk.Location = new System.Drawing.Point(17, 104);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Normalcolor = System.Drawing.Color.Orange;
-            this.btnOk.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnOk.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnOk.Normalcolor = System.Drawing.Color.Teal;
+            this.btnOk.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
-            this.btnOk.Size = new System.Drawing.Size(150, 46);
+            this.btnOk.Size = new System.Drawing.Size(150, 47);
             this.btnOk.TabIndex = 35;
             this.btnOk.Text = "Enter";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnOk.Textcolor = System.Drawing.Color.Black;
+            this.btnOk.Textcolor = System.Drawing.Color.White;
             this.btnOk.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.Activecolor = System.Drawing.Color.Silver;
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Cancel";
@@ -120,10 +120,10 @@
             this.btnCancel.IconVisible = false;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(17, 104);
+            this.btnCancel.Location = new System.Drawing.Point(200, 104);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -139,11 +139,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 178);
-            this.Controls.Add(this.btnCancel);
+            this.ClientSize = new System.Drawing.Size(363, 168);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

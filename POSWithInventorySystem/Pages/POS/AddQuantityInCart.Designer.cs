@@ -50,7 +50,7 @@
             // lblCurrentQuantityValue
             // 
             this.lblCurrentQuantityValue.AutoSize = true;
-            this.lblCurrentQuantityValue.BackColor = System.Drawing.SystemColors.Control;
+            this.lblCurrentQuantityValue.BackColor = System.Drawing.Color.White;
             this.lblCurrentQuantityValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblCurrentQuantityValue.Location = new System.Drawing.Point(171, 162);
             this.lblCurrentQuantityValue.Name = "lblCurrentQuantityValue";
@@ -82,7 +82,7 @@
             // lblPriceValue
             // 
             this.lblPriceValue.AutoSize = true;
-            this.lblPriceValue.BackColor = System.Drawing.SystemColors.Control;
+            this.lblPriceValue.BackColor = System.Drawing.Color.White;
             this.lblPriceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblPriceValue.Location = new System.Drawing.Point(171, 94);
             this.lblPriceValue.Name = "lblPriceValue";
@@ -103,9 +103,9 @@
             // lblProductNameValue
             // 
             this.lblProductNameValue.AutoSize = true;
-            this.lblProductNameValue.BackColor = System.Drawing.SystemColors.Control;
+            this.lblProductNameValue.BackColor = System.Drawing.Color.White;
             this.lblProductNameValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblProductNameValue.Location = new System.Drawing.Point(151, 48);
+            this.lblProductNameValue.Location = new System.Drawing.Point(151, 50);
             this.lblProductNameValue.Name = "lblProductNameValue";
             this.lblProductNameValue.Size = new System.Drawing.Size(223, 25);
             this.lblProductNameValue.TabIndex = 65;
@@ -114,7 +114,7 @@
             // lblBarcodeValue
             // 
             this.lblBarcodeValue.AutoSize = true;
-            this.lblBarcodeValue.BackColor = System.Drawing.SystemColors.Control;
+            this.lblBarcodeValue.BackColor = System.Drawing.Color.White;
             this.lblBarcodeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblBarcodeValue.Location = new System.Drawing.Point(151, 12);
             this.lblBarcodeValue.Name = "lblBarcodeValue";
@@ -124,8 +124,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.Activecolor = System.Drawing.Color.Silver;
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Cancel";
@@ -144,10 +144,10 @@
             this.btnCancel.IconVisible = false;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(12, 281);
+            this.btnCancel.Location = new System.Drawing.Point(260, 281);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -161,14 +161,15 @@
             // 
             // btnOk
             // 
-            this.btnOk.Activecolor = System.Drawing.Color.Orange;
-            this.btnOk.BackColor = System.Drawing.Color.Orange;
+            this.btnOk.Activecolor = System.Drawing.Color.Teal;
+            this.btnOk.BackColor = System.Drawing.Color.Teal;
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOk.BorderRadius = 0;
             this.btnOk.ButtonText = "Add Quantity";
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOk.DisabledColor = System.Drawing.Color.Gray;
             this.btnOk.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.Iconcolor = System.Drawing.Color.Transparent;
             this.btnOk.Iconimage = null;
             this.btnOk.Iconimage_right = null;
@@ -181,18 +182,18 @@
             this.btnOk.IconVisible = false;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(260, 281);
+            this.btnOk.Location = new System.Drawing.Point(13, 281);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Normalcolor = System.Drawing.Color.Orange;
-            this.btnOk.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnOk.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnOk.Normalcolor = System.Drawing.Color.Teal;
+            this.btnOk.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
             this.btnOk.Size = new System.Drawing.Size(217, 48);
             this.btnOk.TabIndex = 60;
             this.btnOk.Text = "Add Quantity";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnOk.Textcolor = System.Drawing.Color.Black;
+            this.btnOk.Textcolor = System.Drawing.Color.White;
             this.btnOk.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -203,7 +204,7 @@
             this.txtAddedQuantityValue.BorderColorMouseHover = System.Drawing.Color.Black;
             this.txtAddedQuantityValue.BorderThickness = 2;
             this.txtAddedQuantityValue.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAddedQuantityValue.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddedQuantityValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.txtAddedQuantityValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtAddedQuantityValue.isPassword = false;
             this.txtAddedQuantityValue.Location = new System.Drawing.Point(287, 214);
@@ -267,6 +268,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(490, 346);
             this.Controls.Add(this.btnAddQty);
             this.Controls.Add(this.btnMinusQty);

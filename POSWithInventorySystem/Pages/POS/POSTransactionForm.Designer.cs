@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            BunifuAnimatorNS.Animation animation14 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation13 = new BunifuAnimatorNS.Animation();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(POSTransactionForm));
-            BunifuAnimatorNS.Animation animation15 = new BunifuAnimatorNS.Animation();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridViewItems = new System.Windows.Forms.DataGridView();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +92,7 @@
             this.bunifuTransition3.SetDecoration(this.txtSearch, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.txtSearch, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.txtSearch, BunifuAnimatorNS.DecorationType.None);
-            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtSearch.Location = new System.Drawing.Point(28, 32);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(1053, 26);
@@ -108,14 +108,14 @@
             this.dataGridViewItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewItems.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Code,
@@ -126,29 +126,29 @@
             this.bunifuTransition2.SetDecoration(this.dataGridViewItems, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.dataGridViewItems, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition3.SetDecoration(this.dataGridViewItems, BunifuAnimatorNS.DecorationType.None);
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewItems.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewItems.Location = new System.Drawing.Point(28, 61);
             this.dataGridViewItems.MultiSelect = false;
             this.dataGridViewItems.Name = "dataGridViewItems";
             this.dataGridViewItems.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewItems.RowHeadersVisible = false;
             this.dataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItems.Size = new System.Drawing.Size(739, 633);
@@ -191,15 +191,15 @@
             this.bunifuTransition2.SetDecoration(this.lblSearch, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.lblSearch, BunifuAnimatorNS.DecorationType.None);
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblSearch.Location = new System.Drawing.Point(31, 9);
+            this.lblSearch.Location = new System.Drawing.Point(31, 6);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(60, 21);
+            this.lblSearch.Size = new System.Drawing.Size(141, 21);
             this.lblSearch.TabIndex = 31;
-            this.lblSearch.Text = "Search:";
+            this.lblSearch.Text = "Search by Barcode:";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Orange;
+            this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.Controls.Add(this.panelTransactionInFo);
             this.bunifuTransition1.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
@@ -211,6 +211,7 @@
             // 
             // panelTransactionInFo
             // 
+            this.panelTransactionInFo.BackColor = System.Drawing.Color.Teal;
             this.panelTransactionInFo.Controls.Add(this.groupBoxTransactionInformation);
             this.bunifuTransition1.SetDecoration(this.panelTransactionInFo, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.panelTransactionInFo, BunifuAnimatorNS.DecorationType.None);
@@ -237,6 +238,7 @@
             this.bunifuTransition2.SetDecoration(this.groupBoxTransactionInformation, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition3.SetDecoration(this.groupBoxTransactionInformation, BunifuAnimatorNS.DecorationType.None);
             this.groupBoxTransactionInformation.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.groupBoxTransactionInformation.ForeColor = System.Drawing.Color.White;
             this.groupBoxTransactionInformation.Location = new System.Drawing.Point(3, 3);
             this.groupBoxTransactionInformation.Name = "groupBoxTransactionInformation";
             this.groupBoxTransactionInformation.Size = new System.Drawing.Size(301, 323);
@@ -246,7 +248,7 @@
             // 
             // lblVatValue
             // 
-            this.lblVatValue.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblVatValue.BackColor = System.Drawing.Color.Transparent;
             this.bunifuTransition3.SetDecoration(this.lblVatValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.lblVatValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.lblVatValue, BunifuAnimatorNS.DecorationType.None);
@@ -273,7 +275,7 @@
             // 
             // lblSubTotalValue
             // 
-            this.lblSubTotalValue.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblSubTotalValue.BackColor = System.Drawing.Color.Transparent;
             this.bunifuTransition3.SetDecoration(this.lblSubTotalValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.lblSubTotalValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.lblSubTotalValue, BunifuAnimatorNS.DecorationType.None);
@@ -300,7 +302,7 @@
             // 
             // lblChangeValue
             // 
-            this.lblChangeValue.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblChangeValue.BackColor = System.Drawing.Color.Transparent;
             this.bunifuTransition3.SetDecoration(this.lblChangeValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.lblChangeValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.lblChangeValue, BunifuAnimatorNS.DecorationType.None);
@@ -327,7 +329,7 @@
             // 
             // lblAmountPaymentValue
             // 
-            this.lblAmountPaymentValue.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblAmountPaymentValue.BackColor = System.Drawing.Color.Transparent;
             this.bunifuTransition3.SetDecoration(this.lblAmountPaymentValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.lblAmountPaymentValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.lblAmountPaymentValue, BunifuAnimatorNS.DecorationType.None);
@@ -354,7 +356,7 @@
             // 
             // lblTotalAmountValue
             // 
-            this.lblTotalAmountValue.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTotalAmountValue.BackColor = System.Drawing.Color.Transparent;
             this.bunifuTransition3.SetDecoration(this.lblTotalAmountValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.lblTotalAmountValue, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.lblTotalAmountValue, BunifuAnimatorNS.DecorationType.None);
@@ -381,17 +383,18 @@
             // 
             // btnPayment
             // 
-            this.btnPayment.Activecolor = System.Drawing.Color.Orange;
-            this.btnPayment.BackColor = System.Drawing.Color.Orange;
+            this.btnPayment.Activecolor = System.Drawing.Color.Teal;
+            this.btnPayment.BackColor = System.Drawing.Color.Teal;
             this.btnPayment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPayment.BorderRadius = 0;
+            this.btnPayment.BorderRadius = 5;
             this.btnPayment.ButtonText = "Payment [F5]";
             this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnPayment, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.btnPayment, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.btnPayment, BunifuAnimatorNS.DecorationType.None);
-            this.btnPayment.DisabledColor = System.Drawing.Color.Gray;
+            this.btnPayment.DisabledColor = System.Drawing.Color.DimGray;
             this.btnPayment.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.White;
             this.btnPayment.Iconcolor = System.Drawing.Color.Transparent;
             this.btnPayment.Iconimage = null;
             this.btnPayment.Iconimage_right = null;
@@ -407,30 +410,30 @@
             this.btnPayment.Location = new System.Drawing.Point(773, 409);
             this.btnPayment.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Normalcolor = System.Drawing.Color.Orange;
-            this.btnPayment.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnPayment.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnPayment.Normalcolor = System.Drawing.Color.Teal;
+            this.btnPayment.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnPayment.OnHoverTextColor = System.Drawing.Color.White;
             this.btnPayment.selected = false;
             this.btnPayment.Size = new System.Drawing.Size(307, 51);
             this.btnPayment.TabIndex = 33;
             this.btnPayment.Text = "Payment [F5]";
             this.btnPayment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnPayment.Textcolor = System.Drawing.Color.Black;
+            this.btnPayment.Textcolor = System.Drawing.Color.White;
             this.btnPayment.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // btnVoid
             // 
-            this.btnVoid.Activecolor = System.Drawing.Color.Orange;
-            this.btnVoid.BackColor = System.Drawing.Color.Orange;
+            this.btnVoid.Activecolor = System.Drawing.Color.Teal;
+            this.btnVoid.BackColor = System.Drawing.Color.Teal;
             this.btnVoid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnVoid.BorderRadius = 0;
+            this.btnVoid.BorderRadius = 5;
             this.btnVoid.ButtonText = "Void Item [F10]";
             this.btnVoid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnVoid, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.btnVoid, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.btnVoid, BunifuAnimatorNS.DecorationType.None);
-            this.btnVoid.DisabledColor = System.Drawing.Color.Gray;
+            this.btnVoid.DisabledColor = System.Drawing.Color.DimGray;
             this.btnVoid.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoid.Iconcolor = System.Drawing.Color.Transparent;
             this.btnVoid.Iconimage = null;
@@ -447,24 +450,24 @@
             this.btnVoid.Location = new System.Drawing.Point(773, 578);
             this.btnVoid.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Normalcolor = System.Drawing.Color.Orange;
-            this.btnVoid.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnVoid.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnVoid.Normalcolor = System.Drawing.Color.Teal;
+            this.btnVoid.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnVoid.OnHoverTextColor = System.Drawing.Color.White;
             this.btnVoid.selected = false;
             this.btnVoid.Size = new System.Drawing.Size(308, 50);
             this.btnVoid.TabIndex = 35;
             this.btnVoid.Text = "Void Item [F10]";
             this.btnVoid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnVoid.Textcolor = System.Drawing.Color.Black;
+            this.btnVoid.Textcolor = System.Drawing.Color.White;
             this.btnVoid.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // btnNewTransaction
             // 
-            this.btnNewTransaction.Activecolor = System.Drawing.Color.Gray;
-            this.btnNewTransaction.BackColor = System.Drawing.Color.Gray;
+            this.btnNewTransaction.Activecolor = System.Drawing.Color.Silver;
+            this.btnNewTransaction.BackColor = System.Drawing.Color.Silver;
             this.btnNewTransaction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNewTransaction.BorderRadius = 0;
+            this.btnNewTransaction.BorderRadius = 5;
             this.btnNewTransaction.ButtonText = "New Transaction [Esc]";
             this.btnNewTransaction.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnNewTransaction, BunifuAnimatorNS.DecorationType.None);
@@ -488,7 +491,7 @@
             this.btnNewTransaction.Location = new System.Drawing.Point(773, 639);
             this.btnNewTransaction.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnNewTransaction.Name = "btnNewTransaction";
-            this.btnNewTransaction.Normalcolor = System.Drawing.Color.Gray;
+            this.btnNewTransaction.Normalcolor = System.Drawing.Color.Silver;
             this.btnNewTransaction.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnNewTransaction.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnNewTransaction.selected = false;
@@ -496,16 +499,16 @@
             this.btnNewTransaction.TabIndex = 36;
             this.btnNewTransaction.Text = "New Transaction [Esc]";
             this.btnNewTransaction.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnNewTransaction.Textcolor = System.Drawing.Color.White;
+            this.btnNewTransaction.Textcolor = System.Drawing.Color.Black;
             this.btnNewTransaction.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
             this.btnNewTransaction.Click += new System.EventHandler(this.btnNewTransaction_Click);
             // 
             // btnCancelTransaction
             // 
-            this.btnCancelTransaction.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancelTransaction.BackColor = System.Drawing.Color.Gray;
+            this.btnCancelTransaction.Activecolor = System.Drawing.Color.Silver;
+            this.btnCancelTransaction.BackColor = System.Drawing.Color.Silver;
             this.btnCancelTransaction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancelTransaction.BorderRadius = 0;
+            this.btnCancelTransaction.BorderRadius = 5;
             this.btnCancelTransaction.ButtonText = "Cancel Transaction [F12]";
             this.btnCancelTransaction.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnCancelTransaction, BunifuAnimatorNS.DecorationType.None);
@@ -528,7 +531,7 @@
             this.btnCancelTransaction.Location = new System.Drawing.Point(930, 639);
             this.btnCancelTransaction.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancelTransaction.Name = "btnCancelTransaction";
-            this.btnCancelTransaction.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancelTransaction.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancelTransaction.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancelTransaction.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancelTransaction.selected = false;
@@ -536,17 +539,18 @@
             this.btnCancelTransaction.TabIndex = 37;
             this.btnCancelTransaction.Text = "Cancel Transaction [F12]";
             this.btnCancelTransaction.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnCancelTransaction.Textcolor = System.Drawing.Color.White;
+            this.btnCancelTransaction.Textcolor = System.Drawing.Color.Black;
             this.btnCancelTransaction.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
             this.btnCancelTransaction.Click += new System.EventHandler(this.btnCancelTransaction_Click);
             // 
             // panelNewTransaction
             // 
-            this.panelNewTransaction.BackColor = System.Drawing.Color.Orange;
+            this.panelNewTransaction.BackColor = System.Drawing.Color.Teal;
             this.panelNewTransaction.Controls.Add(this.lblNewTransaction);
             this.bunifuTransition1.SetDecoration(this.panelNewTransaction, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.panelNewTransaction, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition3.SetDecoration(this.panelNewTransaction, BunifuAnimatorNS.DecorationType.None);
+            this.panelNewTransaction.ForeColor = System.Drawing.Color.White;
             this.panelNewTransaction.Location = new System.Drawing.Point(28, 314);
             this.panelNewTransaction.Name = "panelNewTransaction";
             this.panelNewTransaction.Size = new System.Drawing.Size(739, 85);
@@ -572,17 +576,18 @@
             // 
             // btnDiscount
             // 
-            this.btnDiscount.Activecolor = System.Drawing.Color.Orange;
-            this.btnDiscount.BackColor = System.Drawing.Color.Orange;
+            this.btnDiscount.Activecolor = System.Drawing.Color.Teal;
+            this.btnDiscount.BackColor = System.Drawing.Color.Teal;
             this.btnDiscount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDiscount.BorderRadius = 0;
+            this.btnDiscount.BorderRadius = 5;
             this.btnDiscount.ButtonText = "Discount [F8]";
             this.btnDiscount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnDiscount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.btnDiscount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.btnDiscount, BunifuAnimatorNS.DecorationType.None);
-            this.btnDiscount.DisabledColor = System.Drawing.Color.Gray;
+            this.btnDiscount.DisabledColor = System.Drawing.Color.DimGray;
             this.btnDiscount.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDiscount.ForeColor = System.Drawing.Color.White;
             this.btnDiscount.Iconcolor = System.Drawing.Color.Transparent;
             this.btnDiscount.Iconimage = null;
             this.btnDiscount.Iconimage_right = null;
@@ -598,15 +603,15 @@
             this.btnDiscount.Location = new System.Drawing.Point(773, 467);
             this.btnDiscount.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnDiscount.Name = "btnDiscount";
-            this.btnDiscount.Normalcolor = System.Drawing.Color.Orange;
-            this.btnDiscount.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnDiscount.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnDiscount.Normalcolor = System.Drawing.Color.Teal;
+            this.btnDiscount.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnDiscount.OnHoverTextColor = System.Drawing.Color.White;
             this.btnDiscount.selected = false;
             this.btnDiscount.Size = new System.Drawing.Size(307, 48);
             this.btnDiscount.TabIndex = 39;
             this.btnDiscount.Text = "Discount [F8]";
             this.btnDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDiscount.Textcolor = System.Drawing.Color.Black;
+            this.btnDiscount.Textcolor = System.Drawing.Color.White;
             this.btnDiscount.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
             // 
@@ -614,39 +619,40 @@
             // 
             this.bunifuTransition1.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.bunifuTransition1.Cursor = null;
-            animation14.AnimateOnlyDifferences = true;
-            animation14.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation14.BlindCoeff")));
-            animation14.LeafCoeff = 0F;
-            animation14.MaxTime = 1F;
-            animation14.MinTime = 0F;
-            animation14.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation14.MosaicCoeff")));
-            animation14.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation14.MosaicShift")));
-            animation14.MosaicSize = 0;
-            animation14.Padding = new System.Windows.Forms.Padding(30);
-            animation14.RotateCoeff = 0.5F;
-            animation14.RotateLimit = 0.2F;
-            animation14.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation14.ScaleCoeff")));
-            animation14.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation14.SlideCoeff")));
-            animation14.TimeCoeff = 0F;
-            animation14.TransparencyCoeff = 0F;
-            this.bunifuTransition1.DefaultAnimation = animation14;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(30);
+            animation2.RotateCoeff = 0.5F;
+            animation2.RotateLimit = 0.2F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.bunifuTransition1.DefaultAnimation = animation2;
             // 
             // panelDiscount
             // 
-            this.panelDiscount.BackColor = System.Drawing.Color.Orange;
+            this.panelDiscount.BackColor = System.Drawing.Color.Teal;
             this.panelDiscount.BackgroundImage = global::POSWithInventorySystem.Properties.Resources.finalpic;
             this.panelDiscount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelDiscount.Controls.Add(this.groupBoxDiscount);
             this.bunifuTransition1.SetDecoration(this.panelDiscount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.panelDiscount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition3.SetDecoration(this.panelDiscount, BunifuAnimatorNS.DecorationType.None);
-            this.panelDiscount.Location = new System.Drawing.Point(431, 408);
+            this.panelDiscount.Location = new System.Drawing.Point(431, 391);
             this.panelDiscount.Name = "panelDiscount";
-            this.panelDiscount.Size = new System.Drawing.Size(333, 159);
+            this.panelDiscount.Size = new System.Drawing.Size(333, 176);
             this.panelDiscount.TabIndex = 40;
             // 
             // groupBoxDiscount
             // 
+            this.groupBoxDiscount.BackColor = System.Drawing.Color.Teal;
             this.groupBoxDiscount.Controls.Add(this.comboBoxDiscount);
             this.groupBoxDiscount.Controls.Add(this.btnDiscountClose);
             this.groupBoxDiscount.Controls.Add(this.btnDiscountOk);
@@ -656,9 +662,10 @@
             this.bunifuTransition2.SetDecoration(this.groupBoxDiscount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition3.SetDecoration(this.groupBoxDiscount, BunifuAnimatorNS.DecorationType.None);
             this.groupBoxDiscount.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.groupBoxDiscount.Location = new System.Drawing.Point(3, 4);
+            this.groupBoxDiscount.ForeColor = System.Drawing.Color.White;
+            this.groupBoxDiscount.Location = new System.Drawing.Point(0, 0);
             this.groupBoxDiscount.Name = "groupBoxDiscount";
-            this.groupBoxDiscount.Size = new System.Drawing.Size(306, 150);
+            this.groupBoxDiscount.Size = new System.Drawing.Size(314, 176);
             this.groupBoxDiscount.TabIndex = 0;
             this.groupBoxDiscount.TabStop = false;
             this.groupBoxDiscount.Text = "Insert Discount";
@@ -669,16 +676,16 @@
             this.bunifuTransition1.SetDecoration(this.comboBoxDiscount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition3.SetDecoration(this.comboBoxDiscount, BunifuAnimatorNS.DecorationType.None);
             this.comboBoxDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDiscount.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.comboBoxDiscount.FormattingEnabled = true;
             this.comboBoxDiscount.Items.AddRange(new object[] {
-            "       20 %",
-            "       30 % ",
-            "       40 %",
-            "       50 %"});
-            this.comboBoxDiscount.Location = new System.Drawing.Point(10, 56);
+            "20 %",
+            "30 % ",
+            "40 %",
+            "50 %"});
+            this.comboBoxDiscount.Location = new System.Drawing.Point(23, 63);
             this.comboBoxDiscount.Name = "comboBoxDiscount";
-            this.comboBoxDiscount.Size = new System.Drawing.Size(290, 31);
+            this.comboBoxDiscount.Size = new System.Drawing.Size(263, 33);
             this.comboBoxDiscount.TabIndex = 59;
             // 
             // btnDiscountClose
@@ -687,11 +694,11 @@
             this.bunifuTransition1.SetDecoration(this.btnDiscountClose, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.btnDiscountClose, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition3.SetDecoration(this.btnDiscountClose, BunifuAnimatorNS.DecorationType.None);
-            this.btnDiscountClose.Image = global::POSWithInventorySystem.Properties.Resources._60994;
+            this.btnDiscountClose.Image = global::POSWithInventorySystem.Properties.Resources.round_close_white_48;
             this.btnDiscountClose.ImageActive = null;
-            this.btnDiscountClose.Location = new System.Drawing.Point(279, 18);
+            this.btnDiscountClose.Location = new System.Drawing.Point(271, 12);
             this.btnDiscountClose.Name = "btnDiscountClose";
-            this.btnDiscountClose.Size = new System.Drawing.Size(21, 16);
+            this.btnDiscountClose.Size = new System.Drawing.Size(30, 30);
             this.btnDiscountClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnDiscountClose.TabIndex = 47;
             this.btnDiscountClose.TabStop = false;
@@ -703,7 +710,7 @@
             this.btnDiscountOk.Activecolor = System.Drawing.Color.White;
             this.btnDiscountOk.BackColor = System.Drawing.Color.White;
             this.btnDiscountOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDiscountOk.BorderRadius = 0;
+            this.btnDiscountOk.BorderRadius = 5;
             this.btnDiscountOk.ButtonText = "Insert Discount";
             this.btnDiscountOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnDiscountOk, BunifuAnimatorNS.DecorationType.None);
@@ -723,14 +730,14 @@
             this.btnDiscountOk.IconVisible = true;
             this.btnDiscountOk.IconZoom = 90D;
             this.btnDiscountOk.IsTab = false;
-            this.btnDiscountOk.Location = new System.Drawing.Point(10, 101);
+            this.btnDiscountOk.Location = new System.Drawing.Point(23, 121);
             this.btnDiscountOk.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDiscountOk.Name = "btnDiscountOk";
             this.btnDiscountOk.Normalcolor = System.Drawing.Color.White;
             this.btnDiscountOk.OnHovercolor = System.Drawing.Color.LightGray;
             this.btnDiscountOk.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnDiscountOk.selected = false;
-            this.btnDiscountOk.Size = new System.Drawing.Size(131, 31);
+            this.btnDiscountOk.Size = new System.Drawing.Size(118, 31);
             this.btnDiscountOk.TabIndex = 46;
             this.btnDiscountOk.Text = "Insert Discount";
             this.btnDiscountOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -741,10 +748,10 @@
             // btnDiscountCancel
             // 
             this.btnDiscountCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnDiscountCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnDiscountCancel.BackColor = System.Drawing.Color.Silver;
             this.btnDiscountCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDiscountCancel.BorderRadius = 0;
-            this.btnDiscountCancel.ButtonText = "Cancel Discount";
+            this.btnDiscountCancel.BorderRadius = 5;
+            this.btnDiscountCancel.ButtonText = "Cancel";
             this.btnDiscountCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnDiscountCancel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.btnDiscountCancel, BunifuAnimatorNS.DecorationType.None);
@@ -763,16 +770,16 @@
             this.btnDiscountCancel.IconVisible = true;
             this.btnDiscountCancel.IconZoom = 90D;
             this.btnDiscountCancel.IsTab = false;
-            this.btnDiscountCancel.Location = new System.Drawing.Point(165, 101);
+            this.btnDiscountCancel.Location = new System.Drawing.Point(165, 121);
             this.btnDiscountCancel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDiscountCancel.Name = "btnDiscountCancel";
-            this.btnDiscountCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnDiscountCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnDiscountCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnDiscountCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnDiscountCancel.selected = false;
-            this.btnDiscountCancel.Size = new System.Drawing.Size(133, 31);
+            this.btnDiscountCancel.Size = new System.Drawing.Size(121, 31);
             this.btnDiscountCancel.TabIndex = 45;
-            this.btnDiscountCancel.Text = "Cancel Discount";
+            this.btnDiscountCancel.Text = "Cancel";
             this.btnDiscountCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnDiscountCancel.Textcolor = System.Drawing.Color.Black;
             this.btnDiscountCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -785,7 +792,8 @@
             this.bunifuTransition2.SetDecoration(this.lblDiscount, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.lblDiscount, BunifuAnimatorNS.DecorationType.None);
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblDiscount.Location = new System.Drawing.Point(6, 28);
+            this.lblDiscount.ForeColor = System.Drawing.Color.White;
+            this.lblDiscount.Location = new System.Drawing.Point(18, 35);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(116, 25);
             this.lblDiscount.TabIndex = 41;
@@ -793,16 +801,16 @@
             // 
             // btnAddQuantity
             // 
-            this.btnAddQuantity.Activecolor = System.Drawing.Color.Orange;
-            this.btnAddQuantity.BackColor = System.Drawing.Color.Orange;
+            this.btnAddQuantity.Activecolor = System.Drawing.Color.Teal;
+            this.btnAddQuantity.BackColor = System.Drawing.Color.Teal;
             this.btnAddQuantity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddQuantity.BorderRadius = 0;
+            this.btnAddQuantity.BorderRadius = 5;
             this.btnAddQuantity.ButtonText = "Add Quantity [F9]";
             this.btnAddQuantity.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition3.SetDecoration(this.btnAddQuantity, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.btnAddQuantity, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.btnAddQuantity, BunifuAnimatorNS.DecorationType.None);
-            this.btnAddQuantity.DisabledColor = System.Drawing.Color.Gray;
+            this.btnAddQuantity.DisabledColor = System.Drawing.Color.DimGray;
             this.btnAddQuantity.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddQuantity.Iconcolor = System.Drawing.Color.Transparent;
             this.btnAddQuantity.Iconimage = null;
@@ -819,15 +827,15 @@
             this.btnAddQuantity.Location = new System.Drawing.Point(773, 521);
             this.btnAddQuantity.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnAddQuantity.Name = "btnAddQuantity";
-            this.btnAddQuantity.Normalcolor = System.Drawing.Color.Orange;
-            this.btnAddQuantity.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnAddQuantity.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnAddQuantity.Normalcolor = System.Drawing.Color.Teal;
+            this.btnAddQuantity.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnAddQuantity.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAddQuantity.selected = false;
             this.btnAddQuantity.Size = new System.Drawing.Size(308, 52);
             this.btnAddQuantity.TabIndex = 41;
             this.btnAddQuantity.Text = "Add Quantity [F9]";
             this.btnAddQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAddQuantity.Textcolor = System.Drawing.Color.Black;
+            this.btnAddQuantity.Textcolor = System.Drawing.Color.White;
             this.btnAddQuantity.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddQuantity.Click += new System.EventHandler(this.btnAddQuantity_Click);
             // 
@@ -835,43 +843,43 @@
             // 
             this.bunifuTransition2.AnimationType = BunifuAnimatorNS.AnimationType.Rotate;
             this.bunifuTransition2.Cursor = null;
-            animation13.AnimateOnlyDifferences = true;
-            animation13.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation13.BlindCoeff")));
-            animation13.LeafCoeff = 0F;
-            animation13.MaxTime = 1F;
-            animation13.MinTime = 0F;
-            animation13.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation13.MosaicCoeff")));
-            animation13.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation13.MosaicShift")));
-            animation13.MosaicSize = 0;
-            animation13.Padding = new System.Windows.Forms.Padding(50);
-            animation13.RotateCoeff = 1F;
-            animation13.RotateLimit = 0F;
-            animation13.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation13.ScaleCoeff")));
-            animation13.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation13.SlideCoeff")));
-            animation13.TimeCoeff = 0F;
-            animation13.TransparencyCoeff = 1F;
-            this.bunifuTransition2.DefaultAnimation = animation13;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(50);
+            animation3.RotateCoeff = 1F;
+            animation3.RotateLimit = 0F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 1F;
+            this.bunifuTransition2.DefaultAnimation = animation3;
             // 
             // bunifuTransition3
             // 
             this.bunifuTransition3.AnimationType = BunifuAnimatorNS.AnimationType.Leaf;
             this.bunifuTransition3.Cursor = null;
-            animation15.AnimateOnlyDifferences = true;
-            animation15.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation15.BlindCoeff")));
-            animation15.LeafCoeff = 1F;
-            animation15.MaxTime = 1F;
-            animation15.MinTime = 0F;
-            animation15.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation15.MosaicCoeff")));
-            animation15.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation15.MosaicShift")));
-            animation15.MosaicSize = 0;
-            animation15.Padding = new System.Windows.Forms.Padding(0);
-            animation15.RotateCoeff = 0F;
-            animation15.RotateLimit = 0F;
-            animation15.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation15.ScaleCoeff")));
-            animation15.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation15.SlideCoeff")));
-            animation15.TimeCoeff = 0F;
-            animation15.TransparencyCoeff = 0F;
-            this.bunifuTransition3.DefaultAnimation = animation15;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 1F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.bunifuTransition3.DefaultAnimation = animation1;
             this.bunifuTransition3.TimeStep = 0.03F;
             // 
             // POSTransactionForm

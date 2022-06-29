@@ -48,12 +48,23 @@ namespace POSWithInventorySystem {
             lblAddressError.Text = "";
             lblContactError.Text = "";
             lblBirthdayError.Text = "";
+            
             comboBoxUserType.SelectedIndex = 0;
-            btnDeleteUsers.Enabled = false;
-            btnDeactivateUsers.Enabled = false;
-            btnActivateUsers.Enabled = false;
-            DatepickerlBirthDay.Value = DateTime.Today;
+            
+            btnDeleteUsers.Enabled = true;
+            btnDeactivateUsers.Enabled = true;
+            btnActivateUsers.Enabled = true;
+            
+            bunifuSwitch.Value = true;
+            bunifuSwitch.Hide();
 
+            bunifuSwitchActivateUsers.Value = true;
+            bunifuSwitchActivateUsers.Hide();
+
+            bunifuSwitchbtnDeactivateUsers.Value = true;
+            bunifuSwitchbtnDeactivateUsers.Hide();
+
+            DatepickerlBirthDay.Value = DateTime.Today;
         }
 
         private void btnCreate_Click(object sender, EventArgs e) {
@@ -172,7 +183,7 @@ namespace POSWithInventorySystem {
                             mySqlCommand3.ExecuteNonQuery();
 
                             MessageBox.Show("The user has been successfully registered.", "Registered New User", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources.placeholder;
+                            pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources.round_person_black_48;
                             ClearAllText();
 
                             GridFill();
@@ -437,16 +448,16 @@ namespace POSWithInventorySystem {
             if (comboBoxActiveOrNotUsers.SelectedIndex == 0) {
                 dataGridViewUsers.EnableHeadersVisualStyles = false;
                 dataGridViewUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-                dataGridViewUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-                dataGridViewUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                dataGridViewUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+                dataGridViewUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             }
 
             //For deactivated users
             else {
                 dataGridViewNotActiveUsers.EnableHeadersVisualStyles = false;
                 dataGridViewNotActiveUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-                dataGridViewNotActiveUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
-                dataGridViewNotActiveUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                dataGridViewNotActiveUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; //Color.FromArgb(20, 25, 72);
+                dataGridViewNotActiveUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             }
 
         }
@@ -682,13 +693,13 @@ namespace POSWithInventorySystem {
 
                 //Hide
                 dataGridViewNotActiveUsers.Hide();
-                btnDeleteUsers.Hide(); bunifuSwitch.Hide();
-                btnActivateUsers.Hide(); bunifuSwitchActivateUsers.Hide();
+                btnDeleteUsers.Hide();
+                btnActivateUsers.Hide();
 
                 //Show
                 dataGridViewUsers.Show();
                 btnUpdateUsers.Show();
-                btnDeactivateUsers.Show(); bunifuSwitchbtnDeactivateUsers.Show();
+                btnDeactivateUsers.Show();
             }
 
             //For deactivated users
@@ -702,12 +713,12 @@ namespace POSWithInventorySystem {
                 //Hide
                 dataGridViewUsers.Hide();
                 btnUpdateUsers.Hide();
-                btnDeactivateUsers.Hide(); bunifuSwitchbtnDeactivateUsers.Hide();
+                btnDeactivateUsers.Hide();
 
                 //Show
                 dataGridViewNotActiveUsers.Show();
-                btnDeleteUsers.Show(); bunifuSwitch.Show();
-                btnActivateUsers.Show(); bunifuSwitchActivateUsers.Show();
+                btnDeleteUsers.Show();
+                btnActivateUsers.Show();
             }
         }
 

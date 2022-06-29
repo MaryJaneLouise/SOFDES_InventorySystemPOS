@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.groupBoxAddProductForm = new System.Windows.Forms.GroupBox();
-            this.bunifuDatepickerExpiration = new Bunifu.Framework.UI.BunifuDatepicker();
             this.lblExpirationDateError = new System.Windows.Forms.Label();
-            this.comboBox1ProductID = new System.Windows.Forms.ComboBox();
-            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblExpirationDate = new System.Windows.Forms.Label();
-            this.comboBoxProductName = new System.Windows.Forms.ComboBox();
-            this.lblProductNameCmb = new System.Windows.Forms.Label();
-            this.lblProductIDcmb = new System.Windows.Forms.Label();
             this.lblProductNameValue = new System.Windows.Forms.Label();
             this.lblPrductIDValue = new System.Windows.Forms.Label();
             this.lblQuantityStocksError = new System.Windows.Forms.Label();
-            this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtQuantity = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.pictureBoxProductPic = new System.Windows.Forms.PictureBox();
+            this.bunifuDatepickerExpiration = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.comboBox1ProductID = new System.Windows.Forms.ComboBox();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.comboBoxProductName = new System.Windows.Forms.ComboBox();
+            this.lblProductNameCmb = new System.Windows.Forms.Label();
+            this.lblProductIDcmb = new System.Windows.Forms.Label();
+            this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBoxAddProductForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductPic)).BeginInit();
@@ -70,23 +70,6 @@
             this.groupBoxAddProductForm.TabStop = false;
             this.groupBoxAddProductForm.Text = "Product Information";
             // 
-            // bunifuDatepickerExpiration
-            // 
-            this.bunifuDatepickerExpiration.BackColor = System.Drawing.Color.Orange;
-            this.bunifuDatepickerExpiration.BorderRadius = 0;
-            this.bunifuDatepickerExpiration.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuDatepickerExpiration.ForeColor = System.Drawing.Color.Black;
-            this.bunifuDatepickerExpiration.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.bunifuDatepickerExpiration.FormatCustom = "MM-dd-yyyy";
-            this.bunifuDatepickerExpiration.Location = new System.Drawing.Point(17, 288);
-            this.bunifuDatepickerExpiration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.bunifuDatepickerExpiration.Name = "bunifuDatepickerExpiration";
-            this.bunifuDatepickerExpiration.Size = new System.Drawing.Size(417, 36);
-            this.bunifuDatepickerExpiration.TabIndex = 52;
-            this.bunifuDatepickerExpiration.Value = new System.DateTime(2018, 8, 4, 20, 34, 1, 107);
-            this.bunifuDatepickerExpiration.onValueChanged += new System.EventHandler(this.bunifuDatepickerExpiration_onValueChanged);
-            this.bunifuDatepickerExpiration.Enter += new System.EventHandler(this.bunifuDatepickerExpiration_Enter_1);
-            // 
             // lblExpirationDateError
             // 
             this.lblExpirationDateError.AutoSize = true;
@@ -98,6 +81,104 @@
             this.lblExpirationDateError.Size = new System.Drawing.Size(25, 19);
             this.lblExpirationDateError.TabIndex = 51;
             this.lblExpirationDateError.Text = "❌";
+            // 
+            // lblExpirationDate
+            // 
+            this.lblExpirationDate.AutoSize = true;
+            this.lblExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblExpirationDate.Location = new System.Drawing.Point(13, 259);
+            this.lblExpirationDate.Name = "lblExpirationDate";
+            this.lblExpirationDate.Size = new System.Drawing.Size(137, 24);
+            this.lblExpirationDate.TabIndex = 47;
+            this.lblExpirationDate.Text = "Expiration Date";
+            // 
+            // lblProductNameValue
+            // 
+            this.lblProductNameValue.AutoSize = true;
+            this.lblProductNameValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblProductNameValue.Location = new System.Drawing.Point(148, 112);
+            this.lblProductNameValue.Name = "lblProductNameValue";
+            this.lblProductNameValue.Size = new System.Drawing.Size(150, 24);
+            this.lblProductNameValue.TabIndex = 42;
+            this.lblProductNameValue.Text = "labelValueName";
+            // 
+            // lblPrductIDValue
+            // 
+            this.lblPrductIDValue.AutoSize = true;
+            this.lblPrductIDValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblPrductIDValue.Location = new System.Drawing.Point(148, 64);
+            this.lblPrductIDValue.Name = "lblPrductIDValue";
+            this.lblPrductIDValue.Size = new System.Drawing.Size(116, 24);
+            this.lblPrductIDValue.TabIndex = 41;
+            this.lblPrductIDValue.Text = "labelValueID";
+            // 
+            // lblQuantityStocksError
+            // 
+            this.lblQuantityStocksError.AutoSize = true;
+            this.lblQuantityStocksError.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantityStocksError.ForeColor = System.Drawing.Color.Red;
+            this.lblQuantityStocksError.Location = new System.Drawing.Point(404, 208);
+            this.lblQuantityStocksError.Name = "lblQuantityStocksError";
+            this.lblQuantityStocksError.Size = new System.Drawing.Size(25, 19);
+            this.lblQuantityStocksError.TabIndex = 39;
+            this.lblQuantityStocksError.Text = "❌";
+            this.lblQuantityStocksError.Click += new System.EventHandler(this.lblQuantityStocksError_Click);
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.BorderColorFocused = System.Drawing.Color.Black;
+            this.txtQuantity.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtQuantity.BorderColorMouseHover = System.Drawing.Color.Black;
+            this.txtQuantity.BorderThickness = 2;
+            this.txtQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtQuantity.isPassword = false;
+            this.txtQuantity.Location = new System.Drawing.Point(17, 201);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(417, 33);
+            this.txtQuantity.TabIndex = 19;
+            this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtQuantity.Enter += new System.EventHandler(this.txtQuantity_Enter);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
+            // 
+            // lblQuantity
+            // 
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblQuantity.Location = new System.Drawing.Point(13, 173);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(145, 24);
+            this.lblQuantity.TabIndex = 18;
+            this.lblQuantity.Text = "Current Quantity";
+            // 
+            // pictureBoxProductPic
+            // 
+            this.pictureBoxProductPic.Image = global::POSWithInventorySystem.Properties.Resources.placeholder;
+            this.pictureBoxProductPic.Location = new System.Drawing.Point(17, 34);
+            this.pictureBoxProductPic.Name = "pictureBoxProductPic";
+            this.pictureBoxProductPic.Size = new System.Drawing.Size(125, 125);
+            this.pictureBoxProductPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProductPic.TabIndex = 6;
+            this.pictureBoxProductPic.TabStop = false;
+            // 
+            // bunifuDatepickerExpiration
+            // 
+            this.bunifuDatepickerExpiration.BackColor = System.Drawing.Color.Silver;
+            this.bunifuDatepickerExpiration.BorderRadius = 0;
+            this.bunifuDatepickerExpiration.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuDatepickerExpiration.ForeColor = System.Drawing.Color.Black;
+            this.bunifuDatepickerExpiration.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bunifuDatepickerExpiration.FormatCustom = "MM-dd-yyyy";
+            this.bunifuDatepickerExpiration.Location = new System.Drawing.Point(17, 288);
+            this.bunifuDatepickerExpiration.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuDatepickerExpiration.Name = "bunifuDatepickerExpiration";
+            this.bunifuDatepickerExpiration.Size = new System.Drawing.Size(417, 36);
+            this.bunifuDatepickerExpiration.TabIndex = 52;
+            this.bunifuDatepickerExpiration.Value = new System.DateTime(2018, 8, 4, 20, 34, 1, 107);
+            this.bunifuDatepickerExpiration.onValueChanged += new System.EventHandler(this.bunifuDatepickerExpiration_onValueChanged);
+            this.bunifuDatepickerExpiration.Enter += new System.EventHandler(this.bunifuDatepickerExpiration_Enter_1);
             // 
             // comboBox1ProductID
             // 
@@ -126,16 +207,6 @@
             this.bunifuSeparator1.TabIndex = 49;
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = true;
-            // 
-            // lblExpirationDate
-            // 
-            this.lblExpirationDate.AutoSize = true;
-            this.lblExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblExpirationDate.Location = new System.Drawing.Point(13, 259);
-            this.lblExpirationDate.Name = "lblExpirationDate";
-            this.lblExpirationDate.Size = new System.Drawing.Size(137, 24);
-            this.lblExpirationDate.TabIndex = 47;
-            this.lblExpirationDate.Text = "Expiration Date";
             // 
             // comboBoxProductName
             // 
@@ -171,42 +242,10 @@
             this.lblProductIDcmb.TabIndex = 44;
             this.lblProductIDcmb.Text = "Product ID:";
             // 
-            // lblProductNameValue
-            // 
-            this.lblProductNameValue.AutoSize = true;
-            this.lblProductNameValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblProductNameValue.Location = new System.Drawing.Point(148, 112);
-            this.lblProductNameValue.Name = "lblProductNameValue";
-            this.lblProductNameValue.Size = new System.Drawing.Size(150, 24);
-            this.lblProductNameValue.TabIndex = 42;
-            this.lblProductNameValue.Text = "labelValueName";
-            // 
-            // lblPrductIDValue
-            // 
-            this.lblPrductIDValue.AutoSize = true;
-            this.lblPrductIDValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblPrductIDValue.Location = new System.Drawing.Point(148, 64);
-            this.lblPrductIDValue.Name = "lblPrductIDValue";
-            this.lblPrductIDValue.Size = new System.Drawing.Size(116, 24);
-            this.lblPrductIDValue.TabIndex = 41;
-            this.lblPrductIDValue.Text = "labelValueID";
-            // 
-            // lblQuantityStocksError
-            // 
-            this.lblQuantityStocksError.AutoSize = true;
-            this.lblQuantityStocksError.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantityStocksError.ForeColor = System.Drawing.Color.Red;
-            this.lblQuantityStocksError.Location = new System.Drawing.Point(404, 208);
-            this.lblQuantityStocksError.Name = "lblQuantityStocksError";
-            this.lblQuantityStocksError.Size = new System.Drawing.Size(25, 19);
-            this.lblQuantityStocksError.TabIndex = 39;
-            this.lblQuantityStocksError.Text = "❌";
-            this.lblQuantityStocksError.Click += new System.EventHandler(this.lblQuantityStocksError_Click);
-            // 
             // btnCancel
             // 
             this.btnCancel.Activecolor = System.Drawing.Color.Gray;
-            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
             this.btnCancel.ButtonText = "Cancel";
@@ -225,10 +264,10 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(12, 498);
+            this.btnCancel.Location = new System.Drawing.Point(261, 498);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Normalcolor = System.Drawing.Color.Gray;
+            this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
             this.btnCancel.OnHovercolor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnCancel.selected = false;
@@ -243,7 +282,7 @@
             // btnAdd
             // 
             this.btnAdd.Activecolor = System.Drawing.Color.Orange;
-            this.btnAdd.BackColor = System.Drawing.Color.Orange;
+            this.btnAdd.BackColor = System.Drawing.Color.Teal;
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAdd.BorderRadius = 0;
             this.btnAdd.ButtonText = "Add Stock";
@@ -262,59 +301,20 @@
             this.btnAdd.IconVisible = false;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(260, 498);
+            this.btnAdd.Location = new System.Drawing.Point(12, 498);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Normalcolor = System.Drawing.Color.Orange;
-            this.btnAdd.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnAdd.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnAdd.Normalcolor = System.Drawing.Color.Teal;
+            this.btnAdd.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnAdd.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAdd.selected = false;
             this.btnAdd.Size = new System.Drawing.Size(205, 61);
             this.btnAdd.TabIndex = 33;
             this.btnAdd.Text = "Add Stock";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAdd.Textcolor = System.Drawing.Color.Black;
+            this.btnAdd.Textcolor = System.Drawing.Color.White;
             this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.BorderColorFocused = System.Drawing.Color.Black;
-            this.txtQuantity.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQuantity.BorderColorMouseHover = System.Drawing.Color.Black;
-            this.txtQuantity.BorderThickness = 2;
-            this.txtQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQuantity.isPassword = false;
-            this.txtQuantity.Location = new System.Drawing.Point(17, 201);
-            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(417, 33);
-            this.txtQuantity.TabIndex = 19;
-            this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtQuantity.Enter += new System.EventHandler(this.txtQuantity_Enter);
-            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
-            // 
-            // lblQuantity
-            // 
-            this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblQuantity.Location = new System.Drawing.Point(13, 173);
-            this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(145, 24);
-            this.lblQuantity.TabIndex = 18;
-            this.lblQuantity.Text = "Current Quantity";
-            // 
-            // pictureBoxProductPic
-            // 
-            this.pictureBoxProductPic.Image = global::POSWithInventorySystem.Properties.Resources.placeholder;
-            this.pictureBoxProductPic.Location = new System.Drawing.Point(17, 34);
-            this.pictureBoxProductPic.Name = "pictureBoxProductPic";
-            this.pictureBoxProductPic.Size = new System.Drawing.Size(125, 125);
-            this.pictureBoxProductPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProductPic.TabIndex = 6;
-            this.pictureBoxProductPic.TabStop = false;
             // 
             // groupBox1
             // 
@@ -335,6 +335,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(479, 581);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxAddProductForm);

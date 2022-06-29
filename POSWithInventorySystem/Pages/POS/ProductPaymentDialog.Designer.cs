@@ -37,7 +37,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Activecolor = System.Drawing.Color.Gray;
+            this.btnCancel.Activecolor = System.Drawing.Color.Silver;
             this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.BorderRadius = 0;
@@ -57,7 +57,7 @@
             this.btnCancel.IconVisible = false;
             this.btnCancel.IconZoom = 90D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(15, 125);
+            this.btnCancel.Location = new System.Drawing.Point(200, 125);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.Silver;
@@ -74,14 +74,15 @@
             // 
             // btnOk
             // 
-            this.btnOk.Activecolor = System.Drawing.Color.Orange;
-            this.btnOk.BackColor = System.Drawing.Color.Orange;
+            this.btnOk.Activecolor = System.Drawing.Color.Teal;
+            this.btnOk.BackColor = System.Drawing.Color.Teal;
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOk.BorderRadius = 0;
             this.btnOk.ButtonText = "Enter amount";
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOk.DisabledColor = System.Drawing.Color.Gray;
             this.btnOk.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.Iconcolor = System.Drawing.Color.Transparent;
             this.btnOk.Iconimage = null;
             this.btnOk.Iconimage_right = null;
@@ -94,18 +95,18 @@
             this.btnOk.IconVisible = false;
             this.btnOk.IconZoom = 90D;
             this.btnOk.IsTab = false;
-            this.btnOk.Location = new System.Drawing.Point(200, 125);
+            this.btnOk.Location = new System.Drawing.Point(17, 125);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Normalcolor = System.Drawing.Color.Orange;
-            this.btnOk.OnHovercolor = System.Drawing.Color.Gold;
-            this.btnOk.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnOk.Normalcolor = System.Drawing.Color.Teal;
+            this.btnOk.OnHovercolor = System.Drawing.Color.DarkCyan;
+            this.btnOk.OnHoverTextColor = System.Drawing.Color.White;
             this.btnOk.selected = false;
             this.btnOk.Size = new System.Drawing.Size(161, 47);
             this.btnOk.TabIndex = 39;
             this.btnOk.Text = "Enter amount";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnOk.Textcolor = System.Drawing.Color.Black;
+            this.btnOk.Textcolor = System.Drawing.Color.White;
             this.btnOk.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -136,9 +137,9 @@
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblAmount.Location = new System.Drawing.Point(12, 19);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(80, 25);
+            this.lblAmount.Size = new System.Drawing.Size(138, 25);
             this.lblAmount.TabIndex = 37;
-            this.lblAmount.Text = "Amount";
+            this.lblAmount.Text = "Amount to pay";
             // 
             // lblErrorAmount
             // 
@@ -157,10 +158,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 194);
             this.Controls.Add(this.lblErrorAmount);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.lblAmount);
+            this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
