@@ -9,25 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class ReceiptForm : Form
-    {
-        public ReceiptForm()
-        {
+namespace POSWithInventorySystem {
+    public partial class ReceiptForm : Form {
+        TransactionInformation transaction;
+        
+        public ReceiptForm() {
             InitializeComponent();
         }
 
-        TransactionInformation transaction;
-
-        public ReceiptForm(TransactionInformation information)
-        {
+        public ReceiptForm(TransactionInformation information) {
             InitializeComponent();
             this.transaction = information;
         }
 
-        private void ReceiptForm_Load(object sender, EventArgs e)
-        {
+        private void ReceiptForm_Load(object sender, EventArgs e) {
             crReceipt crystalReportReceipt = new crReceipt();
 
             crystalReportReceipt.Database.Tables["Product"].SetDataSource(transaction.ProductSoldInformation);
@@ -54,14 +49,12 @@ namespace POSWithInventorySystem
             crystalReportViewer1.ReportSource = crystalReportReceipt;
         }
 
-        private void ReceiptForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
+        private void ReceiptForm_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
                 this.Close();
             }
-            if (e.KeyCode == Keys.Escape)
-            {
+            
+            if (e.KeyCode == Keys.Escape) {
                 this.Close();
             }
         }

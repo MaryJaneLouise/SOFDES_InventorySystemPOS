@@ -10,46 +10,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class ViewProductDialog : Form
-    {
-        public ViewProductDialog()
-        {
-            InitializeComponent();
-        }
-
-
-        public ViewProductDialog(int productID)
-        {
-            InitializeComponent();
-            this.ProductID = productID; //Get The Product ID in Parent Form
-        }
-
-        // Database Connection
+namespace POSWithInventorySystem {
+    public partial class ViewProductDialog : Form {
         string connectionString = DatabaseConnection.Connection;
 
         int ProductID;
 
-        private void ViewProductDialog_Load(object sender, EventArgs e)
-        {
+        public ViewProductDialog() {
+            InitializeComponent();
+        }
+
+        public ViewProductDialog(int productID) {
+            InitializeComponent();
+            this.ProductID = productID;
+        }
+
+        private void ViewProductDialog_Load(object sender, EventArgs e) {
             FillProductInformation();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
+        private void btnClose_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void FillProductInformation()
-        {
-            using(MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void FillProductInformation() {
+            using(MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter("ViewSelectedProduct", mysqlCon);
                 mySqlDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 mySqlDataAdapter.SelectCommand.Parameters.AddWithValue("_ProductID", ProductID);
                 DataTable dataTable = new DataTable();
+                
                 mySqlDataAdapter.Fill(dataTable);
 
                 btnProductIDValue.Text = dataTable.Rows[0]["ProductID"].ToString();
@@ -59,25 +50,21 @@ namespace POSWithInventorySystem
                 lblPurchasePriceValue.Text = dataTable.Rows[0]["PurchasePrice"].ToString();
                 lblSellingPriceValue.Text = dataTable.Rows[0]["SellingPrice"].ToString();
                 byte[] image = (byte[])dataTable.Rows[0]["Image"];
+                
                 FillProductPic(image);
-
             }
         }
 
-        private void FillProductPic(byte[] image)
-        {
-            if (image == null)
-            {
+        private void FillProductPic(byte[] image) {
+            if (image == null) {
                 pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.aw;
             }
-            else
-            {
-                using (MemoryStream ms = new MemoryStream(image))   //Conversion of byte to Stream
-                {
-                    pictureBoxProductPic.Image = Image.FromStream(ms); //Fill PictureBox...
+
+            else {
+                using (MemoryStream ms = new MemoryStream(image)) {
+                    pictureBoxProductPic.Image = Image.FromStream(ms);
                 }
             }
         }
-
     }
 }

@@ -10,56 +10,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class UpdateStocksDialog : Form
-    {
+namespace POSWithInventorySystem {
+    public partial class UpdateStocksDialog : Form {
         // Database Connection
         string connectionString = DatabaseConnection.Connection;
 
-        public UpdateStocksDialog()
-        {
+        UpdateStocksInfo StocksInfo;
+        LoginFormData usersData;
+
+        public UpdateStocksDialog() {
             InitializeComponent();
         }
 
-        public UpdateStocksDialog(UpdateStocksInfo info, LoginFormData data)
-        {
+        public UpdateStocksDialog(UpdateStocksInfo info, LoginFormData data) {
             InitializeComponent();
             StocksInfo = info;
             this.usersData = data;
         }
 
-        UpdateStocksInfo StocksInfo;
-        LoginFormData usersData;
-
-        private void UpdateStocksDialog_Load(object sender, EventArgs e)
-        {
+        private void UpdateStocksDialog_Load(object sender, EventArgs e) {
             PopulateControls();
         }
 
-        private void txtQuantity_Enter(object sender, EventArgs e)
-        {
+        private void txtQuantity_Enter(object sender, EventArgs e) {
             lblQuantityStocksError.Text = "";
         }
 
-        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e) {
             SetMaximumLength(txtQuantity, 11);
             e.Handled = e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar);
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
+        private void btnAdd_Click(object sender, EventArgs e) {
             UpdateStocks();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
+        private void btnCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void PopulateControls()
-        {
+        private void PopulateControls() {
             lblStocksIDValue.Text = StocksInfo.StocksID.ToString();
             lblProductIDValue.Text = StocksInfo.ProductID.ToString();
             lblProductNameValue.Text = StocksInfo.ProductName;
@@ -68,13 +58,12 @@ namespace POSWithInventorySystem
             lblExpirationDateValue.Text = StocksInfo.ExpirationDate;
             lblStatusValue.Text = StocksInfo.Status;
             lblQuantityStocksError.Text = "";
-            GetAndSetProductPicture(StocksInfo.ProductID); //Set PictureBox pic
+
+            GetAndSetProductPicture(StocksInfo.ProductID);
         }
 
-        private void GetAndSetProductPicture(int productID)
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void GetAndSetProductPicture(int productID) {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductPictureByID", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -84,12 +73,10 @@ namespace POSWithInventorySystem
 
                 byte[] image = (byte[])dataTable.Rows[0]["Image"];
 
-                if (image == null)
-                {
+                if (image == null) {
                     pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.aw;
                 }
-                else
-                {
+                else {
                     using (MemoryStream ms = new MemoryStream(image))   //Conversion of byte to Stream
                     {
                         pictureBoxProductPic.Image = Image.FromStream(ms); //Fill PictureBox...
@@ -98,40 +85,32 @@ namespace POSWithInventorySystem
             }
         }
 
-        private bool checkFieldIfEmpty()
-        {
+        private bool checkFieldIfEmpty() {
             bool result = false;
 
-            if (string.IsNullOrEmpty(txtQuantity.Text.Trim()))
-            {
+            if (string.IsNullOrEmpty(txtQuantity.Text.Trim())) {
                 lblQuantityStocksError.Text = "❌";
                 result = true;
             }
             return result;
         }
 
-        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength)
-        {
-            foreach (Control ctl in metroTextbox.Controls)
-            {
-                if (ctl.GetType() == typeof(TextBox))
-                {
+        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength) {
+            foreach (Control ctl in metroTextbox.Controls) {
+                if (ctl.GetType() == typeof(TextBox)) {
                     var txt = (TextBox)ctl;
                     txt.MaxLength = maxlength;
                 }
             }
         }
 
-        private void UpdateStocks()
-        {
-            if (!checkFieldIfEmpty())
-            {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                {
+        private void UpdateStocks() {
+            if (!checkFieldIfEmpty()) {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                     int Quantity = Convert.ToInt32(txtQuantity.Text.Trim());
                     int StocksID = StocksInfo.StocksID;
 
-                    //Insert Into stocks Table in Database
+                    //Insert stocks of the selected ProductID to the database
                     mysqlCon.Open();
                     MySqlCommand mySqlCommand = new MySqlCommand("UpdateStocksQuantityByID", mysqlCon);
                     mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -139,7 +118,7 @@ namespace POSWithInventorySystem
                     mySqlCommand.Parameters.AddWithValue("_Quantity", Quantity);
                     mySqlCommand.ExecuteNonQuery();
 
-                    //Insert Into stocksindividual table in Database
+                    //Insert individual stocks update of the selected ProductID to the database
                     string DateAddedLog = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                     MySqlCommand mySqlCommand2 = new MySqlCommand("InsertIndividualStocksLog", mysqlCon);
@@ -153,12 +132,14 @@ namespace POSWithInventorySystem
                     mySqlCommand2.Parameters.AddWithValue("_Action", "Update");
                     mySqlCommand2.ExecuteNonQuery();
 
-                    /*---------------------------------------------------------*/
-                    MessageBox.Show("Updated Stocks Succesfully", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("The stocks of the selected product has been updated.", "Add stocks", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    ((StocksForm)this.Owner).GridFillIndividualStocksTab2();//Fill StocksForm(Parent Form) Gridview stocks 
-                    ((StocksForm)this.Owner).SetExpirationDateForIndividual();//Set Expiration For Individual Stocks in StocksForm(Parent Form) Gridview stocks 
-                    ((StocksForm)this.Owner).SetNumberOfStocks();//Fill StocksForm(Parent Form) Total stocks 
+                    ((StocksForm)this.Owner).GridFillIndividualStocksTab2();
+
+                    //Set the expiration of the products listed
+                    ((StocksForm)this.Owner).SetExpirationDateForIndividual();
+
+                    ((StocksForm)this.Owner).SetNumberOfStocks();
                 }
             }
         }

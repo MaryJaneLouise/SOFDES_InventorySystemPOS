@@ -71,42 +71,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddProductsDialog.cs">
+    <Compile Include="Pages\Inventory\AddProductsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddProductsDialog.Designer.cs">
+    <Compile Include="Pages\Inventory\AddProductsDialog.Designer.cs">
       <DependentUpon>AddProductsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddQuantityInCart.cs">
+    <Compile Include="Pages\POS\AddQuantityInCart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddQuantityInCart.Designer.cs">
+    <Compile Include="Pages\POS\AddQuantityInCart.Designer.cs">
       <DependentUpon>AddQuantityInCart.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddStocksDialog.cs">
+    <Compile Include="Pages\Inventory\AddStocksDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddStocksDialog.Designer.cs">
+    <Compile Include="Pages\Inventory\AddStocksDialog.Designer.cs">
       <DependentUpon>AddStocksDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackupForm.cs">
+    <Compile Include="Pages\CopyDatabase\BackupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BackupForm.Designer.cs">
+    <Compile Include="Pages\CopyDatabase\BackupForm.Designer.cs">
       <DependentUpon>BackupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection.cs" />
-    <Compile Include="HistoryForm.cs">
+    <Compile Include="Pages\History\HistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HistoryForm.Designer.cs">
+    <Compile Include="Pages\History\HistoryForm.Designer.cs">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxChangeLocation.cs" />
-    <Compile Include="ReceiptForm.cs">
+    <Compile Include="Pages\POS\ReceiptForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReceiptForm.Designer.cs">
+    <Compile Include="Pages\POS\ReceiptForm.Designer.cs">
       <DependentUpon>ReceiptForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -121,22 +121,22 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="POSTransactionForm.cs">
+    <Compile Include="Pages\POS\POSTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="POSTransactionForm.Designer.cs">
+    <Compile Include="Pages\POS\POSTransactionForm.Designer.cs">
       <DependentUpon>POSTransactionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductPaymentDialog.cs">
+    <Compile Include="Pages\POS\ProductPaymentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductPaymentDialog.Designer.cs">
+    <Compile Include="Pages\POS\ProductPaymentDialog.Designer.cs">
       <DependentUpon>ProductPaymentDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductVoidDialog.cs">
+    <Compile Include="Pages\POS\ProductVoidDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductVoidDialog.Designer.cs">
+    <Compile Include="Pages\POS\ProductVoidDialog.Designer.cs">
       <DependentUpon>ProductVoidDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -206,47 +206,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetStocksTotal.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SalesForm.cs">
+    <Compile Include="Pages\Sales\SalesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesForm.Designer.cs">
+    <Compile Include="Pages\Sales\SalesForm.Designer.cs">
       <DependentUpon>SalesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesReportForm.cs">
+    <Compile Include="Pages\Sales\SalesReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesReportForm.Designer.cs">
+    <Compile Include="Pages\Sales\SalesReportForm.Designer.cs">
       <DependentUpon>SalesReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StocksForm.cs">
+    <Compile Include="Pages\Inventory\StocksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StocksForm.Designer.cs">
+    <Compile Include="Pages\Inventory\StocksForm.Designer.cs">
       <DependentUpon>StocksForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemSettings.cs" />
-    <Compile Include="UpdateCartQuanitity.cs">
+    <Compile Include="Pages\Settings\SystemSettings.cs" />
+    <Compile Include="Pages\POS\UpdateCartQuanitity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateCartQuanitity.Designer.cs">
+    <Compile Include="Pages\POS\UpdateCartQuanitity.Designer.cs">
       <DependentUpon>UpdateCartQuanitity.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateProductDialog.cs">
+    <Compile Include="Pages\Inventory\UpdateProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateProductDialog.Designer.cs">
+    <Compile Include="Pages\Inventory\UpdateProductDialog.Designer.cs">
       <DependentUpon>UpdateProductDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateStocksDialog.cs">
+    <Compile Include="Pages\Inventory\UpdateStocksDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateStocksDialog.Designer.cs">
+    <Compile Include="Pages\Inventory\UpdateStocksDialog.Designer.cs">
       <DependentUpon>UpdateStocksDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateUserAccountAndInfo.cs">
+    <Compile Include="Pages\Users\UpdateUserAccountAndInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateUserAccountAndInfo.Designer.cs">
+    <Compile Include="Pages\Users\UpdateUserAccountAndInfo.Designer.cs">
       <DependentUpon>UpdateUserAccountAndInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="UsersAccountDialog.cs">
@@ -255,10 +255,10 @@
     <Compile Include="UsersAccountDialog.Designer.cs">
       <DependentUpon>UsersAccountDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsersForm.cs">
+    <Compile Include="Pages\Users\UsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsersForm.Designer.cs">
+    <Compile Include="Pages\Users\UsersForm.Designer.cs">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ValidateAdminPasswordDialog.cs">
@@ -267,34 +267,34 @@
     <Compile Include="ValidateAdminPasswordDialog.Designer.cs">
       <DependentUpon>ValidateAdminPasswordDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewProductDialog.cs">
+    <Compile Include="Pages\Inventory\ViewProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewProductDialog.Designer.cs">
+    <Compile Include="Pages\Inventory\ViewProductDialog.Designer.cs">
       <DependentUpon>ViewProductDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewUserInformation.cs">
+    <Compile Include="Pages\Users\ViewUserInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewUserInformation.Designer.cs">
+    <Compile Include="Pages\Users\ViewUserInformation.Designer.cs">
       <DependentUpon>ViewUserInformation.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddProductsDialog.resx">
+    <EmbeddedResource Include="Pages\Inventory\AddProductsDialog.resx">
       <DependentUpon>AddProductsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddQuantityInCart.resx">
+    <EmbeddedResource Include="Pages\POS\AddQuantityInCart.resx">
       <DependentUpon>AddQuantityInCart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddStocksDialog.resx">
+    <EmbeddedResource Include="Pages\Inventory\AddStocksDialog.resx">
       <DependentUpon>AddStocksDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BackupForm.resx">
+    <EmbeddedResource Include="Pages\CopyDatabase\BackupForm.resx">
       <DependentUpon>BackupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HistoryForm.resx">
+    <EmbeddedResource Include="Pages\History\HistoryForm.resx">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReceiptForm.resx">
+    <EmbeddedResource Include="Pages\POS\ReceiptForm.resx">
       <DependentUpon>ReceiptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -303,13 +303,13 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="POSTransactionForm.resx">
+    <EmbeddedResource Include="Pages\POS\POSTransactionForm.resx">
       <DependentUpon>POSTransactionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductPaymentDialog.resx">
+    <EmbeddedResource Include="Pages\POS\ProductPaymentDialog.resx">
       <DependentUpon>ProductPaymentDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductVoidDialog.resx">
+    <EmbeddedResource Include="Pages\POS\ProductVoidDialog.resx">
       <DependentUpon>ProductVoidDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -346,40 +346,40 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProductsInventory.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesForm.resx">
+    <EmbeddedResource Include="Pages\Sales\SalesForm.resx">
       <DependentUpon>SalesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesReportForm.resx">
+    <EmbeddedResource Include="Pages\Sales\SalesReportForm.resx">
       <DependentUpon>SalesReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StocksForm.resx">
+    <EmbeddedResource Include="Pages\Inventory\StocksForm.resx">
       <DependentUpon>StocksForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateCartQuanitity.resx">
+    <EmbeddedResource Include="Pages\POS\UpdateCartQuanitity.resx">
       <DependentUpon>UpdateCartQuanitity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateProductDialog.resx">
+    <EmbeddedResource Include="Pages\Inventory\UpdateProductDialog.resx">
       <DependentUpon>UpdateProductDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateStocksDialog.resx">
+    <EmbeddedResource Include="Pages\Inventory\UpdateStocksDialog.resx">
       <DependentUpon>UpdateStocksDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateUserAccountAndInfo.resx">
+    <EmbeddedResource Include="Pages\Users\UpdateUserAccountAndInfo.resx">
       <DependentUpon>UpdateUserAccountAndInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsersAccountDialog.resx">
       <DependentUpon>UsersAccountDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsersForm.resx">
+    <EmbeddedResource Include="Pages\Users\UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidateAdminPasswordDialog.resx">
       <DependentUpon>ValidateAdminPasswordDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewProductDialog.resx">
+    <EmbeddedResource Include="Pages\Inventory\ViewProductDialog.resx">
       <DependentUpon>ViewProductDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewUserInformation.resx">
+    <EmbeddedResource Include="Pages\Users\ViewUserInformation.resx">
       <DependentUpon>ViewUserInformation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -558,5 +558,6 @@
     <Content Include="Resources\placeholder.png" />
     <None Include="Resources\placeholder1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

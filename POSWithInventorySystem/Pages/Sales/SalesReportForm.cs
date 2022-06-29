@@ -9,61 +9,52 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class SalesReportForm : Form
-    {
-        public SalesReportForm()
-        {
-            InitializeComponent();
-        }
-
-        //For Sales Report , Priority
-        public SalesReportForm(SalesReportInformation salesReportInformation, string callerOfForm)
-        {
-            InitializeComponent();
-            this.ReportInformation = salesReportInformation;
-            this.CallerOfForm = callerOfForm;
-        }
-
-        //For Products Information
-        public SalesReportForm(ProductsInformation productsInformation, string callerOfForm)
-        {
-            InitializeComponent();
-            this.ProductsInformation1 = productsInformation;
-            this.CallerOfForm = callerOfForm;
-        }
-
-        //For Total Stocks Information
-        public SalesReportForm(TotalStocksInformation totalStocksInformation, string callerOfForm)
-        {
-            InitializeComponent();
-            this.stocksInformation = totalStocksInformation;
-            this.CallerOfForm = callerOfForm;
-        }
-
-        //For Individual Stocks Information
-        public SalesReportForm(IndividualStocksInformation individualStocksInformation, string callerOfForm)
-        {
-            InitializeComponent();
-            this.IndividualStocksInformation = individualStocksInformation;
-            this.CallerOfForm = callerOfForm;
-        }
-
+namespace POSWithInventorySystem {
+    public partial class SalesReportForm : Form {
         SalesReportInformation ReportInformation;
         ProductsInformation ProductsInformation1;
         TotalStocksInformation stocksInformation;
         IndividualStocksInformation IndividualStocksInformation;
 
         public string CallerOfForm { get; set; }
+        
+        public SalesReportForm() {
+            InitializeComponent();
+        }
 
-        private void SalesReportForm_Load(object sender, EventArgs e)
-        {
+        //Sales Report
+        public SalesReportForm(SalesReportInformation salesReportInformation, string callerOfForm) {
+            InitializeComponent();
+            this.ReportInformation = salesReportInformation;
+            this.CallerOfForm = callerOfForm;
+        }
+
+        //Products' Information Report
+        public SalesReportForm(ProductsInformation productsInformation, string callerOfForm) {
+            InitializeComponent();
+            this.ProductsInformation1 = productsInformation;
+            this.CallerOfForm = callerOfForm;
+        }
+
+        //Total Stocks Information Report
+        public SalesReportForm(TotalStocksInformation totalStocksInformation, string callerOfForm) {
+            InitializeComponent();
+            this.stocksInformation = totalStocksInformation;
+            this.CallerOfForm = callerOfForm;
+        }
+
+        //Individual Stocks Information Report
+        public SalesReportForm(IndividualStocksInformation individualStocksInformation, string callerOfForm) {
+            InitializeComponent();
+            this.IndividualStocksInformation = individualStocksInformation;
+            this.CallerOfForm = callerOfForm;
+        }
+
+        private void SalesReportForm_Load(object sender, EventArgs e) {
             SystemSettings systemSettings = new SystemSettings();
 
-            //For Transactions
-            if (CallerOfForm == "Transactions")
-            {
+            //Transactions Page
+            if (CallerOfForm == "Transactions") {
                 crSalesReport salesReport = new crSalesReport();
 
                 salesReport.SetParameterValue("SystemName", systemSettings.name);
@@ -81,9 +72,9 @@ namespace POSWithInventorySystem
                 crvSalesReport.ReportSource = null;
                 crvSalesReport.ReportSource = salesReport;
             }
-            //For Products Transactions
-            else if(CallerOfForm == "ProductsTransaction")
-            {
+            
+            //Products Transactions Page
+            else if(CallerOfForm == "ProductsTransaction") {
                 crProductsSalesReport crProducts = new crProductsSalesReport();
 
                 crProducts.Database.Tables["ProductsSold"].SetDataSource(ReportInformation.dtProductSoldInformation);
@@ -104,9 +95,9 @@ namespace POSWithInventorySystem
                 crvSalesReport.ReportSource = null;
                 crvSalesReport.ReportSource = crProducts;
             }
-            //For Products Information
-            else if (CallerOfForm == "ProductsInformation")
-            {
+            
+            //Products' Information Report
+            else if (CallerOfForm == "ProductsInformation") {
                 ProductsInventory productsInventory = new ProductsInventory();
                 productsInventory.Database.Tables["ProductsInformation"].SetDataSource(ProductsInformation1.ProductsInformations);
 
@@ -120,9 +111,9 @@ namespace POSWithInventorySystem
                 crvSalesReport.ReportSource = null;
                 crvSalesReport.ReportSource = productsInventory;
             }
-            //For Total Stocks information
-            else if(CallerOfForm == "TotalStocksInformation")
-            {
+            
+            //Total Stocks information Report
+            else if(CallerOfForm == "TotalStocksInformation") {
                 crStocksTotalInventory crStocksTotal = new crStocksTotalInventory();
                 crStocksTotal.Database.Tables["TotalStocks"].SetDataSource(stocksInformation.TotalStocks);
 
@@ -136,9 +127,9 @@ namespace POSWithInventorySystem
                 crvSalesReport.ReportSource = null;
                 crvSalesReport.ReportSource = crStocksTotal;
             }
-            //For Individual Stocks Information
-            else if(CallerOfForm == "IndividualStocksInformation")
-            {
+            
+            //Individual Stocks Information Report
+            else if(CallerOfForm == "IndividualStocksInformation") {
                 crStocksIndividualInventory crStocksIndividual = new crStocksIndividualInventory();
                 crStocksIndividual.Database.Tables["IndividualStocks"].SetDataSource(IndividualStocksInformation.IndividualStocks);
 
@@ -152,9 +143,9 @@ namespace POSWithInventorySystem
                 crvSalesReport.ReportSource = null;
                 crvSalesReport.ReportSource = crStocksIndividual;
             }
-            else 
-            {
-                //Do Nothing
+            
+            else {
+               //Insert code here for errors or something
             }
         }
     }

@@ -10,51 +10,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class ViewUserInformation : Form
-    {
-        public ViewUserInformation()
-        {
-            InitializeComponent();
-        }
-
-        public ViewUserInformation(int userID)
-        {
-            InitializeComponent();
-            this.UsersID = userID;
-        }
-
+namespace POSWithInventorySystem {
+    public partial class ViewUserInformation : Form {
         //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none";
         string connectionString = DatabaseConnection.Connection;
 
         int UsersID;
+
         MemoryStream memoryStream;
 
-        private void ViewUserInformation_Load(object sender, EventArgs e)
-        {
+        public ViewUserInformation() {
+            InitializeComponent();
+        }
+
+        public ViewUserInformation(int userID) {
+            InitializeComponent();
+            this.UsersID = userID;
+        }
+
+        private void ViewUserInformation_Load(object sender, EventArgs e) {
             PopulateUiControls();
         }
 
-        private void ViewUserInformation_FormClosed(object sender, FormClosedEventArgs e)
-        {
+        private void ViewUserInformation_FormClosed(object sender, FormClosedEventArgs e) {
             memoryStream.Dispose();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
+        private void btnClose_Click(object sender, EventArgs e) {
             memoryStream.Dispose();
             this.Close();
         }
 
-        private void PopulateUiControls()
-        {
-            try
-            {
-                if (Convert.ToString(UsersID) != null)
-                {
-                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                    {
+        private void PopulateUiControls() {
+            try {
+                if (Convert.ToString(UsersID) != null) {
+                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                         mysqlCon.Open();
                         MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectUserInformationByIDForView", mysqlCon);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_UsersID", Convert.ToInt32(UsersID));
@@ -62,8 +52,7 @@ namespace POSWithInventorySystem
                         DataTable dataTable = new DataTable();
                         sqlDa.Fill(dataTable);
 
-                        if (dataTable.Rows.Count == 1)
-                        {
+                        if (dataTable.Rows.Count == 1) {
                             lblUserIDValue.Text = dataTable.Rows[0]["UsersID"].ToString();
                             lblUserTypeValue.Text = dataTable.Rows[0]["UsersType"].ToString();
                             lblStatusUsersValue.Text = dataTable.Rows[0]["Status"].ToString();
@@ -84,39 +73,33 @@ namespace POSWithInventorySystem
                         }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Error UsersID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else {
+                    MessageBox.Show("There was an error in fetching the user's information. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 throw;
             }
         }
 
-        private void GetSex(String sex)
-        {
-            if (sex.Trim() == "Male")
-            {
+        private void GetSex(String sex) {
+            if (sex.Trim() == "Male") {
                 lblSexValue.Text = "Male";
             }
-            else
-            {
+
+            else {
                 lblSexValue.Text = "Female";
             }
         }
 
-        private void ViewUserImage(byte[] image)
-        {
-            if (image == null)
-            {
-                pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources._666201__1_;
+        private void ViewUserImage(byte[] image) {
+            if (image == null) {
+                pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources.placeholder;
             }
-            else
-            {
-                memoryStream = new MemoryStream(image);   //Conversion of byte to Stream
-                pictureBoxUserPic.Image = Image.FromStream(memoryStream); //Fill PictureBox...
+            else {
+                memoryStream = new MemoryStream(image);
+                pictureBoxUserPic.Image = Image.FromStream(memoryStream);
             }
         }
     }

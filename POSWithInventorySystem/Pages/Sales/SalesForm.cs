@@ -9,42 +9,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class SalesForm : Form
-    {
-        public SalesForm()
-        {
-            InitializeComponent();
-        }
-
+namespace POSWithInventorySystem {
+    public partial class SalesForm : Form {
         //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none ";
         string connectionString = DatabaseConnection.Connection;
         string DateReportModes;
+        
+        public SalesForm() {
+            InitializeComponent();
+        }
 
-        private void SalesForm_Load(object sender, EventArgs e)
-        {
-            /*-------Transaction Sales Declaration-------*/
+        private void SalesForm_Load(object sender, EventArgs e) {
+            //Transaction Sales
             dvgProductsTransaction.Hide();
             lblNumberOfProductsTransactions.Hide(); lblNumberOfProductsTransactionsValue.Hide(); 
             PopulateTransactionDataGridview();
-            /*-------Products Transactions Sales Declaration-------*/
+            
+            //Products Transaction Sales
             dvgTransactionDesignAndWidth();
             PopulateProductTransctionDataGridview();
             dvgProductsTransactionDesignAndWidth();
-            /*----------------All------------------*/
-            comboBoxTransactionOrProducts.SelectedIndex = 0; //Set Default To Transaction Sales
+            
+            //All Sales
+            comboBoxTransactionOrProducts.SelectedIndex = 0;
             btnPrint.Hide();
         }
 
-        private void bunifuSwitchToDatepicker_Click(object sender, EventArgs e)
-        {
-            if (bunifuSwitchToDatepicker.Value == true)
-            {
+        private void bunifuSwitchToDatepicker_Click(object sender, EventArgs e) {
+            if (bunifuSwitchToDatepicker.Value == true) {
                 bunifuDatepickerToSales2.Enabled = true;
             }
-            else
-            {
+            
+            else {
                 bunifuDatepickerToSales2.Enabled = false;
             }
 
@@ -52,20 +48,17 @@ namespace POSWithInventorySystem
             PopulateProductTransctionDataGridview();
         }
 
-        private void bunifuDatepickerFromSales1_onValueChanged(object sender, EventArgs e)
-        { 
+        private void bunifuDatepickerFromSales1_onValueChanged(object sender, EventArgs e) { 
             PopulateTransactionDataGridview();
             PopulateProductTransctionDataGridview();
         }
 
-        private void bunifuDatepickerToSales2_onValueChanged(object sender, EventArgs e)
-        {
+        private void bunifuDatepickerToSales2_onValueChanged(object sender, EventArgs e) {
             PopulateTransactionDataGridview();
             PopulateProductTransctionDataGridview();
         }
 
-        private void SetTotalSalesAndRowsNumbers()
-        {
+        private void SetTotalSalesAndRowsNumbers() {
             lblNumberOFTransactionValue.Text = dvgTransactions.Rows.Count.ToString();
             lblNumberOfProductsTransactionsValue.Text = dvgProductsTransaction.Rows.Count.ToString();
 
@@ -73,14 +66,12 @@ namespace POSWithInventorySystem
             double TotalDiscount = 0;
             double TotalProfitSales = 0;
 
-            foreach(DataGridViewRow row in dvgTransactions.Rows)
-            {
+            foreach(DataGridViewRow row in dvgTransactions.Rows) {
                 TotalSales += Convert.ToDouble(row.Cells[dvgTransactions.Columns["TotalAmount"].Index].Value);
                 TotalDiscount += Convert.ToDouble(row.Cells[dvgTransactions.Columns["Discount"].Index].Value);
             }
 
-            foreach (DataGridViewRow row in dvgProductsTransaction.Rows)
-            {
+            foreach (DataGridViewRow row in dvgProductsTransaction.Rows) {
                 TotalProfitSales += Convert.ToDouble(row.Cells[dvgProductsTransaction.Columns["TotalSales"].Index].Value);
             }
 
@@ -91,35 +82,29 @@ namespace POSWithInventorySystem
             lblTotalProfitSalesValue.Text = string.Format("{0:n}", Math.Round(TotalProfitSales, 2));
         }
 
-        private void comboBoxTransactionOrProducts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //For Transaction Sales
-            if (comboBoxTransactionOrProducts.SelectedIndex == 0)
-            {
-                //Hide Products transactions Controls
+        private void comboBoxTransactionOrProducts_SelectedIndexChanged(object sender, EventArgs e) {
+            //Transaction Sales
+            if (comboBoxTransactionOrProducts.SelectedIndex == 0) {
                 dvgProductsTransaction.Hide();
                 lblNumberOfProductsTransactions.Hide(); lblNumberOfProductsTransactionsValue.Hide();
-                //Show Transactions Controls
+                
                 lblNumberOfTransaction.Show(); lblNumberOFTransactionValue.Show();
                 dvgTransactions.Show();
             }
-            //For Product Transaction Sales 
-            else
-            {
-                //Hide Transactions Controls
+            
+            //Product Transaction Sales 
+            else {
                 dvgTransactions.Hide();
                 lblNumberOfTransaction.Hide(); lblNumberOFTransactionValue.Hide();
-                //Show ProductsTransactions Controls
+                
                 dvgProductsTransaction.Show();
                 lblNumberOfProductsTransactions.Show(); lblNumberOfProductsTransactionsValue.Show();
             }
         }
 
-        private void btnDailySales_Click(object sender, EventArgs e)
-        {
-            //Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void btnDailySales_Click(object sender, EventArgs e) {
+            //Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectTransactionDaily", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -129,9 +114,9 @@ namespace POSWithInventorySystem
 
                 SetTotalSalesAndRowsNumbers();
             }
-            //Products Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+            
+            //Products Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsTransactionDaily", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -142,15 +127,13 @@ namespace POSWithInventorySystem
                 SetTotalSalesAndRowsNumbers();
             }
 
-            btnPrint.Enabled = true;
+            btnPrint.Enabled = false;
             DateReportModes = "Daily Sales";
         }
 
-        private void btnWeeklySales_Click(object sender, EventArgs e)
-        {
-            //Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void btnWeeklySales_Click(object sender, EventArgs e) {
+            //Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectTransactionWeekly", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -160,9 +143,9 @@ namespace POSWithInventorySystem
 
                 SetTotalSalesAndRowsNumbers();
             }
-            //Products Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+            
+            //Products Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsTransactionWeekly", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -173,15 +156,13 @@ namespace POSWithInventorySystem
                 SetTotalSalesAndRowsNumbers();
             }
 
-            btnPrint.Enabled = true;
+            btnPrint.Enabled = false;
             DateReportModes = "Weekly Sales";
         }
 
-        private void btnMonthlySales_Click(object sender, EventArgs e)
-        {
-            //Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void btnMonthlySales_Click(object sender, EventArgs e) {
+            //Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectTransactionMonthly", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -191,9 +172,9 @@ namespace POSWithInventorySystem
 
                 SetTotalSalesAndRowsNumbers();
             }
-            //Products Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+            
+            //Products Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsTransactionMonthly", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -208,11 +189,9 @@ namespace POSWithInventorySystem
             DateReportModes = "Monthly Sales";
         }
 
-        private void btnAnuallySales_Click(object sender, EventArgs e)
-        {
-            //Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void btnAnuallySales_Click(object sender, EventArgs e) {
+            //Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectTransactionAnually", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -222,9 +201,9 @@ namespace POSWithInventorySystem
 
                 SetTotalSalesAndRowsNumbers();
             }
-            //Products Transactions Section
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+            
+            //Products Transactions Sales
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsTransactionAnually", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -235,49 +214,53 @@ namespace POSWithInventorySystem
                 SetTotalSalesAndRowsNumbers();
             }
 
-            btnPrint.Enabled = true;
+            btnPrint.Enabled = false;
             DateReportModes = "Anually Sales";
         }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
+        
+        //Since the current's programmer IDE cannot view reports, the button for printing report will be disabled.
+        //However, if you wish to enable the print button, you can edit the properties for "btnPrint.Enabled" to "true".
+        private void btnPrint_Click(object sender, EventArgs e) {
             string Date = DateTime.Now.ToString("MM-dd-yyyy");
             string BusinessDate = "Error";
 
-            string DateFrom = bunifuDatepickerFromSales1.Value.ToString("yyyy-MM-dd"); //For Manully Date
-            string DateTo = bunifuDatepickerToSales2.Value.ToString("yyyy-MM-dd"); //For Manually Date
+            string DateFrom = bunifuDatepickerFromSales1.Value.ToString("yyyy-MM-dd"); 
+            string DateTo = bunifuDatepickerToSales2.Value.ToString("yyyy-MM-dd");
 
             string ManualInputDatesMode = ""; // Used to Revert DateReportModes Variable Original Value
 
-            if (DateReportModes == "Daily Sales" || DateReportModes == "Weekly Sales")
-            {
+            if (DateReportModes == "Daily Sales" || DateReportModes == "Weekly Sales") {
                 BusinessDate = DateTime.Now.ToString("MM-dd-yyyy");
             }
-            else if (DateReportModes == "Monthly Sales")
-            {
+            
+            else if (DateReportModes == "Monthly Sales") {
                 BusinessDate = DateTime.Now.ToString("MM-yyyy");
             }
-            else if (DateReportModes == "Anually Sales")
-            {
+            
+            else if (DateReportModes == "Anually Sales") {
                 BusinessDate = DateTime.Now.ToString("yyyy");
             }
-            else if (DateReportModes == "FromAndTo")
-            {
+            
+            else if (DateReportModes == "FromAndTo") {
                 ManualInputDatesMode = DateReportModes;
 
                 BusinessDate = DateFrom + " / " + DateTo;
-                DateReportModes = ""; //Set Empty Because of Manually Input Date, to Show Empty String in Print Header title
+                
+                //For printing manual dates
+                DateReportModes = ""; 
             }
-            else if (DateReportModes == "From")
-            {
+            
+            else if (DateReportModes == "From") {
                 ManualInputDatesMode = DateReportModes;
 
                 BusinessDate = DateFrom;
-                DateReportModes = ""; //Set to Empty Because of Manually Input Date, to Show Empty String in Print Header title
+                
+                //For printing manual dates
+                DateReportModes = "";
             }
-            else
-            {
-                //Do Nothing ........
+            
+            else {
+                //Insert code here if you want something to show error or something
             }
 
             SalesReportInformation salesReport = new SalesReportInformation();
@@ -291,30 +274,27 @@ namespace POSWithInventorySystem
             salesReport.TotalProfitSales = lblTotalProfitSalesValue.Text;
             salesReport.NumberOfProducts = dvgProductsTransaction.Rows.Count.ToString();
 
-            // Used for From and To Modes. Set Back Variable to Original Value
-            if (ManualInputDatesMode == "FromAndTo")
-            {
-                DateReportModes = ManualInputDatesMode; // Revert to original date report mode
+            //If the user tend to use manual dates, making them to default values
+            if (ManualInputDatesMode == "FromAndTo") {
+                DateReportModes = ManualInputDatesMode;
             }
-            else if (ManualInputDatesMode == "From")
-            {
-                DateReportModes = ManualInputDatesMode; // Revert to original date report mode
+            
+            else if (ManualInputDatesMode == "From") {
+                DateReportModes = ManualInputDatesMode;
             }
             else
             {
-                //Do Nothing.....Maybe Some Error Occurs 
+                //Insert code here if you want something to show error or something
             }
 
             //For Transaction Sales
-            if (comboBoxTransactionOrProducts.SelectedIndex == 0)
-            {
+            if (comboBoxTransactionOrProducts.SelectedIndex == 0) {
                 SalesReportForm salesReportForm = new SalesReportForm(salesReport, "Transactions");
                 salesReportForm.Show();
             }
+            
             //For Product Transaction Sales 
-            else
-            {
-                //Set DataTable To Fill Datagrid Data into DataTable
+            else {
                 DataTable dataTable = new DataTable();
                 dataTable.Columns.Add("ProductID", typeof(string));
                 dataTable.Columns.Add("ProductName", typeof(string));
@@ -324,8 +304,7 @@ namespace POSWithInventorySystem
                 dataTable.Columns.Add("TotalPrice", typeof(string));
                 dataTable.Columns.Add("TotalSales", typeof(string));
 
-                foreach (DataGridViewRow row in dvgProductsTransaction.Rows)
-                {
+                foreach (DataGridViewRow row in dvgProductsTransaction.Rows) {
                     dataTable.Rows.Add(row.Cells[0].Value, 
                         row.Cells[1].Value, 
                         row.Cells[2].Value, 
@@ -340,23 +319,18 @@ namespace POSWithInventorySystem
                 salesReportForm.Show();
             }
         }
-
-        /*--------------------------Transaction Section--------------------------*/
-
-        private void PopulateTransactionDataGridview()
-        {
-            try
-            {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                {
+        
+        //Transaction Sales
+        private void PopulateTransactionDataGridview() {
+            try {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                     string DateFrom = bunifuDatepickerFromSales1.Value.ToString("yyyy-MM-dd");
                     string DateTo = bunifuDatepickerToSales2.Value.ToString("yyyy-MM-dd");
 
                     mysqlCon.Open();
 
-                    //Retrieve Date From And To Date
-                    if (bunifuDatepickerToSales2.Enabled == true)
-                    {
+                    //Retrieve manual date, to and from
+                    if (bunifuDatepickerToSales2.Enabled == true) {
                         MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectTransactionByDate", mysqlCon);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_DateFrom", DateFrom);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_DateTo", DateTo);
@@ -364,20 +338,21 @@ namespace POSWithInventorySystem
                         DataTable dataTable = new DataTable();
                         sqlDa.Fill(dataTable);
                         dvgTransactions.DataSource = dataTable;
-                        DateReportModes = "FromAndTo"; //For Printing Sales Report
+                        
+                        //For printing report
+                        DateReportModes = "FromAndTo"; 
 
-                        if (bunifuDatepickerFromSales1.Value >= bunifuDatepickerToSales2.Value)
-                        {
+                        if (bunifuDatepickerFromSales1.Value >= bunifuDatepickerToSales2.Value) {
                             btnPrint.Enabled = false;
                         }
-                        else
-                        {
+                        
+                        else {
                             btnPrint.Enabled = true;
                         }                                                    
                     }
-                    //Retrieve Only From Date Which is Only One Value
-                    else
-                    {
+                    
+                    //Retrieve only date
+                    else {
                         MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectTransactionByOneDate", mysqlCon);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_DateToAndFrom", DateFrom);
                         sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -391,14 +366,12 @@ namespace POSWithInventorySystem
                     SetTotalSalesAndRowsNumbers(); 
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error in Database: " + " " + ex, "Error");
+            catch (Exception ex) {
+                MessageBox.Show("There was an error in database: " + ex + " Please inform your manager.", "Error");
             }   
         }
 
-        private void dvgTransactionDesignAndWidth()
-        {
+        private void dvgTransactionDesignAndWidth() {
             //Design
             dvgTransactions.EnableHeadersVisualStyles = false;
             dvgTransactions.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -419,22 +392,17 @@ namespace POSWithInventorySystem
             dvgTransactions.Columns[3].Width = 220;
         }
 
-        /*-----------------------Product Transactions Sale------------------------*/
-
-        private void PopulateProductTransctionDataGridview()
-        {
-            try
-            {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                {
+        //Product Transaction Sales
+        private void PopulateProductTransctionDataGridview() {
+            try {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                     string DateFrom = bunifuDatepickerFromSales1.Value.ToString("yyyy-MM-dd");
                     string DateTo = bunifuDatepickerToSales2.Value.ToString("yyyy-MM-dd");
 
                     mysqlCon.Open();
 
-                    //Retrieve Date From And To Date
-                    if (bunifuDatepickerToSales2.Enabled == true)
-                    {
+                    //Retrieve manual date, to and from
+                    if (bunifuDatepickerToSales2.Enabled == true) {
                         MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsTransactionByDate", mysqlCon);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_DateFrom", DateFrom);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_DateTo", DateTo);
@@ -443,9 +411,9 @@ namespace POSWithInventorySystem
                         sqlDa.Fill(dataTable);
                         dvgProductsTransaction.DataSource = dataTable;
                     }
-                    //Retrieve Only From Date Which is Only One Value
-                    else
-                    {
+                    
+                    //Retrieve only date
+                    else {
                         MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsTransactionByOneDate", mysqlCon);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_DateToAndFrom", DateFrom);
                         sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -457,14 +425,12 @@ namespace POSWithInventorySystem
                     SetTotalSalesAndRowsNumbers();
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error in Database: " + " " + ex, "Error");
+            catch (Exception ex) {
+                MessageBox.Show("There was an error in database: " + ex + " Please inform your manager.", "Error");
             }
         }
 
-        private void dvgProductsTransactionDesignAndWidth()
-        {
+        private void dvgProductsTransactionDesignAndWidth() {
             //Design
             dvgProductsTransaction.EnableHeadersVisualStyles = false;
             dvgProductsTransaction.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -490,16 +456,16 @@ namespace POSWithInventorySystem
             dvgProductsTransaction.Columns[6].Width = 170;
         }
 
-        private void txtSearchBy_Click(object sender, EventArgs e)
-        {
-
+        private void txtSearchBy_Click(object sender, EventArgs e) {
+            //Insert code here but it is an accidental click tho :D
         }
     }
 
-    /*----------------Sales Report For Print-------------------------------*/
-    public class SalesReportInformation
-    {
-        public DataTable dtProductSoldInformation { get; set; } //For Products Transactions Reports
+    //Printing sales report
+    public class SalesReportInformation {
+        //For Products Transactions Reports
+        public DataTable dtProductSoldInformation { get; set; } 
+        
         public string DateReportMode { get; set; }
         public string Date { get; set; }
         public string BusinessDate { get; set; }

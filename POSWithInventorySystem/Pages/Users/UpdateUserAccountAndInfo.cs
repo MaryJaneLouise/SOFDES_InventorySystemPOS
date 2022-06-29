@@ -10,119 +10,102 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class UpdateUserAccountAndInfo : Form
-    {
-        public UpdateUserAccountAndInfo()
-        {
+namespace POSWithInventorySystem {
+    public partial class UpdateUserAccountAndInfo : Form {
+        //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none";
+        string connectionString = DatabaseConnection.Connection;
+        string UsersID;
+        string UserSubjectName;
+        
+        LoginFormData UsersData;
+        MemoryStream memoryStream;
+        public UpdateUserAccountAndInfo() {
             InitializeComponent();
         }
 
-        public UpdateUserAccountAndInfo(string userID, string userSubjectName, LoginFormData usersData)
-        {
+        public UpdateUserAccountAndInfo(string userID, string userSubjectName, LoginFormData usersData) {
             InitializeComponent();
             this.UsersID = userID;
             this.UserSubjectName = userSubjectName;
             this.UsersData = usersData;
         }
-        //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none";
-        string connectionString = DatabaseConnection.Connection;
-        string UsersID;
-        string UserSubjectName;
-        LoginFormData UsersData;
-        MemoryStream memoryStream;
-
-        private void UpdateUserAccountAndInfo_Load(object sender, EventArgs e)
-        {
+        
+        private void UpdateUserAccountAndInfo_Load(object sender, EventArgs e) {
             ClearLabelError();
             ValidateNFillDataControl();
         }
 
-        private void UpdateUserAccountAndInfo_FormClosed(object sender, FormClosedEventArgs e)
-        {
+        private void UpdateUserAccountAndInfo_FormClosed(object sender, FormClosedEventArgs e) {
            memoryStream.Dispose(); 
         }
 
-        private void DatepickerlBirthDay_onValueChanged(object sender, EventArgs e)
-        {
+        private void DatepickerlBirthDay_onValueChanged(object sender, EventArgs e) {
             if (getAge() < 0)
                 txtAge.Text = "Invalid Age";
             else
                 txtAge.Text = getAge().ToString();
         }
 
-        private void btnBrowseImage_Click(object sender, EventArgs e)
-        {
+        private void btnBrowseImage_Click(object sender, EventArgs e) {
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Choose Image(*.jpg; *.png; *.gif| *.jpg; *.png; *.gif)";
-            if (opf.ShowDialog() == DialogResult.OK)
-            {
+            
+            if (opf.ShowDialog() == DialogResult.OK) {
                 pictureBoxUserPic.Image = Image.FromFile(opf.FileName);
             }
         }
 
-        private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtContact_KeyPress(object sender, KeyPressEventArgs e) {
             lblContactError.Text = "";
             SetMaximumLength(txtContact, 11);
             e.Handled = e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar);
         }
 
-        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e) {
             lblFirstNameError.Text = "";
         }
 
-        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e) {
             lblLastNameError.Text = "";
         }
 
-        private void txtlAddress_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtlAddress_KeyPress(object sender, KeyPressEventArgs e) {
             lblAddressError.Text = "";
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
+        private void btnCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void btnUpdateInfo_Click(object sender, EventArgs e)
-        {
+        private void btnUpdateInfo_Click(object sender, EventArgs e) {
             UpdateUserInformation();
         }
 
-        private void UpdateUserInformation()
-        {
-            try
-            {
+        private void UpdateUserInformation() {
+            try {
                 bool isTrue = false;
 
-                if (string.IsNullOrEmpty(txtFirstName.Text.Trim()))
-                {
+                if (string.IsNullOrEmpty(txtFirstName.Text.Trim())) {
                     lblFirstNameError.Text = "❌";
                     isTrue = true;
                 }
-                if (string.IsNullOrEmpty(txtLastName.Text.Trim()))
-                {
+
+                if (string.IsNullOrEmpty(txtLastName.Text.Trim())) {
                     lblLastNameError.Text = "❌";
                     isTrue = true;
                 }
-                if (string.IsNullOrEmpty(txtlAddress.Text.Trim()))
-                {
+
+                if (string.IsNullOrEmpty(txtlAddress.Text.Trim())) {
                     lblAddressError.Text = "❌";
                     isTrue = true;
                 }
-                if (!string.IsNullOrEmpty(txtContact.Text.Trim()) && txtContact.Text.Length < 11)
-                {
+
+                if (!string.IsNullOrEmpty(txtContact.Text.Trim()) && txtContact.Text.Length < 11) {
                     lblContactError.Text = "❌";
                     isTrue = true;
                 }
 
-                if (!isTrue)
-                {
+                if (!isTrue) {
                     string UserID = lblUserIDValue.Text;
                     string FirstName = txtFirstName.Text.Trim();
                     string LastName = txtLastName.Text.Trim();
@@ -134,9 +117,8 @@ namespace POSWithInventorySystem
                     string Sex = getSex();
                     byte[] image = getImage();
 
-                    //Insert Updated info into users_information table in database
-                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                    {
+                    //Insert the updated information of the selected user in the database
+                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                         MySqlCommand mySqlCommand2 = new MySqlCommand("UpdateUserPersonalInfo", mysqlCon);
                         mysqlCon.Open();
                         mySqlCommand2.CommandType = CommandType.StoredProcedure;
@@ -152,7 +134,7 @@ namespace POSWithInventorySystem
                         mySqlCommand2.Parameters.AddWithValue("_Image", image);
                         mySqlCommand2.ExecuteNonQuery();
 
-                        //Insert Into UsersInformation Log Table in Database
+                        //Insert the update in user in User Account Update History
                         string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                         MySqlCommand mySqlCommand3 = new MySqlCommand("InsertUsersinformationLog", mysqlCon);
@@ -165,34 +147,27 @@ namespace POSWithInventorySystem
                         mySqlCommand3.Parameters.AddWithValue("_Action", "Update");
                         mySqlCommand3.ExecuteNonQuery();
                         
-                        /*-----------------------------------------------------*/
-                        MessageBox.Show("Information Updated Successfuly!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("The account's information has been updated successfully.", "Updated Account Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ValidateNFillDataControl();
                     }
                 }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch(Exception ex) {
+                MessageBox.Show("There was an error in updating the information of the user. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ClearLabelError()
-        {
+        private void ClearLabelError() {
             lblFirstNameError.Text = "";
             lblLastNameError.Text = "";
             lblAddressError.Text = "";
             lblContactError.Text = "";
         }
 
-        private void ValidateNFillDataControl()
-        {
-            try
-            {
-                if (UsersID != null)
-                {
-                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                    {
+        private void ValidateNFillDataControl() {
+            try {
+                if (UsersID != null) {
+                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                         mysqlCon.Open();
                         MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectUserInformationByID", mysqlCon);
                         sqlDa.SelectCommand.Parameters.AddWithValue("_UsersID", Convert.ToInt32(UsersID));
@@ -200,8 +175,7 @@ namespace POSWithInventorySystem
                         DataTable dataTable = new DataTable();
                         sqlDa.Fill(dataTable);
 
-                        if (dataTable.Rows.Count == 1)
-                        {
+                        if (dataTable.Rows.Count == 1) {
                             lblUserIDValue.Text = dataTable.Rows[0]["UsersID"].ToString();
                             lblUserTypeValue.Text = dataTable.Rows[0]["UsersType"].ToString();
                             lblStatusValue.Text = dataTable.Rows[0]["Status"].ToString();
@@ -222,31 +196,28 @@ namespace POSWithInventorySystem
                         }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Error UsersID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else {
+                    MessageBox.Show("There was an error in fetching UsersID. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch(Exception ex)
-            {
+
+            catch(Exception ex) {
                 throw;
             }
         }
 
-        private void GetSex(String sex)
-        {
-            if (sex.Trim() == "Male")
-            {
+        private void GetSex(String sex) {
+            if (sex.Trim() == "Male") {
                 radioButtonMale.Checked = true;
             }
-            else
-            {
+
+            else {
                 radioButtonFemale.Checked = true;
             }
         }
 
-        private string getSex()
-        {
+        private string getSex() {
             string sex = "";
 
             if (radioButtonMale.Checked)
@@ -257,58 +228,41 @@ namespace POSWithInventorySystem
             return sex;
         }
 
-        private void ViewUserImage(byte[] image)
-        {
-            if (image == null)
-            {
-                pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources._666201__1_;
+        private void ViewUserImage(byte[] image) {
+            if (image == null) {
+                pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources.placeholder;
             }
-            else
-            {
-                memoryStream = new MemoryStream(image);   //Conversion of byte to Stream
-                pictureBoxUserPic.Image = Image.FromStream(memoryStream); //Fill PictureBox...
+
+            else {
+                memoryStream = new MemoryStream(image);
+                pictureBoxUserPic.Image = Image.FromStream(memoryStream);
             }
         }
 
-        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength)
-        {
-            foreach (Control ctl in metroTextbox.Controls)
-            {
-                if (ctl.GetType() == typeof(TextBox))
-                {
+        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength) {
+            foreach (Control ctl in metroTextbox.Controls) {
+                if (ctl.GetType() == typeof(TextBox)) {
                     var txt = (TextBox)ctl;
                     txt.MaxLength = maxlength;
                 }
             }
         }
 
-        private int getAge()
-        {
+        private int getAge() {
             var today = DateTime.Today;
             var age = today.Year - DatepickerlBirthDay.Value.Year;
+            
             if (DatepickerlBirthDay.Value > today.AddYears(-age))
                 age--;
+            
             if (age < 1)
                 age = 0;
 
             return age;
         }
 
-        private byte[] getImage()
-        {
-            // This gives "A generic error occurred in GDI+" in some images, so I use the code below of comment to remove the error.
-            /*
-            using (MemoryStream ms = new MemoryStream())
-            {
-                pictureBoxUserPic.Image.Save(ms, pictureBoxUserPic.Image.RawFormat);
-                byte[] image = ms.ToArray();
-
-                return image;
-            }
-            */
-
-            using (MemoryStream ms = new MemoryStream())
-            {
+        private byte[] getImage() {
+            using (MemoryStream ms = new MemoryStream()) {
                 Bitmap bmp = new Bitmap(pictureBoxUserPic.Image);
                 bmp.Save(ms, pictureBoxUserPic.Image.RawFormat);
 

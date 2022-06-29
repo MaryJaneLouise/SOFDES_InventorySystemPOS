@@ -12,34 +12,33 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class POSForm : Form
-    {
-        public POSForm()
-        {
+namespace POSWithInventorySystem {
+    public partial class POSForm : Form {
+        //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none";
+        string connectionString = DatabaseConnection.Connection;
+        
+        int UserID;
+
+        public bool resultFromPasswordValidationUsersForm = false;
+        
+        LoginFormData UsersData;
+        
+        public POSForm() {
             InitializeComponent();
         }
 
-        public POSForm(int userID, LoginFormData usersData)
-        {
+        public POSForm(int userID, LoginFormData usersData) {
             InitializeComponent();
             this.UserID = userID;
             this.UsersData = usersData;
         }
-        //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none";
-        string connectionString = DatabaseConnection.Connection;
-        int UserID;
-        LoginFormData UsersData;
-        public bool resultFromPasswordValidationUsersForm = false;
+        
 
-        /*-----------------------------This Section is For Registration Tab--------------------------------------*/
-        private void UsersForm_Load(object sender, EventArgs e)
-        {
+        //Register New User tab
+        private void UsersForm_Load(object sender, EventArgs e) {
             comboBoxActiveOrNotUsers.SelectedIndex = 0;
-            SetActiveOrNotUsers(); //Combobox For Active and Not Active Users
+            SetActiveOrNotUsers(); 
 
-            /*----------------------------*/
             lblErrorUsername.Text = "";
             lblPasswordError.Text = "";
             lblPasswordConfirmError.Text = "";
@@ -57,68 +56,60 @@ namespace POSWithInventorySystem
 
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            ValidateAdminPassword(); //Show Form For Admin Password Validation
-            //IF True From Password Validation
-            if (resultFromPasswordValidationUsersForm == true)
-            {
+        private void btnCreate_Click(object sender, EventArgs e) {
+            ValidateAdminPassword(); 
 
+            if (resultFromPasswordValidationUsersForm == true) {
                 bool isTrue = false;
 
-                if (string.IsNullOrEmpty(txtUsername.Text.Trim()))
-                {
-                    lblErrorUsername.Text = "Username Field is Empty";
-                    isTrue = true;
-                }
-                if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
-                {
-                    lblPasswordError.Text = "Password Field is Empty";
-                    isTrue = true;
-                }
-                if (string.IsNullOrEmpty(txtConfirmPassword.Text.Trim()))
-                {
-                    lblPasswordConfirmError.Text = "Password Field is Empty";
-                    isTrue = true;
-                }
-                if (txtPassword.Text != txtConfirmPassword.Text)
-                {
-                    lblPasswordNotMatch.Text = "Password Do Not Match";
-                    isTrue = true;
-                }
-                if (string.IsNullOrEmpty(txtFirstName.Text.Trim()))
-                {
-                    lblFirstNameError.Text = "Firstname Field is Empty";
-                    isTrue = true;
-                }
-                if (string.IsNullOrEmpty(txtLastName.Text.Trim()))
-                {
-                    lblLastNameError.Text = "Lastname Field is Empty";
-                    isTrue = true;
-                }
-                if (string.IsNullOrEmpty(txtlAddress.Text.Trim()))
-                {
-                    lblAddressError.Text = "Address Field is Empty";
-                    isTrue = true;
-                }
-                if(!string.IsNullOrEmpty(txtContact.Text.Trim()) && txtContact.Text.Length < 11)
-                {
-                    lblContactError.Text = "Contact Number is Short";
-                    isTrue = true;
-                }
-                if (DatepickerlBirthDay.Value.Date == DateTime.Today)
-                {
-                    lblBirthdayError.Text = "Choose Birthday";
+                if (string.IsNullOrEmpty(txtUsername.Text.Trim())) {
+                    lblErrorUsername.Text = "❌";
                     isTrue = true;
                 }
 
-                //IF All Field is Filled
-                if (!isTrue)
-                {
-                    if (!CheckUsernameIfAlreadyExist(txtUsername.Text.Trim()))
-                    {
-                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                        {
+                if (string.IsNullOrEmpty(txtPassword.Text.Trim())) {
+                    lblPasswordError.Text = "❌";
+                    isTrue = true;
+                }
+
+                if (string.IsNullOrEmpty(txtConfirmPassword.Text.Trim())) {
+                    lblPasswordConfirmError.Text = "❌";
+                    isTrue = true;
+                }
+
+                if (txtPassword.Text != txtConfirmPassword.Text) {
+                    lblPasswordNotMatch.Text = "❌";
+                    isTrue = true;
+                }
+
+                if (string.IsNullOrEmpty(txtFirstName.Text.Trim())) {
+                    lblFirstNameError.Text = "❌";
+                    isTrue = true;
+                }
+
+                if (string.IsNullOrEmpty(txtLastName.Text.Trim())) {
+                    lblLastNameError.Text = "❌";
+                    isTrue = true;
+                }
+
+                if (string.IsNullOrEmpty(txtlAddress.Text.Trim())) {
+                    lblAddressError.Text = "❌";
+                    isTrue = true;
+                }
+
+                if(!string.IsNullOrEmpty(txtContact.Text.Trim()) && txtContact.Text.Length < 11) {
+                    lblContactError.Text = "❌";
+                    isTrue = true;
+                }
+
+                if (DatepickerlBirthDay.Value.Date == DateTime.Today) {
+                    lblBirthdayError.Text = "❌";
+                    isTrue = true;
+                }
+
+                if (!isTrue) {
+                    if (!CheckUsernameIfAlreadyExist(txtUsername.Text.Trim())) {
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                             string UserType = getUserType();
                             string Username = txtUsername.Text.Trim();
                             string Password = Hash(txtPassword.Text.Trim());
@@ -133,7 +124,7 @@ namespace POSWithInventorySystem
                             string Sex = getSex();
                             byte[] image = getImage();
 
-                            //Insert into users table in database   
+                            //Insert new user in the database
                             mysqlCon.Open();
                             MySqlCommand mySqlCommand1 = new MySqlCommand("AddUsersAccount", mysqlCon);
                             mySqlCommand1.CommandType = CommandType.StoredProcedure;
@@ -143,7 +134,7 @@ namespace POSWithInventorySystem
                             mySqlCommand1.Parameters.AddWithValue("_Status", "Active");
                             mySqlCommand1.ExecuteNonQuery();
 
-                            //Insert into users_information table in database
+                            //Insert new user's information in the database
                             MySqlCommand mySqlCommand2 = new MySqlCommand("AddUsersPersonalInfo", mysqlCon);
                             mySqlCommand2.CommandType = CommandType.StoredProcedure;
                             mySqlCommand2.Parameters.AddWithValue("_FirstName", FirstName);
@@ -157,7 +148,7 @@ namespace POSWithInventorySystem
                             mySqlCommand2.Parameters.AddWithValue("_Image", image);
                             mySqlCommand2.ExecuteNonQuery();
 
-                            //Get Last Inserted Product ID
+                            //Getting the last inserted UserID
                             int LastUsersInsertedID;
 
                             MySqlDataAdapter mySqlDa = new MySqlDataAdapter("SelectUsersLastInsertedID", mysqlCon);
@@ -167,7 +158,7 @@ namespace POSWithInventorySystem
 
                             LastUsersInsertedID = Convert.ToInt32(dtLastUsersInsertedID.Rows[0]["UsersID"]);
 
-                            //Insert Into UsersInformation Log Table in Database
+                            //Insert addition of user in User's History
                             string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                             MySqlCommand mySqlCommand3 = new MySqlCommand("InsertUsersinformationLog", mysqlCon);
@@ -180,23 +171,21 @@ namespace POSWithInventorySystem
                             mySqlCommand3.Parameters.AddWithValue("_Action", "Add");
                             mySqlCommand3.ExecuteNonQuery();
 
-                            /*---------------------------------------------------------------------------*/
-                            MessageBox.Show("Registered Succesfully", "Registered", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources._666201__1_;
+                            MessageBox.Show("The user has been successfully registered.", "Registered New User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            pictureBoxUserPic.Image = POSWithInventorySystem.Properties.Resources.placeholder;
                             ClearAllText();
 
-                            GridFill(); //For Active Users;
+                            GridFill();
                             SetNumberOfUsers();
 
-                            if (comboBoxActiveOrNotUsers.SelectedIndex == 1)
-                            {
-                                comboBoxActiveOrNotUsers.SelectedIndex = 0; //Set Combobox to Active Users In Tab1;
+                            if (comboBoxActiveOrNotUsers.SelectedIndex == 1) {
+                                comboBoxActiveOrNotUsers.SelectedIndex = 0;
                             }
                         }
                     }
-                    else
-                    {
-                        lblErrorUsername.Text = "Username Was Already Exist";
+
+                    else {
+                        lblErrorUsername.Text = "❌";
                     }
                 }
             }
@@ -204,46 +193,37 @@ namespace POSWithInventorySystem
             resultFromPasswordValidationUsersForm = false;
         }
 
-        private void txtUsername_Enter(object sender, EventArgs e)
-        {
+        private void txtUsername_Enter(object sender, EventArgs e) {
             lblErrorUsername.Text = "";
         }
 
-        private void txtPassword_Enter(object sender, EventArgs e)
-        {
+        private void txtPassword_Enter(object sender, EventArgs e) {
             lblPasswordError.Text = "";
             lblPasswordNotMatch.Text = "";
-
         }
 
-        private void txtFirstName_Enter(object sender, EventArgs e)
-        {
+        private void txtFirstName_Enter(object sender, EventArgs e) {
             lblFirstNameError.Text = "";
         }
 
-        private void txtLastName_Enter(object sender, EventArgs e)
-        {
+        private void txtLastName_Enter(object sender, EventArgs e) {
             lblLastNameError.Text = "";
         }
 
-        private void txtlAddress_Enter(object sender, EventArgs e)
-        {
+        private void txtlAddress_Enter(object sender, EventArgs e) {
             lblAddressError.Text = "";
         }
 
-        private void txtConfirmPassword_Enter(object sender, EventArgs e)
-        {
+        private void txtConfirmPassword_Enter(object sender, EventArgs e) {
             lblPasswordConfirmError.Text = "";
             lblPasswordNotMatch.Text = "";
         }
 
-        private void txtContact_Enter(object sender, EventArgs e)
-        {
+        private void txtContact_Enter(object sender, EventArgs e) {
             lblContactError.Text = "";
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
+        private void btnCancel_Click(object sender, EventArgs e) {
             txtUsername.Text = "";
             txtPassword.Text = "";
             txtConfirmPassword.Text = "";
@@ -263,92 +243,81 @@ namespace POSWithInventorySystem
             lblAddressError.Text = "";
         }
 
-        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = e.KeyChar != (char)Keys.Back && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar); //IsDigit(e.KeyChar) for digit
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e) {
+            e.Handled = e.KeyChar != (char)Keys.Back && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar);
         }
 
-        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = e.KeyChar != (char)Keys.Back && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar); //IsDigit(e.KeyChar) for digit
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e) {
+            e.Handled = e.KeyChar != (char)Keys.Back && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar);
         }
 
-        private void txtMiddleName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = e.KeyChar != (char)Keys.Back && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar); //IsDigit(e.KeyChar) for digit
+        private void txtMiddleName_KeyPress(object sender, KeyPressEventArgs e) {
+            e.Handled = e.KeyChar != (char)Keys.Back && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar);
         }
 
-        private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtContact_KeyPress(object sender, KeyPressEventArgs e) {
             lblContactError.Text = "";
             SetMaximumLength(txtContact, 11);
             e.Handled = e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar);
-
         }
 
-        private void DatepickerlBirthDay_onValueChanged(object sender, EventArgs e)
-        {
+        private void DatepickerlBirthDay_onValueChanged(object sender, EventArgs e) {
             if (getAge() < 0)
                 txtAge.Text = "Invalid Age";
+            
             else
                 txtAge.Text = getAge().ToString();
 
             lblBirthdayError.Text = "";
         }
 
-        private void DatepickerlBirthDay_Enter(object sender, EventArgs e)
-        {
+        private void DatepickerlBirthDay_Enter(object sender, EventArgs e) {
             lblBirthdayError.Text = "";
         }
 
-        private void btnBrowseImage_Click(object sender, EventArgs e)
-        {
+        private void btnBrowseImage_Click(object sender, EventArgs e) {
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Choose Image(*.jpg; *.png; *.gif| *.jpg; *.png; *.gif)";
-            if (opf.ShowDialog() == DialogResult.OK)
-            {
+            
+            if (opf.ShowDialog() == DialogResult.OK) {
                 pictureBoxUserPic.Image = Image.FromFile(opf.FileName);
             }
         }
 
-        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength)
-        {
-            foreach (Control ctl in metroTextbox.Controls)
-            {
-                if (ctl.GetType() == typeof(TextBox))
-                {
+        private void SetMaximumLength(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength) {
+            foreach (Control ctl in metroTextbox.Controls) {
+                if (ctl.GetType() == typeof(TextBox)) {
                     var txt = (TextBox)ctl;
                     txt.MaxLength = maxlength;
                 }
             }
         }
 
-        public string Hash(string password)
-        {
+        public string Hash(string password) {
             var bytes = new UTF8Encoding().GetBytes(password);
             byte[] hashBytes;
-            using (var algorithm = new System.Security.Cryptography.SHA512Managed())
-            {
+
+            using (var algorithm = new System.Security.Cryptography.SHA512Managed()) {
                 hashBytes = algorithm.ComputeHash(bytes);
             }
 
             return Convert.ToBase64String(hashBytes);
         }
 
-        public int getAge()
-        {
+        public int getAge() {
             var today = DateTime.Today;
             var age = today.Year - DatepickerlBirthDay.Value.Year;
+            
             if (DatepickerlBirthDay.Value > today.AddYears(-age))
                 age--;
+            
             if (age < 1)
                 age = 0;
 
             return age;
         }
 
-        public string getSex()
-        {
+        public string getSex() {
             string sex = "";
 
             if (radioButtonMale.Checked)
@@ -359,10 +328,8 @@ namespace POSWithInventorySystem
             return sex;
         }
 
-        private byte[] getImage()
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
+        private byte[] getImage() {
+            using (MemoryStream ms = new MemoryStream()) {
                 pictureBoxUserPic.Image.Save(ms, pictureBoxUserPic.Image.RawFormat);
                 byte[] image = ms.ToArray();
 
@@ -370,15 +337,13 @@ namespace POSWithInventorySystem
             }
         }
 
-        private string getUserType()
-        {
+        private string getUserType() {
             string type = comboBoxUserType.Items[comboBoxUserType.SelectedIndex].ToString();
 
             return type.Trim();
         }
 
-        public void ClearAllText()
-        {
+        public void ClearAllText() {
             txtUsername.Text = "";
             txtPassword.Text = "";
             txtConfirmPassword.Text = "";
@@ -390,12 +355,10 @@ namespace POSWithInventorySystem
             txtContact.Text = "";
         }
 
-        private bool CheckUsernameIfAlreadyExist(string userName)
-        {
+        private bool CheckUsernameIfAlreadyExist(string userName) {
             bool isTrue = false;
 
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlCommand mySqlCmd = new MySqlCommand("ValidateUsernameIfAlreadyExist", mysqlCon);
                 mySqlCmd.CommandType = CommandType.StoredProcedure;
@@ -405,8 +368,7 @@ namespace POSWithInventorySystem
 
                 dt.Load(dr);
 
-                if (dt.Rows.Count == 1)
-                {
+                if (dt.Rows.Count == 1) {
                     isTrue = true;
                 }
             }
@@ -414,13 +376,9 @@ namespace POSWithInventorySystem
             return isTrue;
         }
 
-        /*-----------------------END LINE OF REGISTRATION TAB----------------------------*/
-
-        private void GridFill()
-        {
-            try{
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                {
+        private void GridFill() {
+            try {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("ViewActiveUsersInformation", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -437,18 +395,14 @@ namespace POSWithInventorySystem
                     */
                 }
             }
-            catch(Exception ex)
-            {
+            catch(Exception ex) {
                 throw;
             }
-        } // For Active Users
+        }
 
-        private void GridFillNotActiveUsers()
-        {
-            try
-            {
-                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                {
+        private void GridFillNotActiveUsers() {
+            try {
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                     mysqlCon.Open();
                     MySqlDataAdapter sqlDa = new MySqlDataAdapter("ViewNotActiveUsersInformation", mysqlCon);
                     sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -466,33 +420,29 @@ namespace POSWithInventorySystem
                     */
                 }
             }
-            catch (Exception ex)
-            {
+
+            catch (Exception ex) {
                 throw;
             }
         }
 
-        private void SetRowColorIntoRedWhenNotActive()
-        {
-            foreach (DataGridViewRow row in dataGridViewNotActiveUsers.Rows)
-            {
+        private void SetRowColorIntoRedWhenNotActive() {
+            foreach (DataGridViewRow row in dataGridViewNotActiveUsers.Rows) {
                 row.DefaultCellStyle.BackColor = Color.Red;
             }
         }
 
-        private void dataGridDesign()
-        {
-            //If Active Users
-            if (comboBoxActiveOrNotUsers.SelectedIndex == 0)
-            {
+        private void dataGridDesign() {
+            //For active users
+            if (comboBoxActiveOrNotUsers.SelectedIndex == 0) {
                 dataGridViewUsers.EnableHeadersVisualStyles = false;
                 dataGridViewUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
                 dataGridViewUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
                 dataGridViewUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             }
-            //If Not Active users
-            else
-            {
+
+            //For deactivated users
+            else {
                 dataGridViewNotActiveUsers.EnableHeadersVisualStyles = false;
                 dataGridViewNotActiveUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
                 dataGridViewNotActiveUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
@@ -501,11 +451,9 @@ namespace POSWithInventorySystem
 
         }
 
-        private void dataGridWidth()
-        {
-            //If Active Users
-            if (comboBoxActiveOrNotUsers.SelectedIndex == 0)
-            {
+        private void dataGridWidth() {
+            //For active users
+            if (comboBoxActiveOrNotUsers.SelectedIndex == 0) {
                 //Width
                 dataGridViewUsers.Columns[1].Width = 110;
                 dataGridViewUsers.Columns[2].Width = 155;
@@ -517,9 +465,9 @@ namespace POSWithInventorySystem
                 dataGridViewUsers.Columns[8].Width = 120;
                 dataGridViewUsers.Columns[9].Width = 99;
             }
-            //If Not Active Users
-            else
-            {
+
+            //For deactivated users
+            else {
                 //Width
                 dataGridViewNotActiveUsers.Columns[1].Width = 110;
                 dataGridViewNotActiveUsers.Columns[2].Width = 155;
@@ -533,152 +481,126 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void SetNumberOfUsers()
-        {
-            //If Active Users
-            if (comboBoxActiveOrNotUsers.SelectedIndex == 0)
-            {
+        private void SetNumberOfUsers() {
+            //For active users
+            if (comboBoxActiveOrNotUsers.SelectedIndex == 0) {
                 lblNumberOfUsersValue.Text = dataGridViewUsers.Rows.Count.ToString();
             }
-            //If Not Active Users
-            else
-            {
+
+            //For deactivated users
+            else {
                 lblNumberOfUsersValue.Text = dataGridViewNotActiveUsers.Rows.Count.ToString();
             }
         }
 
-        private void dataGridViewUsers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //If Not Active Users
-            if (comboBoxActiveOrNotUsers.SelectedIndex == 1)
-            {
-                SetRowColorIntoRedWhenNotActive(); // Change row to red
+        private void dataGridViewUsers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            //For deactivated users
+            if (comboBoxActiveOrNotUsers.SelectedIndex == 1) {
+                SetRowColorIntoRedWhenNotActive();
             }
         }
 
-        private void bunifuSwitch_Click(object sender, EventArgs e)
-        {
-            if(bunifuSwitch.Value == true)
-            {
+        private void bunifuSwitch_Click(object sender, EventArgs e) {
+            if(bunifuSwitch.Value == true) {
                 btnDeleteUsers.Enabled = true;
             }
-            else
-            {
+
+            else {
                 btnDeleteUsers.Enabled = false;
             }
         }
 
-        private void bunifuSwitchActivateUsers_Click(object sender, EventArgs e)
-        {
-            if(bunifuSwitchActivateUsers.Value == true)
-            {
+        private void bunifuSwitchActivateUsers_Click(object sender, EventArgs e) {
+            if(bunifuSwitchActivateUsers.Value == true) {
                 btnActivateUsers.Enabled = true;
             }
-            else
-            {
-                btnActivateUsers.Enabled = false;
+
+            else {
+                btnActivateUsers.Enabled = true;
             }
         }
 
-        private void bunifuSwitchbtnDeactivateUsers_Click(object sender, EventArgs e)
-        {
-            if (bunifuSwitchbtnDeactivateUsers.Value == true)
-            {
+        private void bunifuSwitchbtnDeactivateUsers_Click(object sender, EventArgs e) {
+            if (bunifuSwitchbtnDeactivateUsers.Value == true) {
                 btnDeactivateUsers.Enabled = true;
             }
-            else
-            {
-                btnDeactivateUsers.Enabled = false;
+
+            else {
+                btnDeactivateUsers.Enabled = true;
             }
         }
 
-        private void btnDeleteUsers_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ValidateAdminPassword(); //Show Form For Admin Password Validation
-                //IF True From Password Validation
-                if (resultFromPasswordValidationUsersForm == true)
-                {
-                    resultFromPasswordValidationUsersForm = false;//Set To Default Due To Using it Again Inside Inner IF
+        private void btnDeleteUsers_Click(object sender, EventArgs e) {
+            try {
+                ValidateAdminPassword();
 
-                    if (dataGridViewNotActiveUsers.CurrentRow.Index != -1)
-                    {
+                if (resultFromPasswordValidationUsersForm == true) {
+                    resultFromPasswordValidationUsersForm = false;
+
+                    if (dataGridViewNotActiveUsers.CurrentRow.Index != -1) {
                         int ID = Convert.ToInt32(dataGridViewNotActiveUsers.CurrentRow.Cells[0].Value);
                         string UserSubjectName = dataGridViewNotActiveUsers.CurrentRow.Cells[2].Value.ToString().Trim();
                         string Type = dataGridViewNotActiveUsers.CurrentRow.Cells[1].Value.ToString().Trim();
 
-                           DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Delete This Users Permanently?", "Delete Users", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            //Delete Selected User In dvg
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the user? This cannot be undone.", "Delete selected user", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        
+                        if (dialogResult == DialogResult.Yes) {
+                            //Delete the selected user in the datagrid
                             DeleteUsersInfo(ID);
-                            //Insert UsersinformationLog in Database
+
+                            //Insert deletion to the user's history
                             InsertUsersinformationDeleteLog(ID, UserSubjectName);
-                            //Fill New Value in dvg
+
+                            //Fill the datagrid
                             GridFillNotActiveUsers();
                             SetRowColorIntoRedWhenNotActive();
                             SetNumberOfUsers();
                         }
-                        else
-                        {
-                            return;
-                        }
+
+                        else return;
                     }
                 }
 
                 resultFromPasswordValidationUsersForm = false;
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Users is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch(Exception ex) {
+                MessageBox.Show("The users' list is empty. Please add users first.", "Empty user list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void dataGridViewUsers_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dataGridViewUsers.CurrentRow.Index != -1)
-                {
+        private void dataGridViewUsers_DoubleClick(object sender, EventArgs e) {
+            try {
+                if (dataGridViewUsers.CurrentRow.Index != -1) {
                     int ID = Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells[0].Value);
                     string Type = dataGridViewUsers.CurrentRow.Cells[1].Value.ToString().Trim();
 
                     ViewUserInformation viewUserInformation = new ViewUserInformation(ID);
                     viewUserInformation.ShowDialog();
-
                 }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            catch(Exception ex) {
+                MessageBox.Show("There was an error while trying to view the user. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void dataGridViewNotActiveUsers_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dataGridViewNotActiveUsers.CurrentRow.Index != -1)
-                {
+        private void dataGridViewNotActiveUsers_DoubleClick(object sender, EventArgs e) {
+            try {
+                if (dataGridViewNotActiveUsers.CurrentRow.Index != -1) {
                     int ID = Convert.ToInt32(dataGridViewNotActiveUsers.CurrentRow.Cells[0].Value);
                     string Type = dataGridViewNotActiveUsers.CurrentRow.Cells[1].Value.ToString().Trim();
 
                     ViewUserInformation viewUserInformation = new ViewUserInformation(ID);
                     viewUserInformation.ShowDialog();
-
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex) {
+                MessageBox.Show("There was an error while trying to view the user. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public void DeleteUsersInfo(int id)
-        {
-            using(MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        public void DeleteUsersInfo(int id) {
+            using(MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlCommand mysqlCmd = new MySqlCommand("DeleteUsersAccount", mysqlCon);
                 mysqlCmd.CommandType = CommandType.StoredProcedure;
@@ -687,13 +609,11 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void InsertUsersinformationDeleteLog(int userSubjectID, string userSubjectName)
-        {
-            //Insert Into UsersInformation Log Table in Database
+        private void InsertUsersinformationDeleteLog(int userSubjectID, string userSubjectName) {
+            //Insert deletion in the user's history
             string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlCommand mySqlCommand3 = new MySqlCommand("InsertUsersinformationLog", mysqlCon);
                 mySqlCommand3.CommandType = CommandType.StoredProcedure;
@@ -707,18 +627,14 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
+        private void timer1_Tick(object sender, EventArgs e) {
+            //Insert code here if you want something to show or what
         }
 
-        private void txtSearchValue_OnValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                //If Active Users
-                if (comboBoxActiveOrNotUsers.SelectedIndex == 0)
-                {
+        private void txtSearchValue_OnValueChanged(object sender, EventArgs e) {
+            try {
+                //For active users
+                if (comboBoxActiveOrNotUsers.SelectedIndex == 0) {
                     BindingSource bs = new BindingSource();
                     bs.DataSource = dataGridViewUsers.DataSource;
                     bs.Filter = "Convert([UsersID], 'System.String') LIKE '%" + txtSearchValue.Text + "%'"
@@ -729,9 +645,9 @@ namespace POSWithInventorySystem
 
                     dataGridViewUsers.DataSource = bs;
                 }
-                //If Not Active Users
-                else
-                {
+
+                //For deactivated users
+                else {
                     BindingSource bs = new BindingSource();
                     bs.DataSource = dataGridViewNotActiveUsers.DataSource;
                     bs.Filter = "Convert([UsersID], 'System.String') LIKE '%" + txtSearchValue.Text + "%'"
@@ -747,47 +663,47 @@ namespace POSWithInventorySystem
 
                 SetNumberOfUsers();
             }
-            catch (EvaluateException ex)
-            {
-                //Do Nothing... for invalid input characters.
+            catch (EvaluateException ex) {
+                //Insert code here if you want to show something
             }
         }
 
-        private void comboBoxActiveOrNotUsers_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxActiveOrNotUsers_SelectedIndexChanged(object sender, EventArgs e) {
             SetActiveOrNotUsers();
         }
 
-        private void SetActiveOrNotUsers()
-        {
-            //If Active Users
-            if (comboBoxActiveOrNotUsers.SelectedIndex == 0)
-            {
-                dataGridDesign(); //Design For Grid
-                GridFill(); //For Active Users
-                dataGridWidth(); //Width Of Grid
+        private void SetActiveOrNotUsers() {
+            //For active users
+            if (comboBoxActiveOrNotUsers.SelectedIndex == 0) {
+                dataGridDesign();
+                GridFill();
+                dataGridWidth();
                 SetNumberOfUsers();
+
                 //Hide
                 dataGridViewNotActiveUsers.Hide();
                 btnDeleteUsers.Hide(); bunifuSwitch.Hide();
                 btnActivateUsers.Hide(); bunifuSwitchActivateUsers.Hide();
+
                 //Show
                 dataGridViewUsers.Show();
                 btnUpdateUsers.Show();
                 btnDeactivateUsers.Show(); bunifuSwitchbtnDeactivateUsers.Show();
             }
-            //For Not Active Users
-            else
-            {
-                dataGridDesign(); //Design For Grid
+
+            //For deactivated users
+            else {
+                dataGridDesign();
                 GridFillNotActiveUsers();
-                dataGridWidth(); //Width Of Grid
+                dataGridWidth();
                 SetRowColorIntoRedWhenNotActive();
                 SetNumberOfUsers();
+
                 //Hide
                 dataGridViewUsers.Hide();
                 btnUpdateUsers.Hide();
                 btnDeactivateUsers.Hide(); bunifuSwitchbtnDeactivateUsers.Hide();
+
                 //Show
                 dataGridViewNotActiveUsers.Show();
                 btnDeleteUsers.Show(); bunifuSwitch.Show();
@@ -795,111 +711,91 @@ namespace POSWithInventorySystem
             }
         }
 
-        //For Currently Users
-        private void ValidateAdminPassword()
-        {
+        //For current active users
+        private void ValidateAdminPassword() {
             ValidateAdminPasswordDialog validateAdminPassword = new ValidateAdminPasswordDialog(UserID, "UsersForm");
             validateAdminPassword.Owner = this;
             validateAdminPassword.ShowDialog();
         }
-        //For Admin Password For Deletion Purposes
-        private void ValidateAdminPassword(int userID)
-        {
+
+        private void ValidateAdminPassword(int userID) {
             ValidateAdminPasswordDialog validateAdminPassword = new ValidateAdminPasswordDialog(userID, "UsersForm");
             validateAdminPassword.Owner = this;
             validateAdminPassword.ShowDialog();
         }
 
-        /*---------------- Update User Section-------------------*/
-        private void btnUpdateUsers_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ValidateAdminPassword(); //Show Form For Admin Password Validation
-                //IF True From Password Validation
-                if (resultFromPasswordValidationUsersForm == true)
-                {
-                    resultFromPasswordValidationUsersForm = false;//Set To Default Due To Using it Again Inside Inner IF
+        private void btnUpdateUsers_Click(object sender, EventArgs e) {
+            try {
+                ValidateAdminPassword(); 
 
-                    if (dataGridViewUsers.CurrentRow.Index != -1)
-                    {
+                if (resultFromPasswordValidationUsersForm == true) {
+                    resultFromPasswordValidationUsersForm = false;
+
+                    if (dataGridViewUsers.CurrentRow.Index != -1) {
                         int ID = Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells[0].Value);
                         string UserSubjectNameUpdate = dataGridViewUsers.CurrentRow.Cells[2].Value.ToString().Trim();
                         string Type = dataGridViewUsers.CurrentRow.Cells[1].Value.ToString().Trim();
 
-                        //IF employee
-                        if (Type == "Employee")
-                        {
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Update This Employee Information?", "Update Users", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
+                        //Employee
+                        if (Type == "Employee") {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to update the employee's information?", "Update Employee's Information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            
+                            if (dialogResult == DialogResult.Yes) {
                                 UpdateUserAccountAndInfo updateUserAccountAndInfo = new UpdateUserAccountAndInfo(ID.ToString(), UserSubjectNameUpdate, UsersData);
                                 updateUserAccountAndInfo.ShowDialog();
+
                                 GridFill();
                             }
-                            else
-                            {
-                                return;
-                            }
+                            else return;
+
                         }
-                        //If Admin
-                        else
-                        {
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Update This Admin Information? If Yes, You Will Prompt To Enter The Password Of This Admin User.", "Update Users", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                ValidateAdminPassword(ID); //Show Form For Admin Password Validation
-                                if (resultFromPasswordValidationUsersForm == true)
-                                {
+                        
+                        //Administrator
+                        else {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to update the employee's information? You will be prompt to enter admin's password again.", "Update Administrator's Information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (dialogResult == DialogResult.Yes) {
+                                ValidateAdminPassword(ID);
+
+                                if (resultFromPasswordValidationUsersForm == true) {
                                     UpdateUserAccountAndInfo updateUserAccountAndInfos = new UpdateUserAccountAndInfo(ID.ToString(), UserSubjectNameUpdate, UsersData);
                                     updateUserAccountAndInfos.ShowDialog();
                                     GridFill();
                                 }
                             }
-                            else
-                            {
-                                return;
-                            }
+                            else return;
                         }
                     }
                 }
 
                 resultFromPasswordValidationUsersForm = false;
             }
-            catch(Exception ex)
-            {
+            catch(Exception ex) {
                 resultFromPasswordValidationUsersForm = false;
-                MessageBox.Show("Users is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The users' list is empty. Please add users first.", "Empty User list", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
 
-        /*---------------------Deactivate Users---------------------------*/
-        private void btnDeactivateUsers_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ValidateAdminPassword(); //Show Form For Admin Password Validation
-                //IF True From Password Validation
-                if (resultFromPasswordValidationUsersForm == true)
-                {
-                    resultFromPasswordValidationUsersForm = false;//Set To Default Due To Using it Again Inside Inner IF
+        //Deactivated Users
+        private void btnDeactivateUsers_Click(object sender, EventArgs e) {
+            try {
+                ValidateAdminPassword();
 
-                    if (dataGridViewUsers.CurrentRow.Index != -1)
-                    {
+                if (resultFromPasswordValidationUsersForm == true) {
+                    resultFromPasswordValidationUsersForm = false;
+
+                    if (dataGridViewUsers.CurrentRow.Index != -1) {
                         int ID = Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells[0].Value);
                         string UserSubjectName = dataGridViewUsers.CurrentRow.Cells[2].Value.ToString().Trim();
                         string Type = dataGridViewUsers.CurrentRow.Cells[1].Value.ToString().Trim();
 
-                        //IF employee
-                        if (Type == "Employee")
-                        {
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Deactivate This Employee's Account & Information?", "Deactivate Users", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                                {
-                                    //Update Users Status To Deactivate   
+                        //Employee
+                        if (Type == "Employee") {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to deactivate this employee?", "Deactivate Employee", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            
+                            if (dialogResult == DialogResult.Yes) {
+                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                                    //Updating the selected user to be in deactivated status  
                                     mysqlCon.Open();
                                     MySqlCommand mySqlCommand1 = new MySqlCommand("UpdateUsersAccountStatusByID", mysqlCon);
                                     mySqlCommand1.CommandType = CommandType.StoredProcedure;
@@ -907,31 +803,26 @@ namespace POSWithInventorySystem
                                     mySqlCommand1.Parameters.AddWithValue("_Status", "Not Active");
                                     mySqlCommand1.ExecuteNonQuery();
 
-                                    //Insert into users Log
+                                    //Insert deactivation to the User's History
                                     InsertIntoUsersLogs(ID, UserSubjectName, "Deactivate");
 
-                                    GridFill(); //For Active Users;
+                                    GridFill();
                                     SetNumberOfUsers();
-
                                 }
                             }
-                            else
-                            {
-                                return;
-                            }
+                            else return;
                         }
-                        //If Admin
-                        else
-                        {
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Deactivate This Admin Account & Information? If Yes, You Will Prompt To Enter The Password Of This Admin User.", "Deactivate Users", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                ValidateAdminPassword(ID); //Show Form For Admin Password Validation
-                                if (resultFromPasswordValidationUsersForm == true)
-                                {
-                                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                                    {
-                                        //Update Users Status To Deactivate   
+
+                        //Administrator
+                        else {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to deactivate this administrator? You will be prompted to input HIS/HER password.", "Deactivate Administrator", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            
+                            if (dialogResult == DialogResult.Yes) {
+                                ValidateAdminPassword(ID);
+                                
+                                if (resultFromPasswordValidationUsersForm == true) {
+                                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                                        //Updating the selected user to be in deactivated status  
                                         mysqlCon.Open();
                                         MySqlCommand mySqlCommand1 = new MySqlCommand("UpdateUsersAccountStatusByID", mysqlCon);
                                         mySqlCommand1.CommandType = CommandType.StoredProcedure;
@@ -939,7 +830,7 @@ namespace POSWithInventorySystem
                                         mySqlCommand1.Parameters.AddWithValue("_Status", "Not Active");
                                         mySqlCommand1.ExecuteNonQuery();
 
-                                        //Insert into users Log
+                                        //Insert deactivation to the User's History
                                         InsertIntoUsersLogs(ID, UserSubjectName, "Deactivate");
 
                                         GridFill(); //For Active Users;
@@ -947,28 +838,22 @@ namespace POSWithInventorySystem
                                     }
                                 }
                             }
-                            else
-                            {
-                                return;
-                            }
+                            else return;
                         }
                     }
                 }
 
                 resultFromPasswordValidationUsersForm = false;
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 resultFromPasswordValidationUsersForm = false;
-                MessageBox.Show("Users Is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The users' list is empty. Please add users first.", "Empty User list", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
         }
 
-        private void InsertIntoUsersLogs(int subjectID, string subjectName, string action)
-        {
-            //Insert Into UsersInformation Log Table in Database
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void InsertIntoUsersLogs(int subjectID, string subjectName, string action) {
+            ///Insert update of the users to the User's History
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                 mysqlCon.Open();
@@ -984,29 +869,24 @@ namespace POSWithInventorySystem
             }
         }
 
-        /*------------------------Activate Users-----------------------------*/
-        private void btnActivateUsers_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ValidateAdminPassword(); //Show Form For Admin Password Validation
-                //IF True From Password Validation
-                if (resultFromPasswordValidationUsersForm == true)
-                {
-                    resultFromPasswordValidationUsersForm = false;//Set To Default Due To Using it Again Inside Inner IF
+        //Activating Users
+        private void btnActivateUsers_Click(object sender, EventArgs e) {
+            try {
+                ValidateAdminPassword(); 
 
-                    if (dataGridViewNotActiveUsers.CurrentRow.Index != -1)
-                    {
+                if (resultFromPasswordValidationUsersForm == true) {
+                    resultFromPasswordValidationUsersForm = false;
+
+                    if (dataGridViewNotActiveUsers.CurrentRow.Index != -1) {
                         int ID = Convert.ToInt32(dataGridViewNotActiveUsers.CurrentRow.Cells[0].Value);
                         string UserSubjectName = dataGridViewNotActiveUsers.CurrentRow.Cells[2].Value.ToString().Trim();
                         string Type = dataGridViewNotActiveUsers.CurrentRow.Cells[1].Value.ToString().Trim();
 
-                        DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Activate This Users?", "Activate Users", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                            {
-                                //Update Users Status To Activate  
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to activate this user?", "Activate User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        
+                        if (dialogResult == DialogResult.Yes) {
+                            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                                //Update user's status to "Active"
                                 mysqlCon.Open();
                                 MySqlCommand mySqlCommand1 = new MySqlCommand("UpdateUsersAccountStatusByID", mysqlCon);
                                 mySqlCommand1.CommandType = CommandType.StoredProcedure;
@@ -1014,7 +894,7 @@ namespace POSWithInventorySystem
                                 mySqlCommand1.Parameters.AddWithValue("_Status", "Active");
                                 mySqlCommand1.ExecuteNonQuery();
 
-                                //Insert into users Log
+                                //Insert update status of the user in User's History
                                 InsertIntoUsersLogs(ID, UserSubjectName, "Activate");
 
                                 GridFillNotActiveUsers();
@@ -1022,19 +902,16 @@ namespace POSWithInventorySystem
                                 SetNumberOfUsers();
                             }
                         }
-                        else
-                        {
-                            return;
-                        }
+                        else return;
                     }
                 }
 
                 resultFromPasswordValidationUsersForm = false;
             }
-            catch (Exception ex)
-            {
+
+            catch (Exception ex) {
                 resultFromPasswordValidationUsersForm = false;
-                MessageBox.Show("Users Is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The users' list is empty. Please add users first.", "Empty User list", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

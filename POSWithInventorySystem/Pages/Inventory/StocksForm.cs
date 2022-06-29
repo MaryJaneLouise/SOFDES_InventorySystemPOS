@@ -10,19 +10,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class StocksForm : Form
-    {
-        public StocksForm()
-        {
+namespace POSWithInventorySystem {
+    public partial class StocksForm : Form {
+        // Database Connection
+        string connectionString = DatabaseConnection.Connection;
+        
+        LoginFormData usersData;
+
+        private int UserID;
+
+        private bool _firstLoaded;
+        public bool resultFromValidation = false;
+        
+        public StocksForm() {
             InitializeComponent();
             this.Load += StocksForm_Load1; ;
             dataGridViewStocksTab2.VisibleChanged += DataGridViewStocksTab2_VisibleChanged;
         }
 
-        public StocksForm(LoginFormData data)
-        {
+        public StocksForm(LoginFormData data) {
             InitializeComponent();
             this.Load += StocksForm_Load1; ;
             dataGridViewStocksTab2.VisibleChanged += DataGridViewStocksTab2_VisibleChanged;
@@ -30,45 +36,30 @@ namespace POSWithInventorySystem
             this.usersData = data;
         }
 
-        LoginFormData usersData;
-
-        private int UserID;
-
-        private bool _firstLoaded;
-
-        private void StocksForm_Load1(object sender, EventArgs e)
-        {
+        private void StocksForm_Load1(object sender, EventArgs e) {
             _firstLoaded = true;
-            
-
         }
 
-        private void DataGridViewStocksTab2_VisibleChanged(object sender, EventArgs e)
-        {
-            if (_firstLoaded && dataGridViewStocksTab2.Visible)
-            {
+        private void DataGridViewStocksTab2_VisibleChanged(object sender, EventArgs e) {
+            if (_firstLoaded && dataGridViewStocksTab2.Visible) {
                 _firstLoaded = false;
                 SetTotalOrIndividualStocks();
                 SetProductActiveOrNot();
             }
         }
 
-        // Database Connection
-        string connectionString = DatabaseConnection.Connection;
-
-        private void StocksForm_Load(object sender, EventArgs e)
-        {
-            comboBoxStocks.SelectedIndex = 0; //For Individual and Total Stocks
-            comboBoxStocksStatus.SelectedIndex = 0; //For Individual for Expired and Good
+        private void StocksForm_Load(object sender, EventArgs e) {
+            comboBoxStocks.SelectedIndex = 0; 
+            comboBoxStocksStatus.SelectedIndex = 0;
            
-            comboBoxProductStatusActiveOrNot.SelectedIndex = 0; //Set Combobox Status To Default Active in Tab1
-            SetProductActiveOrNot(); //Set Product Active Or Not in Tab1   
+            comboBoxProductStatusActiveOrNot.SelectedIndex = 0; 
+            SetProductActiveOrNot();    
             SetNumberOfItems();
-            SetTotalOrIndividualStocks(); //Set Stocks Mode in Gridview
+            SetTotalOrIndividualStocks();
             SetNumberOfStocks();
-            HidePanelStatus(); //Hide Panel for both parties
+            HidePanelStatus();
             panelTotalStocks.Show();
-            DeleteStocksEmptyFromDatabase(); //Delete Empty Stocks Within 10 Days of Period From Database
+            DeleteStocksEmptyFromDatabase();
 
             bunifuSwitch.Value = true;
             bunifuSwitchbtnDeleteProductInDB.Value = true;
@@ -86,61 +77,50 @@ namespace POSWithInventorySystem
             btnPrintStocks.Hide();
         }
 
-        private void txtSearchValue_OnValueChanged(object sender, EventArgs e)
-        {
+        private void txtSearchValue_OnValueChanged(object sender, EventArgs e) {
             SearchProductByColumn();
         }
 
-        private void dataGridViewProducts_DoubleClick(object sender, EventArgs e)
-        {
+        private void dataGridViewProducts_DoubleClick(object sender, EventArgs e) {
             ViewProduct();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
+        private void btnAdd_Click(object sender, EventArgs e) {
             AddProduct();
             SetNumberOfItems();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
+        private void btnUpdate_Click(object sender, EventArgs e) {
             UpdateProduct();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
+        private void btnDelete_Click(object sender, EventArgs e) {
             DeleteProduct();
             SetNumberOfItems();
         }
 
-        private void bunifuSwitch_Click(object sender, EventArgs e)
-        {
+        private void bunifuSwitch_Click(object sender, EventArgs e) {
             BunifuSwitchDeleteButton();
         }
 
-        private void comboBoxProductStatusActiveOrNot_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxProductStatusActiveOrNot_SelectedIndexChanged(object sender, EventArgs e) {
             SetProductActiveOrNot();
         }
 
-        private void dataGridViewProducts_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //If Active Products
-            if (comboBoxProductStatusActiveOrNot.SelectedIndex == 0)
-            {
-                //Do Nothing
+        private void dataGridViewProducts_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            //For active products
+            if (comboBoxProductStatusActiveOrNot.SelectedIndex == 0) {
+                //Insert code here if you want to show something when the selected index is active
             }
-            //IF Not Active Products
-            else
-            {
+            
+            //For inactive/deactivated products
+            else {
                 SetRowColorIntoRedWhenNotActive(); //Set DatagridView Color When ColumnHeader is Click, Refresh Purpose                
             }
         }
 
-        public void GridFillWithStocksActive()
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        public void GridFillWithStocksActive() {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsActiveForView", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -150,25 +130,22 @@ namespace POSWithInventorySystem
 
                 //dataGridViewUsers.Columns[2].Visible = false;
 
-                //For Print Button
-                /*try
-                {
-                    if (dataGridViewProducts.CurrentRow.Index != -1)
-                    {
+                //For the print button
+                //The code here was disabled due to some bug when running
+                /*try {
+                    if (dataGridViewProducts.CurrentRow.Index != -1) {
                         btnPrint.Enabled = true;
                     }
                 }
-                catch (NullReferenceException ex)
-                {
+                
+                catch (NullReferenceException ex) {
                     btnPrint.Enabled = false;
                 }*/
             }
         }
 
-        private void GridFillWithStocksNotActive()
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void GridFillWithStocksNotActive() {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("SelectProductsNotActiveForView", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -180,104 +157,88 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void dataGridDesign()
-        {
+        private void dataGridDesign() {
             dataGridViewProducts.EnableHeadersVisualStyles = false;
             dataGridViewProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange; //Color.FromArgb(20, 25, 72);
             dataGridViewProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
         }
 
-        private void AddProduct()
-        {
-            ValidateAdminPassword(); //Invoke PasswordDialog
-            //If true
-            if (resultFromValidation)
-            {
+        private void AddProduct() {
+            ValidateAdminPassword();
+            
+            if (resultFromValidation) {
                 AddProductsDialog addProductsDialog = new AddProductsDialog(usersData);
                 addProductsDialog.Owner = this;
                 addProductsDialog.ShowDialog();
             }
 
-            resultFromValidation = false; //Reset True to False
+            resultFromValidation = false;
         }
 
-        private void UpdateProduct()
-        {
-            try
-            {
-                ValidateAdminPassword(); //Invoke PasswordDialog
-                //If true
-                if (resultFromValidation)
-                {
-                    if (dataGridViewProducts.CurrentRow.Index != -1)
-                    {
+        private void UpdateProduct() {
+            try {
+                ValidateAdminPassword(); 
+                
+                if (resultFromValidation) {
+                    if (dataGridViewProducts.CurrentRow.Index != -1) {
                         int ProductIDForViewProduct = Convert.ToInt32(dataGridViewProducts.CurrentRow.Cells[0].Value);
 
-                        DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Update This Product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            using (UpdateProductDialog updateProductDialog = new UpdateProductDialog(ProductIDForViewProduct, usersData))
-                            {
+                        if (dialogResult == DialogResult.Yes) {
+                            using (UpdateProductDialog updateProductDialog = new UpdateProductDialog(ProductIDForViewProduct, usersData)) {
                                 updateProductDialog.Owner = this;
                                 updateProductDialog.ShowDialog();
                             }
                         }
-                        else
-                        {
+                        
+                        else {
                             return;
                         }
-
                     }
                 }
-                resultFromValidation = false; //Reset True to False
+                resultFromValidation = false;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Products is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            catch (Exception ex) {
+                MessageBox.Show("The products' list is empty. Please add products first.", "Empty product list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void DeleteProduct()
-        {
-            try
-            {
-                ValidateAdminPassword(); //Invoke PasswordDialog
-                //If true
-                if (resultFromValidation)
-                {
-                    if (dataGridViewProducts.CurrentRow.Index != -1)
-                    {
+        private void DeleteProduct() {
+            try {
+                ValidateAdminPassword();
+                
+                if (resultFromValidation) {
+                    if (dataGridViewProducts.CurrentRow.Index != -1) {
 
                         int ProductID = Convert.ToInt32(dataGridViewProducts.CurrentRow.Cells[0].Value);
                         string ProductName = dataGridViewProducts.CurrentRow.Cells[2].Value.ToString();
 
-                        //If Combobox Selected Index is Equal To Active
-                        if (comboBoxProductStatusActiveOrNot.SelectedIndex == 0)
-                        {
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Deactivate This Product?", "Deactivate Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                                {
-                                    //Delete Stocks Corresponding of this Product
+                        //If the combobox index is set to "Active"
+                        if (comboBoxProductStatusActiveOrNot.SelectedIndex == 0) {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to deactivate this product?", "Deactivate Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            
+                            if (dialogResult == DialogResult.Yes) {
+                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                                    //Delete the stocks of selected ProductID
                                     mysqlCon.Open();
                                     MySqlCommand mySqlCommand2 = new MySqlCommand("DeleteTotalStocksByID", mysqlCon);
                                     mySqlCommand2.CommandType = CommandType.StoredProcedure;
                                     mySqlCommand2.Parameters.AddWithValue("_ProductID", ProductID);
                                     mySqlCommand2.ExecuteNonQuery();
 
-                                    //Delete Product
+                                    //Delete the product from the list
                                     MySqlCommand mySqlCommand = new MySqlCommand("UpdateProductStatustoNotActive", mysqlCon);
                                     mySqlCommand.CommandType = CommandType.StoredProcedure;
                                     mySqlCommand.Parameters.AddWithValue("_ProductID", ProductID);
                                     mySqlCommand.ExecuteNonQuery();
                                     GridFillWithStocksActive();
                                     SetNumberOfItems();
-                                    SetTotalOrIndividualStocks(); //Invoke Method From Tab2
+                                    SetTotalOrIndividualStocks();
 
-                                    //Insert Into ProductsLog Table in Database
+                                    //Insert to Products' History
                                     string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                                     MySqlCommand mySqlCommand3 = new MySqlCommand("InsertProductLog", mysqlCon);
@@ -292,19 +253,16 @@ namespace POSWithInventorySystem
 
                                 }
                             }
-                            else
-                            {
-                                return;
-                            }
+                            
+                            else return;
                         }
-                        else
-                        {
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Activate This Product?", "Activate Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                                {
-                                    //Activate Product
+                        
+                        else {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to activate this product?", "Activate Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            
+                            if (dialogResult == DialogResult.Yes) {
+                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                                    //Activating the product
                                     mysqlCon.Open();
                                     MySqlCommand mySqlCommand = new MySqlCommand("UpdateProductStatustoActive", mysqlCon);
                                     mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -313,9 +271,9 @@ namespace POSWithInventorySystem
                                     GridFillWithStocksNotActive();
                                     SetRowColorIntoRedWhenNotActive();
                                     SetNumberOfItems();
-                                    SetTotalOrIndividualStocks(); //Invoke Method From Tab2
+                                    SetTotalOrIndividualStocks();
 
-                                    //Insert Into ProductsLog Table in Database
+                                    //Insert to Products' History
                                     string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                                     MySqlCommand mySqlCommand3 = new MySqlCommand("InsertProductLog", mysqlCon);
@@ -330,28 +288,23 @@ namespace POSWithInventorySystem
 
                                 }
                             }
-                            else
-                            {
-                                return;
-                            }
+                            
+                            else return;
                         }
                     }
                 }
-                resultFromValidation = false; //Reset True to False
+                resultFromValidation = false;
             }
-            catch (Exception ex)
-            {
+            
+            catch (Exception ex) {
                 resultFromValidation = false; //Reset True to False
-                MessageBox.Show("Products is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The products' list is empty. Please add products first.", "Empty product list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void ViewProduct()
-        {
-            try
-            {
-                if (dataGridViewProducts.CurrentRow.Index != -1)
-                {
+        private void ViewProduct() {
+            try {
+                if (dataGridViewProducts.CurrentRow.Index != -1) {
                     int ProductIDForViewProduct = Convert.ToInt32(dataGridViewProducts.CurrentRow.Cells[0].Value);
 
                     ViewProductDialog viewProductDialog = new ViewProductDialog(ProductIDForViewProduct);
@@ -359,16 +312,14 @@ namespace POSWithInventorySystem
                     viewProductDialog.ShowDialog();
                 }
             }
-            catch
-            {
-                MessageBox.Show("Products is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            catch {
+               MessageBox.Show("The products' list is empty. Please add products first.", "Empty product list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void SearchProductByColumn()
-        {
-            try
-            {
+        private void SearchProductByColumn() {
+            try {
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dataGridViewProducts.DataSource;
                 bs.Filter = "Convert([ProductID], 'System.String') LIKE '%" + txtSearchValue.Text + "%'"
@@ -377,56 +328,50 @@ namespace POSWithInventorySystem
 
                 dataGridViewProducts.DataSource = bs;
             }
-            catch(EvaluateException ex)
-            {
-                //Do Nothing...
+            catch(EvaluateException ex) {
+                //Insert code here if you want to show error or something
             }
 
-            //If Active Products
-            if (comboBoxProductStatusActiveOrNot.SelectedIndex == 0)
-            {
-                //Do Nothing
+            //For active products
+            if (comboBoxProductStatusActiveOrNot.SelectedIndex == 0) {
+                //Insert code here if you want to show something
             }
-            //IF Not Active Products
-            else
-            {
-                SetRowColorIntoRedWhenNotActive(); //Set DatagridView Color When ColumnHeader is Click, Refresh Purpose                
+            
+            //For inactive/deactivated products
+            else {
+                SetRowColorIntoRedWhenNotActive();          
             }
             SetNumberOfItems();
-
-            //For Print Button
-            try
-            {
-                if (dataGridViewProducts.CurrentRow.Index != -1)
-                {
-                    btnPrint.Enabled = true;
+            
+            //For the print button
+            //The current programmer's IDE cannot produce report so the btnPrint will be disabled
+            try {
+                if (dataGridViewProducts.CurrentRow.Index != -1) {
+                    btnPrint.Enabled = false;
                 }
             }
-            catch(NullReferenceException ex)
-            {
+            
+            catch(NullReferenceException ex) {
                 btnPrint.Enabled = false;
             }
         }
-
-        private void BunifuSwitchDeleteButton()
-        {
-            if (bunifuSwitch.Value == true)
-            {
+        
+        //Since we want to click directly the buttons, this switch has been partially disabled and returns true always
+        private void BunifuSwitchDeleteButton() {
+            if (bunifuSwitch.Value == true) {
                 btnDelete.Enabled = true;
             }
-            else
-            {
+            
+            else {
                 btnDelete.Enabled = false;
             }
         }
 
-        public void SetNumberOfItems()
-        {
+        public void SetNumberOfItems() {
             lblNumberOfItemsValue.Text = dataGridViewProducts.Rows.Count.ToString();
         }
 
-        private void dataGridViewWithActivateAndNotActive()
-        {
+        private void dataGridViewWithActivateAndNotActive() {
             //Width
             dataGridViewProducts.Columns[0].Width = 104;
             dataGridViewProducts.Columns[1].Width = 120;
@@ -442,104 +387,92 @@ namespace POSWithInventorySystem
             dataGridViewProducts.Columns[5].Width = 150;
         }
 
-        private void SetProductActiveOrNot()
-        {
-            //If Active Products
-            if(comboBoxProductStatusActiveOrNot.SelectedIndex == 0)
-            {
+        private void SetProductActiveOrNot() {
+            //For active products
+            if(comboBoxProductStatusActiveOrNot.SelectedIndex == 0) {
                 dataGridViewProducts.DataSource = null;
                 dataGridDesign();
                 GridFillWithStocksActive();
                 dataGridViewWithActivateAndNotActive();
                 SetNumberOfItems();
+                
+                //Sets the new location and size for delete button
                 btnDelete.Text = "Deactivate";
-                //Set Location of Delete Button In Right Point
                 btnDelete.Location = new Point(739, 624);
                 btnDelete.Size = new Size(298, 48);
-                //Set Location of BunifuSwitch In Right Point
+                
+                //Sets the new location and size for BunifuSwitch
                 bunifuSwitch.Location = new Point(717, 634);
-                //Hide Button For Deactivate Products Controls
+                
                 btnDeleteProductInDB.Hide(); bunifuSwitchbtnDeleteProductInDB.Hide();
-                //Show Button For Active Products Controls
+                
                 btnAdd.Show(); btnUpdate.Show(); btnDelete.Show();
                 btnPrint.Hide();
-
             }
-            //IF Not Active Products
-            else
-            {
+            
+            //For inactive/deactivated products
+            else {
                 dataGridViewProducts.DataSource = null;
                 dataGridDesign();
                 GridFillWithStocksNotActive();
                 dataGridViewWithActivateAndNotActive();
                 SetRowColorIntoRedWhenNotActive();
                 SetNumberOfItems();
-                //Set Location of Delete Button in Middle Point
+                
+                //Sets the new location and size for delete button
                 btnDelete.Text = "Activate";
                 btnDelete.Location = new Point(34, 624);
                 btnDelete.Size = new Size(469, 48);
             
-                //Set Location of BunifuSwitch in Middle Point
+                //Sets the new location and size for BunifuSwitch
                 bunifuSwitch.Location = new Point(366, 633);
                 bunifuSwitch.Hide();
-                //Hide Button For Active Products Controls
+                
                 btnAdd.Hide(); btnUpdate.Hide();
-                //Show Button For Deactivate Products Controls
+               
                 btnDeleteProductInDB.Show();
-                btnPrint.Hide(); //Hide Print Button For Not Active
+                btnPrint.Hide();
             }
         }
 
-        private void SetRowColorIntoRedWhenNotActive()
-        {
-            foreach (DataGridViewRow row in dataGridViewProducts.Rows)
-            {
+        private void SetRowColorIntoRedWhenNotActive() {
+            foreach (DataGridViewRow row in dataGridViewProducts.Rows) {
                 row.DefaultCellStyle.BackColor = Color.Red;
             }
         }
 
-        private void bunifuSwitchbtnDeleteProductInDB_Click(object sender, EventArgs e)
-        {
-            if (bunifuSwitchbtnDeleteProductInDB.Value == true)
-            {
+        private void bunifuSwitchbtnDeleteProductInDB_Click(object sender, EventArgs e) {
+            if (bunifuSwitchbtnDeleteProductInDB.Value == true) {
                 btnDeleteProductInDB.Enabled = true;
             }
-            else
-            {
+            else {
                 btnDeleteProductInDB.Enabled = false;
             }
         }
 
-        private void btnDeleteProductInDB_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ValidateAdminPassword(); //Invoke PasswordDialog
-                //If true
-                if (resultFromValidation)
-                {
-                    if (dataGridViewProducts.CurrentRow.Index != -1)
-                    {
-
+        private void btnDeleteProductInDB_Click(object sender, EventArgs e) {
+            try {
+                ValidateAdminPassword();
+                
+                if (resultFromValidation) {
+                    if (dataGridViewProducts.CurrentRow.Index != -1) {
                         int ProductID = Convert.ToInt32(dataGridViewProducts.CurrentRow.Cells[0].Value);
                         string ProductName = dataGridViewProducts.CurrentRow.Cells[2].Value.ToString();
 
-                        //If Combobox Selected Index is Equal To Deactivate
-                        if (comboBoxProductStatusActiveOrNot.SelectedIndex == 1)
-                        {
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Delete This Product?", "Delete Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                                {
-                                    //Delete Stocks Corresponding of this Product
+                        //If the combobox was set to "Deactivate"
+                        if (comboBoxProductStatusActiveOrNot.SelectedIndex == 1) {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this product? This cannot be undone.", "Delete Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            
+                            if (dialogResult == DialogResult.Yes) {
+                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                                    //Delete the stocks of the selected ProductID
                                     mysqlCon.Open();
                                     MySqlCommand mySqlCommand2 = new MySqlCommand("DeleteTotalStocksByID", mysqlCon);
                                     mySqlCommand2.CommandType = CommandType.StoredProcedure;
                                     mySqlCommand2.Parameters.AddWithValue("_ProductID", ProductID);
                                     mySqlCommand2.ExecuteNonQuery();
 
-                                    //Delete Product
+                                    //Delete the product
                                     MySqlCommand mySqlCommand = new MySqlCommand("DeleteProduct", mysqlCon);
                                     mySqlCommand.CommandType = CommandType.StoredProcedure;
                                     mySqlCommand.Parameters.AddWithValue("_ProductID", ProductID);
@@ -547,9 +480,9 @@ namespace POSWithInventorySystem
                                     GridFillWithStocksNotActive(); 
                                     SetRowColorIntoRedWhenNotActive();
                                     SetNumberOfItems();
-                                    SetTotalOrIndividualStocks(); //Invoke Method From Tab2
+                                    SetTotalOrIndividualStocks();
 
-                                    //Insert Into ProductsLog Table in Database
+                                    //Insert to Products' History
                                     string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                                     MySqlCommand mySqlCommand3 = new MySqlCommand("InsertProductLog", mysqlCon);
@@ -563,25 +496,22 @@ namespace POSWithInventorySystem
                                     mySqlCommand3.ExecuteNonQuery();
                                 }
                             }
-                            else
-                            {
+                            else {
                                 return;
                             }
                         }
                     }
                 }
-                resultFromValidation = false; //Reset True to False
+                resultFromValidation = false;
             }
-            catch (Exception ex)
-            {
+            
+            catch (Exception ex) {
                 resultFromValidation = false; //Reset True to False
-                MessageBox.Show("Products is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The products' list is empty. Please add products first.", "Empty product list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            //Set DataTable To Fill Datagrid Data into DataTable
+        private void btnPrint_Click(object sender, EventArgs e) {
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("ProductID", typeof(string));
             dataTable.Columns.Add("Barcode", typeof(string));
@@ -590,8 +520,7 @@ namespace POSWithInventorySystem
             dataTable.Columns.Add("PurchasePrice", typeof(string));
             dataTable.Columns.Add("SellingPrice", typeof(string));
 
-            foreach (DataGridViewRow row in dataGridViewProducts.Rows)
-            {
+            foreach (DataGridViewRow row in dataGridViewProducts.Rows) {
                 dataTable.Rows.Add(row.Cells[0].Value, 
                     row.Cells[1].Value, 
                     row.Cells[2].Value, 
@@ -611,53 +540,38 @@ namespace POSWithInventorySystem
             salesReportForm.Show();
         }
 
-        /*-------------------------Sharing Codes Both Side----------------*/
-
-        private void HidePanelStatus()
-        {
+        private void HidePanelStatus() {
             panelIndividualStocks.Hide();
             panelTotalStocks.Hide();
         }
 
-        private void dataGridViewStocksTab2_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
+        private void dataGridViewStocksTab2_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
             //Total Products
-            if (comboBoxStocks.SelectedIndex == 0)
-            {
+            if (comboBoxStocks.SelectedIndex == 0) {
                 SetStocksQuantity();
             }
+            
             //Individual Products
-            else
-            {
+            else {
                 SetExpirationDateForIndividual();
             }
         }
 
-        /*----------------Sharing Codes For All Within StocksForm----*/
-
-        public bool resultFromValidation = false;
-
-        private void ValidateAdminPassword()
-        {
+        private void ValidateAdminPassword() {
             ValidateAdminPasswordDialog  validateAdminPassword = new ValidateAdminPasswordDialog(UserID, "StocksForm");
             validateAdminPassword.Owner = this;
             validateAdminPassword.ShowDialog();
         }   
 
-        private void btnPrintStocks_Click(object sender, EventArgs e)
-        {
+        private void btnPrintStocks_Click(object sender, EventArgs e) {
             //Total Products
-            if (comboBoxStocks.SelectedIndex == 0)
-            {
-                //Set DataTable To Fill Datagrid Data into DataTable
+            if (comboBoxStocks.SelectedIndex == 0) {
                 DataTable dataTable = new DataTable();
                 dataTable.Columns.Add("ProductID", typeof(string));
                 dataTable.Columns.Add("ProductName", typeof(string));
                 dataTable.Columns.Add("TotalQuantity", typeof(string));
-               
 
-                foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows)
-                {
+                foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows) {
                     dataTable.Rows.Add(row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value);
                 }
 
@@ -671,10 +585,9 @@ namespace POSWithInventorySystem
                 SalesReportForm salesReportForm = new SalesReportForm(totalStocksInformation, "TotalStocksInformation");
                 salesReportForm.Show();
             }
+            
             //Individual Products
-            else
-            {
-                //Set DataTable To Fill Datagrid Data into DataTable
+            else {
                 DataTable dataTable = new DataTable();
                 dataTable.Columns.Add("StocksID", typeof(string));
                 dataTable.Columns.Add("ProductID", typeof(string));
@@ -684,11 +597,14 @@ namespace POSWithInventorySystem
                 dataTable.Columns.Add("Expiration_Date", typeof(string));
                 dataTable.Columns.Add("Status", typeof(string));
 
-
-                foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows)
-                {
-                    dataTable.Rows.Add(row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value,
-                        row.Cells[4].Value, row.Cells[5].Value, row.Cells[6].Value);
+                foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows) {
+                    dataTable.Rows.Add(row.Cells[0].Value, 
+                                       row.Cells[1].Value, 
+                                       row.Cells[2].Value, 
+                                       row.Cells[3].Value,
+                                       row.Cells[4].Value, 
+                                       row.Cells[5].Value, 
+                                       row.Cells[6].Value);
                 }
 
                 string Date = DateTime.Now.ToString("MM-dd-yyyy");
@@ -703,14 +619,9 @@ namespace POSWithInventorySystem
             }
         }
 
-        /*---------------------------Stocsk Tab---------------------------*/
-
-        /*-------------------For Individual Section------------------*/
-
-        public void GridFillIndividualStocksTab2()
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        //Stocks Tab
+        public void GridFillIndividualStocksTab2() {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("ViewAllStocks", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -719,24 +630,21 @@ namespace POSWithInventorySystem
                 dataGridViewStocksTab2.DataSource = dataTable;
 
                 //For Print Button
-                /*try
-                {
-                    if (dataGridViewStocksTab2.CurrentRow.Index != -1)
-                    {
+                //Once again, it has been disabled due to a bug
+                /*try {
+                    if (dataGridViewStocksTab2.CurrentRow.Index != -1) {
                         btnPrintStocks.Enabled = true;
                     }
                 }
-                catch (NullReferenceException ex)
-                {
+                
+                catch (NullReferenceException ex) {
                     btnPrintStocks.Enabled = false;
                 }*/
             }
         }
 
-        public void GridFillTotalStocksTab2()
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        public void GridFillTotalStocksTab2() {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("ViewTotalPerProductQuantity", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -745,23 +653,19 @@ namespace POSWithInventorySystem
                 dataGridViewStocksTab2.DataSource = dataTable;
 
                 //For Print Button
-                /*try
-                {
-                    if (dataGridViewStocksTab2.CurrentRow.Index != -1)
-                    {
+                //Once again, it has been disabled due to a bug
+                /*try {
+                    if (dataGridViewStocksTab2.CurrentRow.Index != -1) {
                         btnPrintStocks.Enabled = true;
                     }
                 }
-                catch (NullReferenceException ex)
-                {
+                catch (NullReferenceException ex) {
                     btnPrintStocks.Enabled = false;
                 }*/
-
             }
         }
 
-        private void dataGridStocksIndividualTab2DesignAndWidth()
-        {
+        private void dataGridStocksIndividualTab2DesignAndWidth() {
             //Design
             dataGridViewStocksTab2.EnableHeadersVisualStyles = false;
             dataGridViewStocksTab2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -781,8 +685,7 @@ namespace POSWithInventorySystem
 
         }
 
-        private void dataGridStocksTotalTab2DesignAndWidth()
-        {
+        private void dataGridStocksTotalTab2DesignAndWidth() {
             //Design
             dataGridViewStocksTab2.EnableHeadersVisualStyles = false;
             dataGridViewStocksTab2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -797,23 +700,16 @@ namespace POSWithInventorySystem
                 - dataGridViewStocksTab2.Columns[0].Width
                 - dataGridViewStocksTab2.Columns[2].Width - 143;
             dataGridViewStocksTab2.Columns[2].Width = 240;
-
-
-
-
         }
 
-        private void btnAddStocks_Click(object sender, EventArgs e)
-        {
+        private void btnAddStocks_Click(object sender, EventArgs e) {
             AddStocks();
         }
 
-        private void AddStocks()
-        {
-            ValidateAdminPassword(); //Invoke PasswordDialog
-            //If true
-            if (resultFromValidation)
-            {
+        private void AddStocks() {
+            ValidateAdminPassword();
+
+            if (resultFromValidation) {
                 AddStocksDialog addStocksDialog = new AddStocksDialog(usersData);
                 addStocksDialog.Owner = this;
                 addStocksDialog.ShowDialog();
@@ -821,16 +717,12 @@ namespace POSWithInventorySystem
             resultFromValidation = false;
         }
 
-        private void btnUpdateStocks_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ValidateAdminPassword(); //Invoke PasswordDialog
-                //If true
-                if (resultFromValidation)
-                {
-                    if (dataGridViewProducts.CurrentRow.Index != -1)
-                    {
+        private void btnUpdateStocks_Click(object sender, EventArgs e) {
+            try {
+                ValidateAdminPassword();
+                
+                if (resultFromValidation) {
+                    if (dataGridViewProducts.CurrentRow.Index != -1) {
                         UpdateStocksInfo stocksInfo = new UpdateStocksInfo();
 
                         stocksInfo.StocksID = Convert.ToInt32(dataGridViewStocksTab2.CurrentRow.Cells[0].Value);
@@ -841,80 +733,63 @@ namespace POSWithInventorySystem
                         stocksInfo.ExpirationDate = dataGridViewStocksTab2.CurrentRow.Cells[5].Value.ToString();
                         stocksInfo.Status = dataGridViewStocksTab2.CurrentRow.Cells[6].Value.ToString();
 
-                        DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Update This Stocks?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to update the stocks of the selected product?", "Update stocks of selected product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            using (UpdateStocksDialog updateStocksDialog = new UpdateStocksDialog(stocksInfo, usersData))
-                            {
+                        if (dialogResult == DialogResult.Yes) {
+                            using (UpdateStocksDialog updateStocksDialog = new UpdateStocksDialog(stocksInfo, usersData)) {
                                 updateStocksDialog.Owner = this;
                                 updateStocksDialog.ShowDialog();
                             }
                         }
-                        else
-                        {
-                            return;
-                        }
-
+                        else return;
                     }
                 }
                 resultFromValidation = false;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Products is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            catch (Exception ex) {
+                MessageBox.Show("The products' list is empty. Please add product first.", "Empty product list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         } 
 
-        private void btnDeleteStocks_Click(object sender, EventArgs e)
-        {
+        private void btnDeleteStocks_Click(object sender, EventArgs e) {
             DeleteStocks();
         }
 
-        private void bunifuSwitchStocks_Click(object sender, EventArgs e)
-        {
-            if (bunifuSwitchStocks.Value == true)
-            {
+        private void bunifuSwitchStocks_Click(object sender, EventArgs e) {
+            if (bunifuSwitchStocks.Value == true) {
                 btnDeleteStocks.Enabled = true;
             }
-            else
-            {
+            
+            else {
                 btnDeleteStocks.Enabled = false;
             }
         }
 
-        private void comboBoxStocks_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxStocks_SelectedIndexChanged(object sender, EventArgs e) {
             SetTotalOrIndividualStocks();
         }
 
-        private void comboBoxStocksStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxStocksStatus_SelectedIndexChanged(object sender, EventArgs e) {
             FilterGoodExpired();
         }
 
-        private void DeleteStocks()
-        {
-            //For Individual Stocks
-            if (comboBoxStocks.SelectedIndex == 1)
-            {
-                ValidateAdminPassword(); //Invoke PasswordDialog
-                //If true
-                if (resultFromValidation)
-                {
-                    try
-                    {
-                        if (dataGridViewStocksTab2.CurrentRow.Index != -1)
-                        {
+        private void DeleteStocks() {
+            //Individual Stocks
+            if (comboBoxStocks.SelectedIndex == 1) {
+                ValidateAdminPassword();
+
+                if (resultFromValidation) {
+                    try {
+                        if (dataGridViewStocksTab2.CurrentRow.Index != -1) {
                             int StocksID = Convert.ToInt32(dataGridViewStocksTab2.CurrentRow.Cells[0].Value);
                             int ProductID = Convert.ToInt32(dataGridViewStocksTab2.CurrentRow.Cells[1].Value);
                             string ProductName = dataGridViewStocksTab2.CurrentRow.Cells[2].Value.ToString();
 
-                            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Delete This Stocks?", "Delete Stocks", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                                {
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the stocks of the selected product?", "Delete product's stock", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            
+                            if (dialogResult == DialogResult.Yes) {
+                                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                                     mysqlCon.Open();
                                     MySqlCommand mySqlCommand = new MySqlCommand("DeleteStocksByID", mysqlCon);
                                     mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -924,8 +799,7 @@ namespace POSWithInventorySystem
                                     SetExpirationDateForIndividual();
                                     SetNumberOfStocks();
 
-                                    
-                                    //Insert Into stocksindividual_log table in Database
+                                    //Insert to Stocks History
                                     string DateAddedLog = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                                     MySqlCommand mySqlCommand2 = new MySqlCommand("InsertIndividualStocksLog", mysqlCon);
@@ -940,51 +814,44 @@ namespace POSWithInventorySystem
                                     mySqlCommand2.ExecuteNonQuery();
                                 }
                             }
-                            else
-                            {
-                                return;
-                            }
+                            
+                            else return;
                         }
                     }
-                    catch (NullReferenceException)
-                    {
-                        MessageBox.Show("Individual Stocks is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    catch (NullReferenceException) {
+                        MessageBox.Show("The individual stocks list is empty.", "Empty individual stocks", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("Error: " + " " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                    catch(Exception ex) {
+                        MessageBox.Show("There was an error in executing the code: " + " " + ex, "Error in system", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 resultFromValidation = false;
             }
         }
 
-        public void SetNumberOfStocks()
-        {
+        public void SetNumberOfStocks() {
             //Total Products
-            if (comboBoxStocks.SelectedIndex == 0)
-            {
+            if (comboBoxStocks.SelectedIndex == 0) {
                 lblTotalNumberOFStocks.Hide(); lblTotalNumberOfStocksValue.Hide();
                 lblNumberOfProducts.Show(); lblNumberOfProductsValue.Show();
                 lblNumberOfProductsValue.Text = dataGridViewStocksTab2.Rows.Count.ToString();
             }
+            
             //Individual Stocks
-            else
-            {
+            else {
                 lblNumberOfProducts.Hide(); lblNumberOfProductsValue.Hide();
                 lblTotalNumberOFStocks.Show(); lblTotalNumberOfStocksValue.Show();
                 lblTotalNumberOfStocksValue.Text = dataGridViewStocksTab2.Rows.Count.ToString();
             }
         }
 
-        private void txtSearchTab2_OnValueChanged(object sender, EventArgs e)
-        {
+        private void txtSearchTab2_OnValueChanged(object sender, EventArgs e) {
             comboBoxStocksStatus.SelectedIndex = 0;
 
-            try
-            {
-                if (comboBoxStocks.SelectedIndex == 0)
-                {
+            try {
+                if (comboBoxStocks.SelectedIndex == 0) {
                     BindingSource bs = new BindingSource();
                     bs.DataSource = dataGridViewStocksTab2.DataSource;
                     bs.Filter = "Convert([ProductID], 'System.String') LIKE '%" + txtSearchTab2.Text + "%'"
@@ -993,10 +860,9 @@ namespace POSWithInventorySystem
                     dataGridViewStocksTab2.DataSource = bs;
                     SetStocksQuantity();
                     SetNumberOfStocks();
-
                 }
-                else
-                {
+                
+                else {
                     BindingSource bs = new BindingSource();
                     bs.DataSource = dataGridViewStocksTab2.DataSource;
                     bs.Filter = "Convert([StocksID], 'System.String') LIKE '%" + txtSearchTab2.Text + "%'"
@@ -1010,30 +876,27 @@ namespace POSWithInventorySystem
                     SetNumberOfStocks();
                 }
             }
+            
             catch(EvaluateException ex)
             {
-                //Do Nothing...
+                //Insert code here if you want to show error or something
             }
 
             //For Print Button Stocks
-            try
-            {
-                if (dataGridViewStocksTab2.CurrentRow.Index != -1)
-                {
+            try {
+                if (dataGridViewStocksTab2.CurrentRow.Index != -1) {
                     btnPrintStocks.Enabled = true;
                 }
             }
-            catch (NullReferenceException ex)
-            {
+            
+            catch (NullReferenceException ex) {
                 btnPrintStocks.Enabled = false;
             }
         }
 
-        public void SetTotalOrIndividualStocks()
-        {
+        public void SetTotalOrIndividualStocks() {
             //Total Products
-            if (comboBoxStocks.SelectedIndex == 0)
-            {
+            if (comboBoxStocks.SelectedIndex == 0) {
                 dataGridViewStocksTab2.DataSource = null;
                 GridFillTotalStocksTab2();
                 dataGridStocksTotalTab2DesignAndWidth();
@@ -1044,9 +907,9 @@ namespace POSWithInventorySystem
                 btnDeleteTotalStocks.Show();
                 SetStocksQuantity();
             }
+            
             //Individual Products
-            else
-            {
+            else {
                 dataGridViewStocksTab2.DataSource = null;
                 GridFillIndividualStocksTab2();
                 dataGridStocksIndividualTab2DesignAndWidth();
@@ -1061,26 +924,25 @@ namespace POSWithInventorySystem
             SetNumberOfStocks();
         }
 
-        public void SetExpirationDateForIndividual()
-        {
+        public void SetExpirationDateForIndividual() {
             int NearlyExpired = 0;
             int Expired = 0;
 
-            foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows)
-            {
+            foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows) {
                 DateTime today = DateTime.Today;
                 DateTime ExpirationDate = DateTime.ParseExact(row.Cells[5].Value.ToString(), "MM-dd-yyyy", CultureInfo.InvariantCulture);
-                DateTime ThreeDaysBefore = ExpirationDate.AddDays(-3); //Three Days Before Expired
+                
+                //Warning for three days before expiration date
+                DateTime ThreeDaysBefore = ExpirationDate.AddDays(-3);
 
                 //Nearly Expired
-                if (today > ThreeDaysBefore && today < ExpirationDate)
-                {
+                if (today > ThreeDaysBefore && today < ExpirationDate) {
                     NearlyExpired++;
                     row.DefaultCellStyle.BackColor = Color.Gold;
                 }
+                
                 //Expired
-                else if (today >= ExpirationDate)
-                {
+                else if (today >= ExpirationDate) {
                     Expired++;
                     row.DefaultCellStyle.BackColor = Color.Red;
                     UpdateStatusToExpired(Convert.ToInt32(row.Cells[0].Value)); //Update Good To Expired
@@ -1091,17 +953,16 @@ namespace POSWithInventorySystem
             lblIndividualExpiredValue.Text = Expired.ToString();
         }
 
-        private void FilterGoodExpired()
-        {
+        private void FilterGoodExpired() {
             txtSearchTab2.Text = "";
-            if (comboBoxStocksStatus.SelectedIndex == 1)
-            {
+            
+            if (comboBoxStocksStatus.SelectedIndex == 1) {
                 GridFillIndividualStocksTab2();
                 SetExpirationDateForIndividual();
                 SetNumberOfStocks();
             }
-            else if (comboBoxStocksStatus.SelectedIndex == 2)
-            {
+            
+            else if (comboBoxStocksStatus.SelectedIndex == 2) {
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dataGridViewStocksTab2.DataSource;
                 bs.Filter = "[Status] LIKE '%Good%'";
@@ -1111,8 +972,8 @@ namespace POSWithInventorySystem
                 SetExpirationDateForIndividual();
                 SetNumberOfStocks();
             }
-            else if (comboBoxStocksStatus.SelectedIndex == 3)
-            {
+            
+            else if (comboBoxStocksStatus.SelectedIndex == 3) {
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dataGridViewStocksTab2.DataSource;
                 bs.Filter = "[Status] LIKE '%Expired%'";
@@ -1122,16 +983,14 @@ namespace POSWithInventorySystem
                 SetExpirationDateForIndividual();
                 SetNumberOfStocks();
             }
-            else
-            {
-                //Nothing
+            
+            else {
+                //Insert code here if you want to show something
             }
         }
 
-        private void UpdateStatusToExpired(int stocksID)
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
+        private void UpdateStatusToExpired(int stocksID) {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
                 mysqlCon.Open();
                 MySqlCommand mySqlCommand = new MySqlCommand("UpdateStatusToExpiredByID", mysqlCon);
                 mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -1140,11 +999,9 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void DeleteStocksEmptyFromDatabase()
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
-                //Delete Empty Stocks Within 10 Days of Period From Database
+        private void DeleteStocksEmptyFromDatabase() {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                //Automatically delete stocks when the stocks reaches 10 days without interaction
                 mysqlCon.Open();
                 MySqlCommand mySqlCommand = new MySqlCommand("DeleteStocksEmptyByDate", mysqlCon);
                 mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -1152,25 +1009,21 @@ namespace POSWithInventorySystem
             }
         }
 
-        /*-------------------For Total Section------------------*/
-
-        private void SetStocksQuantity()
-        {
+        //Total Stocks
+        private void SetStocksQuantity() {
             int LowInStocks = 0;
             int OutOfStocks = 0;
 
-            foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows)
-            {
+            foreach (DataGridViewRow row in dataGridViewStocksTab2.Rows) {
                 int Quantity = Convert.ToInt32(row.Cells[2].Value);
 
-                if (Quantity <= 30 && Quantity > 0)
-                {
+                if (Quantity <= 30 && Quantity > 0) {
                     LowInStocks++;
                     row.DefaultCellStyle.BackColor = Color.Gold;
                     row.ReadOnly = true;
                 }
-                else if (Quantity <= 0)
-                {
+                
+                else if (Quantity <= 0) {
                     OutOfStocks++;
                     row.DefaultCellStyle.BackColor = Color.Red;
                     row.ReadOnly = true;
@@ -1179,46 +1032,37 @@ namespace POSWithInventorySystem
 
             lblTotalLowinStocksValue.Text = LowInStocks.ToString();
             lblTotalOutOfStocksValue.Text = OutOfStocks.ToString();
-
         }
 
-        private void bunifuSwitchDeleteTotalStocks_Click(object sender, EventArgs e)
-        {
-            if (bunifuSwitchDeleteTotalStocks.Value == true)
-            {
+        private void bunifuSwitchDeleteTotalStocks_Click(object sender, EventArgs e) {
+            if (bunifuSwitchDeleteTotalStocks.Value == true) {
                 btnDeleteTotalStocks.Enabled = true;
             }
-            else
-            {
+            
+            else {
                 btnDeleteTotalStocks.Enabled = false;
             }
         }
 
-        private void btnDeleteTotalStocks_Click(object sender, EventArgs e)
-        {
+        private void btnDeleteTotalStocks_Click(object sender, EventArgs e) {
             DeleteTotalStocks();
         }
 
-        private void DeleteTotalStocks()
-        {
+        private void DeleteTotalStocks() {
             //For Individual Stocks
-            ValidateAdminPassword(); //Invoke PasswordDialog
-            //If true
-            if (resultFromValidation)
-            {
-                try
-                {
-                    if (dataGridViewStocksTab2.CurrentRow.Index != -1)
-                    {
+            ValidateAdminPassword();
+            
+            if (resultFromValidation) {
+                try {
+                    if (dataGridViewStocksTab2.CurrentRow.Index != -1) {
                         int ProductID = Convert.ToInt32(dataGridViewStocksTab2.CurrentRow.Cells[0].Value);
                         string ProductName = dataGridViewStocksTab2.CurrentRow.Cells[1].Value.ToString();
 
-                        DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Delete This Total Stocks? Deleting This Will Delete All Stocks Of This Product.", "Delete Stocks", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-                            {
-                                //Delete Total Stocks By ID   
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all stocks? This cannot be undone.", "Delete all stocks", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        
+                        if (dialogResult == DialogResult.Yes) {
+                            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                                //Delete total stocks for selected ProductID   
                                 mysqlCon.Open();
                                 MySqlCommand mySqlCommand = new MySqlCommand("DeleteTotalStocksByID", mysqlCon);
                                 mySqlCommand.CommandType = CommandType.StoredProcedure;
@@ -1228,7 +1072,7 @@ namespace POSWithInventorySystem
                                 SetStocksQuantity();
                                 SetNumberOfStocks();
                                 
-                                //Insert Into stockstotal_log Table in Database
+                                //Insert to Stocks' History
                                 string DateAdded = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
                                 MySqlCommand mySqlCommand3 = new MySqlCommand("InsertTotalStocksLog", mysqlCon);
@@ -1242,19 +1086,16 @@ namespace POSWithInventorySystem
                                 mySqlCommand3.ExecuteNonQuery();
                             }
                         }
-                        else
-                        {
-                            return;
-                        }
+                        
+                        else return;
                     }
                 }
-                catch (NullReferenceException)
-                {
-                    MessageBox.Show("Total Stocks is Empty", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                catch (NullReferenceException) {
+                    MessageBox.Show("The total stocks is empty", "Empty total stocks", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Error: " + " " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                catch(Exception ex) {
+                    MessageBox.Show("There was an error while executing the command: " + " " + ex, "Error in System", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             resultFromValidation = false;
@@ -1262,8 +1103,7 @@ namespace POSWithInventorySystem
 
     }
 
-    public class UpdateStocksInfo
-    {
+    public class UpdateStocksInfo {
         public int StocksID { get; set; }
         public int ProductID { get; set; }
         public string ProductName { get; set; }
@@ -1273,21 +1113,19 @@ namespace POSWithInventorySystem
         public string Status { get; set; }
     }
 
-    public class ProductsInformation
-    {
+    public class ProductsInformation {
         public DataTable ProductsInformations { get; set; }
         public string Date { get; set; }
         public string NumberOfProducts { get; set; }
     }
 
-    public class TotalStocksInformation
-    {
+    public class TotalStocksInformation {
         public DataTable TotalStocks { get; set; }
         public string Date { get; set; }
         public string NumberOfTotalStocks { get; set; }
     }
-    public class IndividualStocksInformation
-    {
+    
+    public class IndividualStocksInformation {
         public DataTable IndividualStocks { get; set; }
         public string Date { get; set; }
         public string NumberOfIndividualStocks { get; set; }
