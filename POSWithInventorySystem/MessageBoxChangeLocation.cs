@@ -5,34 +5,30 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 
-namespace POSWithInventorySystem
-{
-    class MessageBoxChangeLocation : IDisposable
-    {
+namespace POSWithInventorySystem {
+    class MessageBoxChangeLocation : IDisposable {
         private int mTries = 0;
         private Form mOwner;
 
-        public MessageBoxChangeLocation(Form owner)
-        {
+        public MessageBoxChangeLocation(Form owner) {
             mOwner = owner;
             owner.BeginInvoke(new MethodInvoker(findDialog));
         }
 
-        private void findDialog()
-        {
-            // Enumerate windows to find the message box
+        private void findDialog() {
+            //Enumerate windows to find the message box
             if (mTries < 0) return;
+            
             EnumThreadWndProc callback = new EnumThreadWndProc(checkWindow);
-            if (EnumThreadWindows(GetCurrentThreadId(), callback, IntPtr.Zero))
-            {
+            if (EnumThreadWindows(GetCurrentThreadId(), callback, IntPtr.Zero)) {
                 if (++mTries < 10) mOwner.BeginInvoke(new MethodInvoker(findDialog));
             }
         }
-        private bool checkWindow(IntPtr hWnd, IntPtr lp)
-        {
+        private bool checkWindow(IntPtr hWnd, IntPtr lp) {
             // Checks if <hWnd> is a dialog
             StringBuilder sb = new StringBuilder(260);
             GetClassName(hWnd, sb, sb.Capacity);
+
             if (sb.ToString() != "#32770") return true;
             // Got it
             Rectangle frmRect = new Rectangle(mOwner.Location, mOwner.Size);
@@ -45,8 +41,7 @@ namespace POSWithInventorySystem
                 dlgRect.Bottom - dlgRect.Top, true);
             return false;
         }
-        public void Dispose()
-        {
+        public void Dispose() {
             mTries = -1;
         }
 

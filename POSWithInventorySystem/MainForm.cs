@@ -10,15 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class MainForm : Form
-    {
-        public MainForm()
-        {
-            InitializeComponent();
-        }
-
+namespace POSWithInventorySystem {
+    public partial class MainForm : Form {
         //string connectionString = @"Server=localhost;Database=posinventorysystem;Uid=root;Pwd=admin;SslMode=none ";
         string connectionString = DatabaseConnection.Connection;
 
@@ -31,24 +24,32 @@ namespace POSWithInventorySystem
         private bool LeaveHistoryMenu = false;
         private bool LeaveBackup = false;
 
-        public bool resultFromPasswordValidation = false; //For Password Authentication Purpose
+
+        public bool resultFromPasswordValidation = false; 
 
         string UserTimeIn;
         string UserTimeOut;
         int counter = 0;
 
-        public MainForm(LoginFormData loginFormData)
-        {
+        BackupForm backupForm;
+        private bool MaximizeForm = true;
+
+        public MainForm() {
+            InitializeComponent();
+        }
+
+        public MainForm(LoginFormData loginFormData) {
             InitializeComponent();
             this.LoginFormData = loginFormData;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
+        private void MainForm_Load(object sender, EventArgs e) {
             POSTransaction();
             timerFormLoad.Start();
+            
             lblNameValue.Text = LoginFormData.UsersName;
             lblUserTypeValue.Text = LoginFormData.UserType;
+            
             ProvideUserFormByUserType(LoginFormData.UserType.Trim());
             timerDateNTime.Start();
             ViewUserImage(LoginFormData.Image);
@@ -58,15 +59,14 @@ namespace POSWithInventorySystem
 
         
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Do you want to exit the System?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            switch (dialogResult)
-            {
+        private void btnClose_Click(object sender, EventArgs e) {
+            DialogResult dialogResult = MessageBox.Show("Do you want to exit?", "Exit System", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+            switch (dialogResult) {
                 case DialogResult.Yes:
                     UserTimeInNOutLog();
-                    this.Close();
                     timerDateNTime.Stop();
+                    Application.Exit();
                     break;
 
                 case DialogResult.No:
@@ -74,21 +74,16 @@ namespace POSWithInventorySystem
 
                 default:
                     break;
-
             }
-            
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            //EXPAND
-            if(panelSideMenu.Width == 75)
-            {
+        private void btnMenu_Click(object sender, EventArgs e) {
+            //Expand the custom NavBar Menu
+            if(panelSideMenu.Width == 75) {
                 panelMenusForm.Location = new Point(262, 43);
 
                 //For Backup Form Password Validation Location Change
-                if (LeaveBackup == true)
-                {
+                if (LeaveBackup == true) {
                     backupForm.Maximize = true;
                     MaximizeForm = true;
                 }
@@ -103,14 +98,13 @@ namespace POSWithInventorySystem
                 transitionLogo.ShowSync(lblUserTypeValue);
                 transitionLogo.ShowSync(btnSignOut);
             }
-            //MiNIMIZE
-            else
-            {
+
+            //Minimize the custom NavBar Menu
+            else {
                 panelMenusForm.Location = new Point(170, 43);
 
                 //For Backup Form Password Validation Location Change
-                if (LeaveBackup == true)
-                {
+                if (LeaveBackup == true) {
                     backupForm.Maximize = false;
                     MaximizeForm = false;
                 }
@@ -129,8 +123,7 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void timerDateNTime_Tick(object sender, EventArgs e)
-        {
+        private void timerDateNTime_Tick(object sender, EventArgs e) {
             DateTime now = DateTime.Now;
 
             string Month = now.ToString("MM");
@@ -143,33 +136,24 @@ namespace POSWithInventorySystem
 
             lblDateAndTime.Text = Month + "/" + Day + "/" + Year;
             lblTodayAndTime.Text = Today + ", " + Hrs + ":" + Minutes + " " + AMorPm;
-            
-
         }
 
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
+        private void btnMinimize_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void timerFormLoad_Tick(object sender, EventArgs e)
-        {
+        private void timerFormLoad_Tick(object sender, EventArgs e) {
             this.Opacity += .20;
-            if (this.Opacity == 100)
-            {
+            if (this.Opacity == 100) {
                 timerFormLoad.Stop();
             }
-
         }
 
-        private void btnSignOut_Click(object sender, EventArgs e)
-        {
-            if (btnSignOut.Enabled == false)
-                return;
+        private void btnSignOut_Click(object sender, EventArgs e) {
+            if (btnSignOut.Enabled == false) return;
 
-            DialogResult dialogResult = MessageBox.Show("Do you want to Sign Out?", "Sign Out", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            switch (dialogResult)
-            {
+            DialogResult dialogResult = MessageBox.Show("Do you want to sign out? Any unsaved changes will be discarded.", "Sign Out", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            switch (dialogResult) {
                 case DialogResult.Yes:
                     UserTimeInNOutLog();
                     this.Close();
@@ -182,24 +166,20 @@ namespace POSWithInventorySystem
 
                 default:
                     break;
-
             } 
         }
 
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-            if (btnUsers.Enabled == false)
-                return;
+        private void btnUsers_Click(object sender, EventArgs e) {
+            if (btnUsers.Enabled == false) return;
 
-            if (LeaveUsersMenu == false)
-            {
-                panelMenusForm.Controls.Clear(); //Clear Panel Controls
+            if (LeaveUsersMenu == false) {
+                panelMenusForm.Controls.Clear();
 
                 POSForm usersForm = new POSForm(Convert.ToInt32(LoginFormData.UsersID.Trim()), LoginFormData);
                 usersForm.TopLevel = false;
                 panelMenusForm.Controls.Add(usersForm);
-                usersForm.FormBorderStyle = FormBorderStyle.None; //Optional For Border of a Form
-                usersForm.Dock = DockStyle.Fill; //For Border of a Form or Dock In a Panel
+                usersForm.FormBorderStyle = FormBorderStyle.None;
+                usersForm.Dock = DockStyle.Fill;
                 usersForm.Show();
 
                 btnUsers.Activecolor = Color.Gold;
@@ -215,20 +195,17 @@ namespace POSWithInventorySystem
             LeaveBackup = false;
         }
 
-        private void btnHistoryLog_Click(object sender, EventArgs e)
-        {
-            if (btnHistoryLog.Enabled == false)
-                return;
+        private void btnHistoryLog_Click(object sender, EventArgs e) {
+            if (btnHistoryLog.Enabled == false) return;
 
-            if (LeaveHistoryMenu == false)
-            {
-                panelMenusForm.Controls.Clear(); //Clear Panel Controls
+            if (LeaveHistoryMenu == false) {
+                panelMenusForm.Controls.Clear(); 
 
                 HistoryForm historyForm = new HistoryForm(LoginFormData);
                 historyForm.TopLevel = false;
                 panelMenusForm.Controls.Add(historyForm);
-                historyForm.FormBorderStyle = FormBorderStyle.None; //Optional For Border of a Form
-                historyForm.Dock = DockStyle.Fill; //For Border of a Form or Dock In a Panel
+                historyForm.FormBorderStyle = FormBorderStyle.None; 
+                historyForm.Dock = DockStyle.Fill; 
                 historyForm.Show();
 
                 btnHistoryLog.Activecolor = Color.Gold;
@@ -245,20 +222,17 @@ namespace POSWithInventorySystem
 
         }
 
-        private void BtnSales_Click(object sender, EventArgs e)
-        {
-            if (BtnSales.Enabled == false)
-                return;
+        private void BtnSales_Click(object sender, EventArgs e) {
+            if (BtnSales.Enabled == false) return;
 
-            if (LeaveSalesMenu == false)
-            {
-                panelMenusForm.Controls.Clear(); //Clear Panel Controls
+            if (LeaveSalesMenu == false) {
+                panelMenusForm.Controls.Clear();
 
                 SalesForm salesForm = new SalesForm();
                 salesForm.TopLevel = false;
                 panelMenusForm.Controls.Add(salesForm);
-                salesForm.FormBorderStyle = FormBorderStyle.None; //Optional For Border of a Form
-                salesForm.Dock = DockStyle.Fill; //For Border of a Form or Dock In a Panel
+                salesForm.FormBorderStyle = FormBorderStyle.None;
+                salesForm.Dock = DockStyle.Fill;
                 salesForm.Show();
 
                 BtnSales.Activecolor = Color.Gold;
@@ -272,23 +246,19 @@ namespace POSWithInventorySystem
             LeaveHistoryMenu = false;
             LeaveUsersMenu = false;
             LeaveBackup = false;
-
         }
 
-        private void btnStocks_Click(object sender, EventArgs e)
-        {
-            if (btnStocks.Enabled == false)
-                return;
+        private void btnStocks_Click(object sender, EventArgs e) {
+            if (btnStocks.Enabled == false) return;
 
-            if (LeaveStocksMenu == false)
-            {
-                panelMenusForm.Controls.Clear(); //Clear Panel Controls
+            if (LeaveStocksMenu == false) {
+                panelMenusForm.Controls.Clear();
 
                 StocksForm stocksForm = new StocksForm(LoginFormData);
                 stocksForm.TopLevel = false;
                 panelMenusForm.Controls.Add(stocksForm);
-                stocksForm.FormBorderStyle = FormBorderStyle.None; //Optional For Border of a Form
-                stocksForm.Dock = DockStyle.Fill; //For Border of a Form or Dock In a Panel
+                stocksForm.FormBorderStyle = FormBorderStyle.None;
+                stocksForm.Dock = DockStyle.Fill;
                 stocksForm.Show();
 
                 btnStocks.Activecolor = Color.Gold;
@@ -305,28 +275,24 @@ namespace POSWithInventorySystem
             LeaveBackup = false;
         }
 
-        BackupForm backupForm;
-        private bool MaximizeForm = true;
+        
 
-        private void btnBackup_Click(object sender, EventArgs e)
-        {
+        private void btnBackup_Click(object sender, EventArgs e) {
             if (btnBackup.Enabled == false)
                 return;
 
-            if (LeaveBackup == false)
-            {
-                if(counter == 1)
-                {
+            if (LeaveBackup == false) {
+                if(counter == 1) {
                     MaximizeForm = false;
                 }
 
-                panelMenusForm.Controls.Clear(); //Clear Panel Controls
+                panelMenusForm.Controls.Clear();
 
                 backupForm = new BackupForm(LoginFormData, MaximizeForm);
                 backupForm.TopLevel = false;
                 panelMenusForm.Controls.Add(backupForm);
-                backupForm.FormBorderStyle = FormBorderStyle.None; //Optional For Border of a Form
-                backupForm.Dock = DockStyle.Fill; //For Border of a Form or Dock In a Panel
+                backupForm.FormBorderStyle = FormBorderStyle.None;
+                backupForm.Dock = DockStyle.Fill;
                 backupForm.Show();
 
                 btnBackup.Activecolor = Color.Gold;
@@ -343,23 +309,20 @@ namespace POSWithInventorySystem
             LeaveStocksMenu = false;
         }
 
-        private void btnTransaction_Click(object sender, EventArgs e)
-        {
+        private void btnTransaction_Click(object sender, EventArgs e) {
             POSTransaction();          
         }
 
-        private void POSTransaction()
-        {
-            if (LeavePOSTransactionMenu == false)
-            {
-                panelMenusForm.Controls.Clear(); //Clear Panel Controls
+        private void POSTransaction() {
+            if (LeavePOSTransactionMenu == false) {
+                panelMenusForm.Controls.Clear(); 
 
                 POSTransactionForm transactionForm = new POSTransactionForm(Convert.ToInt32(LoginFormData.UsersID.Trim()), LoginFormData.UsersName);
-                transactionForm.Owner = this; //Test............
+                transactionForm.Owner = this;
                 transactionForm.TopLevel = false;
                 panelMenusForm.Controls.Add(transactionForm);
-                transactionForm.FormBorderStyle = FormBorderStyle.None; //Optional For Border of a Form
-                transactionForm.Dock = DockStyle.Fill; //For Border of a Form or Dock In a Panel
+                transactionForm.FormBorderStyle = FormBorderStyle.None;
+                transactionForm.Dock = DockStyle.Fill;
                 transactionForm.Show();
 
                 btnTransaction.Activecolor = Color.Gold;
@@ -372,41 +335,35 @@ namespace POSWithInventorySystem
             LeaveHistoryMenu = false;
             LeaveUsersMenu = false;
             LeaveBackup = false;
-           
         }
 
-        public void ViewUserImage(byte[] bytes)
-        {
-            if (LoginFormData.Image == null)
-            {
-                pictureBoxUsers.Image = POSWithInventorySystem.Properties.Resources._666201__1_;
+        public void ViewUserImage(byte[] bytes) {
+            if (LoginFormData.Image == null) {
+                pictureBoxUsers.Image = POSWithInventorySystem.Properties.Resources.placeholder;
             }
-            else
-            {
+
+            else {
                 MemoryStream ms = new MemoryStream(bytes);
                 pictureBoxUsers.Image = Image.FromStream(ms);
             }
         }
 
-        private void btnMyAccount_Click(object sender, EventArgs e)
-        {
-            if (btnMyAccount.Enabled == false)
-                return;
+        private void btnMyAccount_Click(object sender, EventArgs e) {
+            if (btnMyAccount.Enabled == false) return;
 
-            ValidateAdminPassword(); //Show Form To Validate Password
-            if (resultFromPasswordValidation == true)
-            {
+            ValidateAdminPassword(); 
+            if (resultFromPasswordValidation == true) {
                 UsersAccountDialog usersAccountDialog = new UsersAccountDialog(LoginFormData.UsersID);
                 usersAccountDialog.ShowDialog();
             }
-            resultFromPasswordValidation = false; //Set To Default
+
+            resultFromPasswordValidation = false; 
         }
 
-        private void ProvideUserFormByUserType(string userType)
-        {
-            if(userType == "Employee")
-            {
-                //Limited Menu Only For Employee
+        private void ProvideUserFormByUserType(string userType) {
+            //For employee
+            if (userType == "Employee") {
+                
                 btnStocks.Visible = false;
                 BtnSales.Visible = false;
                 btnHistoryLog.Visible = false;
@@ -418,19 +375,18 @@ namespace POSWithInventorySystem
                 bunifuSeparator7.Visible = false;
                 bunifuSeparator8.Visible = false;
             }
-            else
-            {
-               //All Controls Are Provided for Admin
+
+            //For admin
+            else {
+               //No controls will be hidden or disabled
             }
         }
 
-        private void UserTimeInNOutLog()
-        {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
-            {
-                UserTimeOut = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt"); //UserTimeOut
+        private void UserTimeInNOutLog() {
+            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString)) {
+                UserTimeOut = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
 
-                //Insert Into ProductsLog Table in Database
+                //Insert UserTimeInOut in database
                 mysqlCon.Open();
                 MySqlCommand mySqlCommand2 = new MySqlCommand("InsertUserLog", mysqlCon);
                 mySqlCommand2.CommandType = CommandType.StoredProcedure;
@@ -442,18 +398,15 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void ValidateAdminPassword()
-        {
+        private void ValidateAdminPassword() {
             ValidateAdminPasswordDialog validateAdminPassword = new ValidateAdminPasswordDialog(Convert.ToInt32(LoginFormData.UsersID), "MainForm");
             validateAdminPassword.Owner = this;
             validateAdminPassword.ShowDialog();
         }
 
-        public void ShowAndHideButtonMenus(string status)
-        {
+        public void ShowAndHideButtonMenus(string status) {
             //Show Button
-            if (status == "Show")
-            { 
+            if (status == "Show") { 
                 btnStocks.Enabled = true;
                 BtnSales.Enabled = true;
                 btnHistoryLog.Enabled = true;
@@ -462,9 +415,9 @@ namespace POSWithInventorySystem
                 btnMyAccount.Enabled = true;
                 btnSignOut.Enabled = true;
             }
+
             //Hide Button
-            else
-            {
+            else {
                 btnStocks.Enabled = false;
                 BtnSales.Enabled = false;
                 btnHistoryLog.Enabled = false;
@@ -474,6 +427,5 @@ namespace POSWithInventorySystem
                 btnSignOut.Enabled = false;
             }
         }
-
     }
 }
