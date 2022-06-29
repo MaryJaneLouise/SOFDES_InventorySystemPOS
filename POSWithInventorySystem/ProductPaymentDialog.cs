@@ -8,106 +8,84 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POSWithInventorySystem
-{
-    public partial class ProductPaymentDialog : Form
-    {
-        public ProductPaymentDialog()
-        {
+namespace POSWithInventorySystem {
+    public partial class ProductPaymentDialog : Form {
+        POSTransactionForm pOS;
+        double TotalAmount;
+        
+        public ProductPaymentDialog() {
             InitializeComponent();
         }
 
-        public ProductPaymentDialog(double totalAmount)
-        {
+        public ProductPaymentDialog(double totalAmount) {
             InitializeComponent();
             this.TotalAmount = totalAmount;
         }
 
-        POSTransactionForm pOS;
-        double TotalAmount;
-
-        private void ProductPaymentDialog_Load(object sender, EventArgs e)
-        {
+        private void ProductPaymentDialog_Load(object sender, EventArgs e) {
             lblErrorAmount.Text = "";
             pOS = (POSTransactionForm)this.Owner;
         }
 
-        private void ProductPaymentDialog_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
+        private void ProductPaymentDialog_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
                 Payment();
             }
-            if (e.KeyCode == Keys.Escape)
-            {
+            
+            if (e.KeyCode == Keys.Escape) {
                 txtAmount.Text = "0";
                 pOS.validateAmount = true;
                 this.Close();
             }
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
-        {
+        private void btnOk_Click(object sender, EventArgs e) {
             Payment();
         }
 
-        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e) {
             SetMaximumLengthAndDisabledShortCutKeys(txtAmount, 18);
 
-            if (e.KeyChar == '0' && txtAmount.Text.Length == 0)
-            {
+            if (e.KeyChar == '0' && txtAmount.Text.Length == 0) {
                 e.Handled = true;
             }
 
-            //e.Handled = e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar);
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && (txtAmount.Text.IndexOf('.') > -1))
-            {
+            //This will allow only one decimal place
+            if ((e.KeyChar == '.') && (txtAmount.Text.IndexOf('.') > -1)) {
                 e.Handled = true;
             }
 
 
-            // Allow only two decimal places
+            //This will allow only two decimal place
             TextBox convertedTextBox = getConvertedTextBoxBunifuToWindowsControl(txtAmount);
             if ((convertedTextBox.Text.IndexOf('.')) > 0 &&
                 (convertedTextBox.Text.Length - convertedTextBox.Text.IndexOf('.')) > 2 &&
                 (convertedTextBox.SelectionStart == convertedTextBox.Text.Length) &&
                 (e.KeyChar != (char)Keys.Back) &&
-                (e.KeyChar != (char)Keys.Delete)
-                )
-            {
+                (e.KeyChar != (char)Keys.Delete)) {
                 e.Handled = true;
             }
         }
 
-        private void txtAmount_KeyDown(object sender, KeyEventArgs e)
-        {
+        private void txtAmount_KeyDown(object sender, KeyEventArgs e) {
             TextBox convertedTextBox = getConvertedTextBoxBunifuToWindowsControl(txtAmount);
             int i = convertedTextBox.SelectionStart;
 
-            if (i > 0)
-            {
-                if(e.KeyData == Keys.Back)
-                {
-                    if(convertedTextBox.Text[i-1] == ',')
-                    {
+            if (i > 0) {
+                if(e.KeyData == Keys.Back) {
+                    if(convertedTextBox.Text[i-1] == ',') {
                         convertedTextBox.SelectionStart -= 1;
                     }
                 }
             }
             
-            if (i < (convertedTextBox.Text.Length))
-            {
-                if (e.KeyData == Keys.Delete)
-                {
-                    if(convertedTextBox.Text[i] == ',')
-                    {
+            if (i < (convertedTextBox.Text.Length)) {
+                if (e.KeyData == Keys.Delete) {
+                    if(convertedTextBox.Text[i] == ',') {
                         convertedTextBox.SelectionStart += 1;
                     }
                 }
@@ -116,71 +94,58 @@ namespace POSWithInventorySystem
             e.Handled = false;
         }
 
-        private void txtAmount_OnValueChanged(object sender, EventArgs e)
-        {
+        private void txtAmount_OnValueChanged(object sender, EventArgs e) {
             string txtAmountDummy = txtAmount.Text;
 
-            try
-            {
+            try {
                 TextBox convertedTextBox = getConvertedTextBoxBunifuToWindowsControl(txtAmount);
                 int selectionStart = convertedTextBox.SelectionStart - 1;
                 
-                for (int i = selectionStart; i > 0; i--)
-                {
-                    if (txtAmount.Text[i] == ',')
-                    {
+                for (int i = selectionStart; i > 0; i--) {
+                    if (txtAmount.Text[i] == ',') {
                         selectionStart -= 1;
                     }
                 }
 
                 txtAmountDummy = String.Format("{0:n}", Convert.ToDouble(txtAmountDummy.Replace(",", "")));
 
-                for (int i = 0; i <= selectionStart; i++)
-                {
-                    if (txtAmountDummy[i] == ',')
-                    {
+                for (int i = 0; i <= selectionStart; i++) {
+                    if (txtAmountDummy[i] == ',') {
                         selectionStart += 1;
                     }
                 }
 
                 convertedTextBox.Text = txtAmountDummy;
                 convertedTextBox.SelectionStart = selectionStart + 1;
-
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Something went wrong in payment. Please try again." + ex , "Payment error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+            catch (Exception ex) {
+                MessageBox.Show("Something went wrong with the payment. Please try again." + ex , "Payment error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
 
             pOS.lblAmountPaymentValue.Text = txtAmount.Text;
         }
 
-        private void txtAmount_Enter(object sender, EventArgs e)
-        {
+        private void txtAmount_Enter(object sender, EventArgs e) {
             lblErrorAmount.Text = "";
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
+        private void btnCancel_Click(object sender, EventArgs e) {
             txtAmount.Text = "0";
             pOS.validateAmount = true;
             this.Close();
         }
 
-        private void Payment()
-        {
-            if (string.IsNullOrEmpty(txtAmount.Text.Trim()))
-            {
+        private void Payment() {
+            if (string.IsNullOrEmpty(txtAmount.Text.Trim())) {
                 lblErrorAmount.Text = "❌";
             }
-            else
-            {   if (Convert.ToDouble(txtAmount.Text.Trim()) < TotalAmount)
-                {
+            else {   
+                if (Convert.ToDouble(txtAmount.Text.Trim()) < TotalAmount) {
                     MessageBox.Show("The payment is not enough to pay the product/s. Please try again.", "Not enough balance", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else
-                {
+                else {
                     pOS.AmountTendered = Convert.ToDouble(txtAmount.Text.Trim());
                     pOS.validateAmount = false;
                     this.Close();
@@ -188,12 +153,9 @@ namespace POSWithInventorySystem
             }
         }
 
-        private void SetMaximumLengthAndDisabledShortCutKeys(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength)
-        {
-            foreach (Control ctl in metroTextbox.Controls)
-            {
-                if (ctl.GetType() == typeof(TextBox))
-                {
+        private void SetMaximumLengthAndDisabledShortCutKeys(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox, int maxlength) {
+            foreach (Control ctl in metroTextbox.Controls) {
+                if (ctl.GetType() == typeof(TextBox)) {
                     var txt = (TextBox)ctl;
                     txt.MaxLength = maxlength;
                     txt.ShortcutsEnabled = false;
@@ -201,22 +163,16 @@ namespace POSWithInventorySystem
             }
         }
 
-        private TextBox getConvertedTextBoxBunifuToWindowsControl(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
-        {
+        private TextBox getConvertedTextBoxBunifuToWindowsControl(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox) {
             TextBox txtBox = new TextBox();
 
-            foreach (Control ctl in metroTextbox.Controls)
-            {
-                if (ctl.GetType() == typeof(TextBox))
-                {
+            foreach (Control ctl in metroTextbox.Controls) {
+                if (ctl.GetType() == typeof(TextBox)) {
                     txtBox = (TextBox)ctl;
-                    
                 }
             }
 
             return txtBox;
         }
-
-       
     }
 }
