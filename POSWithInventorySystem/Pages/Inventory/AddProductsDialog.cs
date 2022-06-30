@@ -266,7 +266,8 @@ namespace POSWithInventorySystem {
                     //Showing that the adding of product is success
                     MessageBox.Show("The product has been successfully added to the database.", "Add item in database", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFieldControls();
-                    pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.placeholder; 
+                    pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.placeholder;
+                    this.Close();
 
                     //Filling the datatable StocksForm(Parent Form)
                     ((StocksForm)this.Owner).GridFillWithStocksActive();

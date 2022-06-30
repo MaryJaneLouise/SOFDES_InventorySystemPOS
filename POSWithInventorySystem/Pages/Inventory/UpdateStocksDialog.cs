@@ -140,6 +140,7 @@ namespace POSWithInventorySystem {
                     ((StocksForm)this.Owner).SetExpirationDateForIndividual();
 
                     ((StocksForm)this.Owner).SetNumberOfStocks();
+                    this.Close();
                 }
             }
         }

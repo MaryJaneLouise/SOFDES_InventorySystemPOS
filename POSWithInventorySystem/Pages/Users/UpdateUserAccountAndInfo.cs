@@ -149,6 +149,7 @@ namespace POSWithInventorySystem {
                         
                         MessageBox.Show("The account's information has been updated successfully.", "Updated Account Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ValidateNFillDataControl();
+                        this.Close();
                     }
                 }
             }

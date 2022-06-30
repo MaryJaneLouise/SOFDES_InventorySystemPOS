@@ -243,7 +243,8 @@ namespace POSWithInventorySystem {
 
                     MessageBox.Show("The stocks for the product has been successfully added.", "Add stock in selected item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearControlsValue();
-                    pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.computerbox;
+                    pictureBoxProductPic.Image = POSWithInventorySystem.Properties.Resources.placeholder;
+                    this.Close();
 
                     //Fill the datatable StocksForm(Parent Form)
                     ((StocksForm)this.Owner).GridFillIndividualStocksTab2();

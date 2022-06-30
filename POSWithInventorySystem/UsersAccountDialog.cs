@@ -107,6 +107,7 @@ namespace POSWithInventorySystem {
                     Usernames = txtUsername.Text;
                     lblErrorUsername.Text = "";
                     ValidateNFillDataControl();
+                    this.Close();
                 }
             }
 
